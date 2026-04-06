@@ -31,18 +31,18 @@ import Layout from '../layouts/Layout.astro';
       </div>
 
       <!-- Main headline -->
-      <h1 class="fade-up" style="font-size: clamp(2.8rem, 8vw, 7rem); line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 24px;">
+      <h1 id="hero-h1" style="font-size: clamp(2.8rem, 8vw, 7rem); line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 24px;">
         Extra&nbsp;<span style="color: #FFE135;">RM5,000</span><br />
         a month.<br />
         <span style="color: #888;">Part&#8209;time.</span>
       </h1>
 
-      <p class="fade-up" style="font-size: clamp(1rem, 2.5vw, 1.25rem); color: #888; max-width: 500px; margin: 0 auto 40px; line-height: 1.7; animation-delay: 0.1s;">
+      <p id="hero-p" style="font-size: clamp(1rem, 2.5vw, 1.25rem); color: #888; max-width: 500px; margin: 0 auto 40px; line-height: 1.7;">
         We walked up to strangers and told them. Most said "cannot lah."
         After we showed them the math — they changed their tune.
       </p>
 
-      <div class="fade-up flex flex-col sm:flex-row items-center justify-center gap-4" style="animation-delay: 0.2s;">
+      <div id="hero-cta" class="flex flex-col sm:flex-row items-center justify-center gap-4">
         <a href="#calculator"
           class="px-8 py-4 rounded-full font-semibold text-base transition-all duration-200 hover:scale-105"
           style="background: #FFE135; color: #080808;">
@@ -56,7 +56,7 @@ import Layout from '../layouts/Layout.astro';
       </div>
 
       <!-- Proof numbers -->
-      <div class="fade-up grid grid-cols-3 gap-4 mt-20 max-w-2xl mx-auto" style="animation-delay: 0.3s;">
+      <div id="hero-stats" class="grid grid-cols-3 gap-4 mt-20 max-w-2xl mx-auto">
         {[
           { num: "1,800+", label: "Part-time agents in Malaysia" },
           { num: "RM750", label: "Avg. commission per policy" },
@@ -550,10 +550,13 @@ import Layout from '../layouts/Layout.astro';
     );
   });
 
-  // Hero entrance
-  gsap.from('#hero h1', { opacity: 0, y: 60, duration: 1.2, ease: 'power4.out', delay: 0.2 });
-  gsap.from('#hero p', { opacity: 0, y: 40, duration: 1, ease: 'power3.out', delay: 0.4 });
-  gsap.from('#hero .flex', { opacity: 0, y: 30, duration: 0.8, ease: 'power3.out', delay: 0.6 });
+  // Hero entrance — use fromTo so opacity:1 is explicit (avoids CSS class conflict)
+  const heroTl = gsap.timeline({ delay: 0.1 });
+  heroTl
+    .fromTo('#hero-h1',   { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 1.1, ease: 'power4.out' })
+    .fromTo('#hero-p',    { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out' }, '-=0.7')
+    .fromTo('#hero-cta',  { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }, '-=0.6')
+    .fromTo('#hero-stats',{ opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }, '-=0.5');
 
   // Chat messages stagger
   ScrollTrigger.create({
