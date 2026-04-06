@@ -6,51 +6,50 @@ import Layout from '../layouts/Layout.astro';
   <!-- ===== NAV ===== -->
   <nav id="nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" style="background: transparent;">
     <div class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
-      <a href="/" class="font-bold text-xl" style="font-family: 'Space Grotesk', sans-serif;">
-        not<span style="color: #FFE135;">bad</span>lah<span style="color: #FFE135;">.</span>
+      <a href="/" class="font-bold text-xl" style="font-family: 'Space Grotesk', sans-serif; color: #111;">
+        not<span style="color: #d4a800;">bad</span>lah<span style="color: #d4a800;">.</span>
       </a>
       <a href="#apply"
-        class="hidden sm:inline-flex items-center gap-2 px-5 py-2 rounded-full text-sm font-semibold transition-all duration-200"
-        style="background: #FFE135; color: #080808;">
-        Find Out More →
+        class="hidden sm:inline-flex items-center gap-2 px-5 py-2 rounded-full text-sm font-semibold transition-all duration-200 hover:opacity-80"
+        style="background: #111111; color: #ffffff;">
+        Find Out More
       </a>
     </div>
   </nav>
 
   <!-- ===== HERO ===== -->
-  <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden" style="padding: 120px 24px 80px;">
-    <!-- Background elements -->
-    <div class="absolute inset-0" style="background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(255,225,53,0.08) 0%, transparent 70%);"></div>
+  <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden" style="padding: 120px 24px 80px; background: #ffffff;">
+    <div class="absolute inset-0" style="background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(255,225,53,0.12) 0%, transparent 70%);"></div>
 
     <div class="relative z-10 max-w-5xl mx-auto text-center">
       <!-- Tag -->
       <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-8 text-sm font-medium"
-        style="background: rgba(255,225,53,0.1); border: 1px solid rgba(255,225,53,0.3); color: #FFE135;">
-        <span style="width:6px;height:6px;border-radius:50%;background:#FFE135;display:inline-block;animation:pulse 2s infinite;"></span>
+        style="background: #FFF8D0; border: 1px solid #FFE135; color: #996600;">
+        <span style="width:6px;height:6px;border-radius:50%;background:#d4a800;display:inline-block;"></span>
         Part-time opportunity in Malaysia
       </div>
 
       <!-- Main headline -->
-      <h1 id="hero-h1" style="font-size: clamp(2.8rem, 8vw, 7rem); line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 24px;">
-        Extra&nbsp;<span style="color: #FFE135;">RM5,000</span><br />
+      <h1 id="hero-h1" style="font-size: clamp(2.8rem, 8vw, 7rem); line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 24px; color: #111;">
+        Extra&nbsp;<span style="color: #d4a800;">RM5,000</span><br />
         a month.<br />
-        <span style="color: #888;">Part&#8209;time.</span>
+        <span style="color: #aaa;">Part&#8209;time.</span>
       </h1>
 
-      <p id="hero-p" style="font-size: clamp(1rem, 2.5vw, 1.25rem); color: #888; max-width: 500px; margin: 0 auto 40px; line-height: 1.7;">
+      <p id="hero-p" style="font-size: clamp(1rem, 2.5vw, 1.25rem); color: #666; max-width: 500px; margin: 0 auto 40px; line-height: 1.7;">
         We walked up to strangers and told them. Most said "cannot lah."
-        After we showed them the math — they changed their tune.
+        After we showed them the math, they changed their tune.
       </p>
 
       <div id="hero-cta" class="flex flex-col sm:flex-row items-center justify-center gap-4">
         <a href="#calculator"
           class="px-8 py-4 rounded-full font-semibold text-base transition-all duration-200 hover:scale-105"
-          style="background: #FFE135; color: #080808;">
-          Calculate My Income →
+          style="background: #111111; color: #ffffff;">
+          Calculate My Income
         </a>
         <a href="#how-it-works"
-          class="px-8 py-4 rounded-full font-semibold text-base transition-all duration-200"
-          style="border: 1px solid #333; color: #888;">
+          class="px-8 py-4 rounded-full font-semibold text-base transition-all duration-200 hover:border-gray-400"
+          style="border: 1px solid #ddd; color: #666;">
           How does it work?
         </a>
       </div>
@@ -63,8 +62,8 @@ import Layout from '../layouts/Layout.astro';
           { num: "#1", label: "Insurance company in Malaysia" }
         ].map(item => (
           <div class="text-center">
-            <div class="tabular" style="font-family:'Space Grotesk',sans-serif; font-size: clamp(1.5rem,4vw,2.5rem); font-weight:800; color:#FFE135;">{item.num}</div>
-            <div style="font-size:0.75rem; color:#555; margin-top:4px;">{item.label}</div>
+            <div class="tabular" style="font-family:'Space Grotesk',sans-serif; font-size: clamp(1.5rem,4vw,2.5rem); font-weight:800; color:#d4a800;">{item.num}</div>
+            <div style="font-size:0.75rem; color:#999; margin-top:4px;">{item.label}</div>
           </div>
         ))}
       </div>
@@ -72,153 +71,132 @@ import Layout from '../layouts/Layout.astro';
 
     <!-- Scroll indicator -->
     <div class="absolute bottom-10 left-1/2 -translate-x-1/2" style="animation: bounce 2s infinite;">
-      <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#444" stroke-width="2">
+      <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#bbb" stroke-width="2">
         <path d="M19 9l-7 7-7-7" />
       </svg>
     </div>
   </section>
 
-  <!-- ===== MARQUEE ===== -->
-  <div class="overflow-hidden py-4" style="border-top: 1px solid #111; border-bottom: 1px solid #111; background: #0D0D0D;">
-    <div class="marquee-inner">
-      {Array(2).fill(['Part-time income', '·', 'No experience needed', '·', 'Work your own hours', '·', 'AIA Malaysia', '·', 'Real commissions', '·', 'Kerja sambilan', '·', 'Pendapatan sampingan', '·', 'RM5,000/bulan', '·']).flat().map((item, i) => (
-        <span key={i} style={item === '·' ? "color:#FFE135;margin:0 24px;font-weight:700;" : "color:#444;font-size:0.875rem;font-weight:500;white-space:nowrap;"}>
-          {item}
-        </span>
-      ))}
-    </div>
-  </div>
-
   <!-- ===== THE REACTION (Story Section) ===== -->
   <section id="the-story" class="py-24 px-6" style="max-width: 800px; margin: 0 auto;">
     <div class="text-center mb-16">
-      <p style="color:#FFE135;font-size:0.875rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;">The Concept</p>
-      <h2 style="font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.1;">This is how the conversation goes</h2>
+      <p style="color:#d4a800;font-size:0.875rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;">The Concept</p>
+      <h2 style="font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.1; color: #111;">This is how the conversation goes</h2>
     </div>
 
-    <!-- Chat simulation -->
     <div id="chat-container" class="space-y-6">
-      <!-- Message 1: Charles -->
       <div class="chat-msg flex items-end gap-3 fade-up">
         <div class="w-9 h-9 rounded-full flex-shrink-0 flex items-center justify-center text-xs font-bold"
-          style="background: #FFE135; color: #080808; font-family: 'Space Grotesk',sans-serif;">C</div>
-        <div class="bubble-left px-5 py-3 max-w-sm" style="background: #1A1A1A; color: #fff;">
-          <p style="font-size: 0.95rem;">Hey, random question — what do you do for work?</p>
+          style="background: #FFE135; color: #111; font-family: 'Space Grotesk',sans-serif;">C</div>
+        <div class="bubble-left px-5 py-3 max-w-sm" style="background: #f0f0f0; color: #111;">
+          <p style="font-size: 0.95rem;">Hey, random question. What do you do for work?</p>
         </div>
       </div>
 
-      <!-- Message 2: Stranger -->
       <div class="chat-msg flex items-end gap-3 justify-end fade-up">
-        <div class="bubble-right px-5 py-3 max-w-sm" style="background: #222; color: #fff;">
+        <div class="bubble-right px-5 py-3 max-w-sm" style="background: #FFF8D0; color: #111; border: 1px solid #FFE135;">
           <p style="font-size: 0.95rem;">I'm a teacher. Why ah?</p>
         </div>
         <div class="w-9 h-9 rounded-full flex-shrink-0 flex items-center justify-center text-xs font-bold"
-          style="background: #333; color: #fff;">?</div>
+          style="background: #e8e8e8; color: #555;">?</div>
       </div>
 
-      <!-- Message 3 -->
       <div class="chat-msg flex items-end gap-3 fade-up">
         <div class="w-9 h-9 rounded-full flex-shrink-0 flex items-center justify-center text-xs font-bold"
-          style="background: #FFE135; color: #080808; font-family: 'Space Grotesk',sans-serif;">C</div>
-        <div class="bubble-left px-5 py-3 max-w-sm" style="background: #1A1A1A; color: #fff;">
+          style="background: #FFE135; color: #111; font-family: 'Space Grotesk',sans-serif;">C</div>
+        <div class="bubble-left px-5 py-3 max-w-sm" style="background: #f0f0f0; color: #111;">
           <p style="font-size: 0.95rem;">Nice. Did you know that part-time, on the side, you can add RM5,000 to your income every month?</p>
         </div>
       </div>
 
-      <!-- Message 4 -->
       <div class="chat-msg flex items-end gap-3 justify-end fade-up">
-        <div class="bubble-right px-5 py-3 max-w-sm" style="background: #222; color: #fff;">
+        <div class="bubble-right px-5 py-3 max-w-sm" style="background: #FFF8D0; color: #111; border: 1px solid #FFE135;">
           <p style="font-size: 0.95rem;">Eh? MLM ke? 😒</p>
         </div>
         <div class="w-9 h-9 rounded-full flex-shrink-0 flex items-center justify-center text-xs font-bold"
-          style="background: #333; color: #fff;">?</div>
+          style="background: #e8e8e8; color: #555;">?</div>
       </div>
 
-      <!-- Message 5 -->
       <div class="chat-msg flex items-end gap-3 fade-up">
         <div class="w-9 h-9 rounded-full flex-shrink-0 flex items-center justify-center text-xs font-bold"
-          style="background: #FFE135; color: #080808; font-family: 'Space Grotesk',sans-serif;">C</div>
-        <div class="bubble-left px-5 py-3 max-w-sm" style="background: #1A1A1A; color: #fff;">
-          <p style="font-size: 0.95rem;">Bukan. AIA Malaysia. Bursa-listed company. You help people protect their income — they pay you a commission. Simple.</p>
+          style="background: #FFE135; color: #111; font-family: 'Space Grotesk',sans-serif;">C</div>
+        <div class="bubble-left px-5 py-3 max-w-sm" style="background: #f0f0f0; color: #111;">
+          <p style="font-size: 0.95rem;">Bukan. AIA Malaysia. Bursa-listed company. You help people protect their income, they pay you a commission. Simple.</p>
         </div>
       </div>
 
-      <!-- Message 6 -->
       <div class="chat-msg flex items-end gap-3 justify-end fade-up">
-        <div class="bubble-right px-5 py-3 max-w-sm" style="background: #222; color: #fff;">
+        <div class="bubble-right px-5 py-3 max-w-sm" style="background: #FFF8D0; color: #111; border: 1px solid #FFE135;">
           <p style="font-size: 0.95rem;">But I have no experience. And I'm shy lah...</p>
         </div>
         <div class="w-9 h-9 rounded-full flex-shrink-0 flex items-center justify-center text-xs font-bold"
-          style="background: #333; color: #fff;">?</div>
+          style="background: #e8e8e8; color: #555;">?</div>
       </div>
 
-      <!-- Message 7 -->
       <div class="chat-msg flex items-end gap-3 fade-up">
         <div class="w-9 h-9 rounded-full flex-shrink-0 flex items-center justify-center text-xs font-bold"
-          style="background: #FFE135; color: #080808; font-family: 'Space Grotesk',sans-serif;">C</div>
-        <div class="bubble-left px-5 py-3 max-w-sm" style="background: #1A1A1A; color: #fff;">
+          style="background: #FFE135; color: #111; font-family: 'Space Grotesk',sans-serif;">C</div>
+        <div class="bubble-left px-5 py-3 max-w-sm" style="background: #f0f0f0; color: #111;">
           <p style="font-size: 0.95rem;">We train you. You don't need to be a salesperson. Just help people you already know. 10 hours a week is enough to start.</p>
         </div>
       </div>
 
-      <!-- Message 8 -->
       <div class="chat-msg flex items-end gap-3 justify-end fade-up">
-        <div class="bubble-right px-5 py-3 max-w-sm" style="background: #222; color: #fff;">
+        <div class="bubble-right px-5 py-3 max-w-sm" style="background: #FFF8D0; color: #111; border: 1px solid #FFE135;">
           <p style="font-size: 0.95rem;">Hmm. But RM5,000 every month? Really can meh?</p>
         </div>
         <div class="w-9 h-9 rounded-full flex-shrink-0 flex items-center justify-center text-xs font-bold"
-          style="background: #333; color: #fff;">?</div>
+          style="background: #e8e8e8; color: #555;">?</div>
       </div>
 
-      <!-- Message 9 -->
       <div class="chat-msg flex items-end gap-3 fade-up">
         <div class="w-9 h-9 rounded-full flex-shrink-0 flex items-center justify-center text-xs font-bold"
-          style="background: #FFE135; color: #080808; font-family: 'Space Grotesk',sans-serif;">C</div>
-        <div class="bubble-left px-5 py-3 max-w-sm" style="background: #1A1A1A; color: #fff;">
-          <p style="font-size: 0.95rem;">6–7 policies a month. Average RM750 commission each. You do the math 😏</p>
+          style="background: #FFE135; color: #111; font-family: 'Space Grotesk',sans-serif;">C</div>
+        <div class="bubble-left px-5 py-3 max-w-sm" style="background: #f0f0f0; color: #111;">
+          <p style="font-size: 0.95rem;">6 to 7 policies a month. Average RM750 commission each. You do the math 😏</p>
         </div>
       </div>
 
       <!-- Final reaction -->
       <div class="chat-msg flex items-end gap-3 justify-end fade-up">
-        <div class="bubble-right px-5 py-4 max-w-sm" style="background: #1F1A00; border: 1px solid #FFE13566; color: #FFE135;">
+        <div class="bubble-right px-5 py-4 max-w-sm" style="background: #FFE135; color: #111; border: 1px solid #d4a800;">
           <p style="font-size: 1.1rem; font-weight: 700;">"Insurance... not bad lah! 🤙"</p>
         </div>
         <div class="w-9 h-9 rounded-full flex-shrink-0 flex items-center justify-center text-xs font-bold"
-          style="background: #333; color: #fff;">?</div>
+          style="background: #e8e8e8; color: #555;">?</div>
       </div>
     </div>
 
     <div class="text-center mt-14">
-      <p style="color: #555; font-size: 0.9rem;">Want to see the actual numbers?</p>
+      <p style="color: #999; font-size: 0.9rem;">Want to see the actual numbers?</p>
       <a href="#calculator" class="inline-block mt-4 px-8 py-3 rounded-full font-semibold transition-all hover:scale-105"
-        style="background: #FFE135; color: #080808;">
-        Try the income calculator ↓
+        style="background: #111; color: #fff;">
+        Try the income calculator
       </a>
     </div>
   </section>
 
   <!-- ===== INCOME CALCULATOR ===== -->
-  <section id="calculator" class="py-24 px-6" style="background: #0D0D0D;">
+  <section id="calculator" class="py-24 px-6" style="background: #f9f9f9;">
     <div class="max-w-3xl mx-auto">
       <div class="text-center mb-14 fade-up">
-        <p style="color:#FFE135;font-size:0.875rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;">Income Calculator</p>
+        <p style="color:#d4a800;font-size:0.875rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;">Income Calculator</p>
         <h2 style="font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.1;">See what you could earn</h2>
-        <p style="color: #666; margin-top: 12px; font-size: 0.95rem;">Based on real AIA commission structures</p>
+        <p style="color: #888; margin-top: 12px; font-size: 0.95rem;">Based on real AIA commission structures</p>
       </div>
 
-      <div class="glow-card rounded-2xl p-8 fade-up">
+      <div class="glow-card rounded-2xl p-8 fade-up" style="background: #fff;">
         <!-- Slider 1 -->
         <div class="mb-10">
           <div class="flex justify-between items-end mb-4">
-            <label style="font-family:'Space Grotesk',sans-serif; font-size: 1.1rem; font-weight: 600;">
+            <label style="font-family:'Space Grotesk',sans-serif; font-size: 1.1rem; font-weight: 600; color: #111;">
               People you can reach per week
             </label>
-            <span id="contacts-display" style="font-size:1.5rem;font-weight:800;color:#FFE135;font-family:'Space Grotesk',sans-serif;">10</span>
+            <span id="contacts-display" style="font-size:1.5rem;font-weight:800;color:#d4a800;font-family:'Space Grotesk',sans-serif;">0</span>
           </div>
-          <input type="range" id="contacts-slider" min="2" max="30" value="10" step="1" />
-          <div class="flex justify-between mt-2" style="color: #444; font-size: 0.75rem;">
-            <span>2 people/week</span>
+          <input type="range" id="contacts-slider" min="0" max="30" value="0" step="1" />
+          <div class="flex justify-between mt-2" style="color: #bbb; font-size: 0.75rem;">
+            <span>0 (no effort)</span>
             <span>30 people/week</span>
           </div>
         </div>
@@ -226,63 +204,62 @@ import Layout from '../layouts/Layout.astro';
         <!-- Slider 2 -->
         <div class="mb-10">
           <div class="flex justify-between items-end mb-4">
-            <label style="font-family:'Space Grotesk',sans-serif; font-size: 1.1rem; font-weight: 600;">
+            <label style="font-family:'Space Grotesk',sans-serif; font-size: 1.1rem; font-weight: 600; color: #111;">
               Hours per week you can spare
             </label>
-            <span id="hours-display" style="font-size:1.5rem;font-weight:800;color:#FFE135;font-family:'Space Grotesk',sans-serif;">10</span>
+            <span id="hours-display" style="font-size:1.5rem;font-weight:800;color:#d4a800;font-family:'Space Grotesk',sans-serif;">0</span>
           </div>
-          <input type="range" id="hours-slider" min="5" max="30" value="10" step="1" />
-          <div class="flex justify-between mt-2" style="color: #444; font-size: 0.75rem;">
-            <span>5 hrs/week</span>
+          <input type="range" id="hours-slider" min="0" max="30" value="0" step="1" />
+          <div class="flex justify-between mt-2" style="color: #bbb; font-size: 0.75rem;">
+            <span>0 (no effort)</span>
             <span>30 hrs/week</span>
           </div>
         </div>
 
         <!-- Result -->
-        <div class="rounded-xl p-6 text-center" style="background: #0A0A0A; border: 1px solid #1F1A00;">
-          <p style="color: #666; font-size: 0.875rem; margin-bottom: 8px;">Your estimated monthly income</p>
-          <div class="tabular" style="font-family:'Space Grotesk',sans-serif; font-size: clamp(3rem,8vw,5rem); font-weight:800; color:#FFE135; line-height:1;">
-            RM<span id="calc-result">3,750</span>
+        <div class="rounded-xl p-6 text-center" style="background: #f9f9f9; border: 1px solid #e8e8e8;">
+          <p style="color: #888; font-size: 0.875rem; margin-bottom: 8px;">Your estimated monthly income</p>
+          <div class="tabular" style="font-family:'Space Grotesk',sans-serif; font-size: clamp(3rem,8vw,5rem); font-weight:800; color:#111; line-height:1;">
+            RM<span id="calc-result">0</span>
           </div>
-          <p style="color: #555; font-size: 0.8rem; margin-top: 8px;">per month, part-time</p>
+          <p style="color: #aaa; font-size: 0.8rem; margin-top: 8px;">per month, part-time</p>
         </div>
 
         <!-- Breakdown -->
         <div id="calc-breakdown" class="mt-6 grid grid-cols-3 gap-4 text-center">
-          <div style="background:#111;border-radius:12px;padding:16px;">
-            <div id="bd-meetings" style="font-family:'Space Grotesk',sans-serif;font-size:1.5rem;font-weight:700;color:#fff;">43</div>
-            <div style="color:#555;font-size:0.75rem;margin-top:4px;">meetings/month</div>
+          <div style="background:#f5f5f5;border-radius:12px;padding:16px;border:1px solid #eee;">
+            <div id="bd-meetings" style="font-family:'Space Grotesk',sans-serif;font-size:1.5rem;font-weight:700;color:#111;">0</div>
+            <div style="color:#aaa;font-size:0.75rem;margin-top:4px;">meetings/month</div>
           </div>
-          <div style="background:#111;border-radius:12px;padding:16px;">
-            <div id="bd-policies" style="font-family:'Space Grotesk',sans-serif;font-size:1.5rem;font-weight:700;color:#fff;">5</div>
-            <div style="color:#555;font-size:0.75rem;margin-top:4px;">policies/month</div>
+          <div style="background:#f5f5f5;border-radius:12px;padding:16px;border:1px solid #eee;">
+            <div id="bd-policies" style="font-family:'Space Grotesk',sans-serif;font-size:1.5rem;font-weight:700;color:#111;">0</div>
+            <div style="color:#aaa;font-size:0.75rem;margin-top:4px;">policies/month</div>
           </div>
-          <div style="background:#111;border-radius:12px;padding:16px;">
-            <div id="bd-commission" style="font-family:'Space Grotesk',sans-serif;font-size:1.5rem;font-weight:700;color:#fff;">RM750</div>
-            <div style="color:#555;font-size:0.75rem;margin-top:4px;">avg per policy</div>
+          <div style="background:#f5f5f5;border-radius:12px;padding:16px;border:1px solid #eee;">
+            <div id="bd-commission" style="font-family:'Space Grotesk',sans-serif;font-size:1.5rem;font-weight:700;color:#111;">RM750</div>
+            <div style="color:#aaa;font-size:0.75rem;margin-top:4px;">avg per policy</div>
           </div>
         </div>
 
-        <p style="text-align:center;color:#444;font-size:0.75rem;margin-top:16px;">
-          Estimates based on 20% conversion rate and RM750 avg. first-year commission.
-          Individual results will vary.
+        <p style="text-align:center;color:#ccc;font-size:0.75rem;margin-top:16px;">
+          Estimates based on 20% conversion rate and RM750 avg. first-year commission. Individual results will vary.
         </p>
       </div>
 
       <div class="text-center mt-8">
         <a href="#apply" class="inline-block px-8 py-4 rounded-full font-semibold transition-all hover:scale-105"
-          style="background: #FF6B35; color: #fff;">
-          I want these numbers → Let me in
+          style="background: #111; color: #fff;">
+          I want these numbers. Let me in.
         </a>
       </div>
     </div>
   </section>
 
   <!-- ===== HOW IT WORKS ===== -->
-  <section id="how-it-works" class="py-24 px-6">
+  <section id="how-it-works" class="py-24 px-6" style="background: #fff;">
     <div class="max-w-4xl mx-auto">
       <div class="text-center mb-16 fade-up">
-        <p style="color:#FFE135;font-size:0.875rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;">The Process</p>
+        <p style="color:#d4a800;font-size:0.875rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;">The Process</p>
         <h2 style="font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.1;">From zero to first commission<br />in 30 days</h2>
       </div>
 
@@ -290,46 +267,46 @@ import Layout from '../layouts/Layout.astro';
         {[
           { step: "01", title: "Register", desc: "Sign up as an AIA part-time Financial Advisor. Takes less than 10 minutes online.", tag: "Free" },
           { step: "02", title: "Get Certified", desc: "Complete your PCE (Pre-Contract Exam). We guide you through it. Most pass in 2 weeks.", tag: "2 weeks" },
-          { step: "03", title: "Start Learning", desc: "Two-day onboarding with Charles's team. Learn how to have real conversations — not hard selling.", tag: "Day 15" },
-          { step: "04", title: "First Commission", desc: "Close your first policy. Earn your first RM750–RM1,200. It usually happens faster than people expect.", tag: "Day 30+" }
+          { step: "03", title: "Get Trained", desc: "Two-day onboarding with our team. Learn how to have real conversations, not hard selling.", tag: "Day 15" },
+          { step: "04", title: "First Commission", desc: "Close your first policy. Earn your first RM750 to RM1,200. It usually happens faster than you expect.", tag: "Day 30+" }
         ].map((item, i) => (
           <div class="glow-card rounded-xl p-6 fade-up" style={`animation-delay: ${i * 0.1}s`}>
-            <div style="font-size:0.75rem;font-weight:700;color:#FFE135;margin-bottom:16px;font-family:'Space Grotesk',sans-serif;">
+            <div style="font-size:0.75rem;font-weight:700;color:#d4a800;margin-bottom:16px;font-family:'Space Grotesk',sans-serif;">
               STEP {item.step}
             </div>
             <div class="inline-block px-3 py-1 rounded-full text-xs font-semibold mb-4"
-              style="background: rgba(255,225,53,0.1); color: #FFE135; border: 1px solid rgba(255,225,53,0.2);">
+              style="background: #FFF8D0; color: #996600; border: 1px solid #FFE135;">
               {item.tag}
             </div>
-            <h3 style="font-size:1.25rem;font-family:'Space Grotesk',sans-serif;font-weight:700;margin-bottom:8px;">{item.title}</h3>
-            <p style="color:#666;font-size:0.875rem;line-height:1.7;">{item.desc}</p>
+            <h3 style="font-size:1.25rem;font-family:'Space Grotesk',sans-serif;font-weight:700;margin-bottom:8px;color:#111;">{item.title}</h3>
+            <p style="color:#777;font-size:0.875rem;line-height:1.7;">{item.desc}</p>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- ===== OBJECTIONS (FAQ) ===== -->
-  <section id="faq" class="py-24 px-6" style="background: #0D0D0D;">
+  <!-- ===== FAQ ===== -->
+  <section id="faq" class="py-24 px-6" style="background: #f9f9f9;">
     <div class="max-w-3xl mx-auto">
       <div class="text-center mb-14 fade-up">
-        <p style="color:#FFE135;font-size:0.875rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;">Real Talk</p>
+        <p style="color:#d4a800;font-size:0.875rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;">Real Talk</p>
         <h2 style="font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.1;">Your questions.<br />Honest answers.</h2>
       </div>
 
-      <div class="space-y-4" id="faq-list">
+      <div class="space-y-3" id="faq-list">
         {[
           {
             q: "Is this MLM?",
-            a: "No. AIA (AIA Berhad) is listed on Bursa Malaysia. It's been operating in Malaysia for over 80 years. You're a licensed Financial Advisor registered with Bank Negara — not a 'downline'."
+            a: "No. AIA (AIA Berhad) is listed on Bursa Malaysia. It has been operating in Malaysia for over 80 years. You are a licensed Financial Advisor registered with Bank Negara, not a downline."
           },
           {
             q: "Do I need experience?",
-            a: "Zero experience needed. All you need to start is a SPM cert and a willingness to learn. We provide full training — and I personally mentor everyone in my team."
+            a: "Zero experience needed. All you need to start is a SPM cert and a willingness to learn. We provide full training and personally mentor everyone in our team."
           },
           {
             q: "Do I have to sell to family and friends?",
-            a: "Not at all. We teach you how to prospect professionally — from your network and beyond. Many of my agents don't sell a single policy to family."
+            a: "Not at all. We teach you how to prospect professionally, from your network and beyond. Many of our agents don't sell a single policy to family."
           },
           {
             q: "Is there a quota I have to hit?",
@@ -337,25 +314,25 @@ import Layout from '../layouts/Layout.astro';
           },
           {
             q: "How long before I see real money?",
-            a: "Most agents on my team close their first policy within their first 2–4 weeks. Your first commission could land in your account within 30 days of registering."
+            a: "Most agents on our team close their first policy within their first 2 to 4 weeks. Your first commission could land in your account within 30 days of registering."
           },
           {
             q: "Can I do this while working full-time?",
-            a: "Yes — that's the whole point. Most of my agents started part-time while keeping their day jobs. 10 hours a week is enough to get started."
+            a: "Yes, that's the whole point. Most of our agents started part-time while keeping their day jobs. 10 hours a week is enough to get started."
           },
           {
             q: "Why AIA specifically?",
-            a: "AIA Malaysia has the widest product range, strongest brand trust, and best support system for new agents. It's the easiest sell — most Malaysians already know and trust AIA."
+            a: "AIA Malaysia has the widest product range, strongest brand trust, and best support system for new agents. Most Malaysians already know and trust AIA, which makes conversations easier."
           }
         ].map((item, i) => (
-          <div class="faq-item glow-card rounded-xl overflow-hidden fade-up" style={`animation-delay: ${i * 0.05}s`} data-index={i}>
+          <div class="faq-item glow-card rounded-xl overflow-hidden fade-up" style={`animation-delay: ${i * 0.05}s; background: #fff;`} data-index={i}>
             <button class="faq-toggle w-full flex justify-between items-center p-6 text-left"
-              style="background: none; border: none; color: #fff; cursor: pointer; font-family: 'Space Grotesk', sans-serif;">
+              style="background: none; border: none; color: #111; cursor: pointer; font-family: 'Space Grotesk', sans-serif;">
               <span style="font-size:1rem;font-weight:600;">{item.q}</span>
-              <span class="faq-icon ml-4 flex-shrink-0" style="color: #FFE135; font-size: 1.2rem; transition: transform 0.3s;">+</span>
+              <span class="faq-icon ml-4 flex-shrink-0" style="color: #d4a800; font-size: 1.2rem; transition: transform 0.3s;">+</span>
             </button>
             <div class="faq-answer" style="max-height:0;overflow:hidden;transition:max-height 0.4s ease;">
-              <p style="padding:0 24px 24px;color:#888;font-size:0.9rem;line-height:1.8;">{item.a}</p>
+              <p style="padding:0 24px 24px;color:#666;font-size:0.9rem;line-height:1.8;">{item.a}</p>
             </div>
           </div>
         ))}
@@ -363,127 +340,73 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </section>
 
-  <!-- ===== ABOUT CHARLES ===== -->
-  <section id="about" class="py-24 px-6">
-    <div class="max-w-4xl mx-auto">
-      <div class="glow-card rounded-2xl p-8 md:p-12 fade-up" style="background: linear-gradient(135deg, #111 0%, #0D0D0D 100%);">
-        <div class="grid md:grid-cols-2 gap-10 items-center">
-          <div>
-            <p style="color:#FFE135;font-size:0.875rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:16px;">Your guide</p>
-            <h2 style="font-size:clamp(2rem,4vw,2.8rem);line-height:1.1;margin-bottom:16px;">I'm Charles.<br />I built this.</h2>
-            <p style="color:#777;line-height:1.8;margin-bottom:16px;font-size:0.95rem;">
-              Unit Manager at AIA Malaysia. 12+ years in financial planning. I left my corporate job at 30 after my mother passed — life was too short to not go all-in.
-            </p>
-            <p style="color:#777;line-height:1.8;margin-bottom:24px;font-size:0.95rem;">
-              Today I lead a 7-person team. My agents include teachers, engineers, and fresh grads. I built this site because I keep having the same conversation on the street — and people keep saying "not bad lah" when they finally hear the numbers.
-            </p>
-            <div class="flex gap-4">
-              <a href="#apply" class="px-6 py-3 rounded-full font-semibold text-sm transition-all hover:scale-105"
-                style="background: #FFE135; color: #080808;">
-                Work with Charles →
-              </a>
-              <a href="https://shazemeen.com" target="_blank" rel="noopener"
-                class="px-6 py-3 rounded-full font-semibold text-sm transition-all"
-                style="border: 1px solid #333; color: #888;">
-                My full story
-              </a>
-            </div>
-          </div>
-          <div class="text-center">
-            <div class="inline-block rounded-2xl overflow-hidden" style="border: 2px solid #FFE13533;">
-              <img
-                src="https://www.empoweringmy.com/wp-content/uploads/2026/03/1.png"
-                alt="Charles Shazemeen - AIA Unit Manager Malaysia"
-                class="w-full max-w-xs"
-                style="display:block;filter:contrast(1.05);"
-                loading="lazy"
-              />
-            </div>
-            <p style="color:#444;font-size:0.75rem;margin-top:8px;">Charles Shazemeen · Unit Manager, AIA Malaysia</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- ===== APPLY FORM ===== -->
-  <section id="apply" class="py-24 px-6" style="background: #0D0D0D;">
+  <section id="apply" class="py-24 px-6" style="background: #fff;">
     <div class="max-w-2xl mx-auto">
       <div class="text-center mb-12 fade-up">
-        <p style="color:#FFE135;font-size:0.875rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;">Get Started</p>
-        <h2 style="font-size:clamp(2rem,5vw,3.5rem);line-height:1.1;">Tell me about yourself.<br />No pressure.</h2>
-        <p style="color:#666;margin-top:12px;font-size:0.95rem;">I'll reach out within 24 hours to set up a casual chat.</p>
+        <p style="color:#d4a800;font-size:0.875rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;">Get Started</p>
+        <h2 style="font-size:clamp(2rem,5vw,3.5rem);line-height:1.1;">Tell us about yourself.<br />No pressure.</h2>
+        <p style="color:#888;margin-top:12px;font-size:0.95rem;">We'll reach out within 24 hours to set up a casual chat.</p>
       </div>
 
-      <form id="apply-form" class="glow-card rounded-2xl p-8 fade-up" method="POST" action="/api/apply" novalidate>
+      <form id="apply-form" class="glow-card rounded-2xl p-8 fade-up" method="POST" action="/api/apply" novalidate style="background: #fff;">
         <div class="space-y-5">
-          <!-- Name -->
           <div>
-            <label style="display:block;font-size:0.875rem;font-weight:500;color:#aaa;margin-bottom:8px;">Full Name *</label>
-            <input type="text" name="name" required
-              placeholder="Your name"
-              style="width:100%;padding:12px 16px;background:#111;border:1px solid #222;border-radius:10px;color:#fff;font-size:0.95rem;outline:none;transition:border-color 0.2s;"
-              onfocus="this.style.borderColor='#FFE135'" onblur="this.style.borderColor='#222'"
+            <label style="display:block;font-size:0.875rem;font-weight:500;color:#666;margin-bottom:8px;">Full Name *</label>
+            <input type="text" name="name" required placeholder="Your name"
+              style="width:100%;padding:12px 16px;background:#f9f9f9;border:1px solid #e0e0e0;border-radius:10px;color:#111;font-size:0.95rem;outline:none;transition:border-color 0.2s;"
+              onfocus="this.style.borderColor='#d4a800'" onblur="this.style.borderColor='#e0e0e0'"
             />
           </div>
 
-          <!-- Phone -->
           <div>
-            <label style="display:block;font-size:0.875rem;font-weight:500;color:#aaa;margin-bottom:8px;">Phone Number (WhatsApp) *</label>
-            <input type="tel" name="phone" required
-              placeholder="e.g. 012-3456789"
-              style="width:100%;padding:12px 16px;background:#111;border:1px solid #222;border-radius:10px;color:#fff;font-size:0.95rem;outline:none;transition:border-color 0.2s;"
-              onfocus="this.style.borderColor='#FFE135'" onblur="this.style.borderColor='#222'"
+            <label style="display:block;font-size:0.875rem;font-weight:500;color:#666;margin-bottom:8px;">Phone Number (WhatsApp) *</label>
+            <input type="tel" name="phone" required placeholder="e.g. 012-3456789"
+              style="width:100%;padding:12px 16px;background:#f9f9f9;border:1px solid #e0e0e0;border-radius:10px;color:#111;font-size:0.95rem;outline:none;transition:border-color 0.2s;"
+              onfocus="this.style.borderColor='#d4a800'" onblur="this.style.borderColor='#e0e0e0'"
             />
           </div>
 
-          <!-- Email -->
           <div>
-            <label style="display:block;font-size:0.875rem;font-weight:500;color:#aaa;margin-bottom:8px;">Email Address *</label>
-            <input type="email" name="email" required
-              placeholder="you@email.com"
-              style="width:100%;padding:12px 16px;background:#111;border:1px solid #222;border-radius:10px;color:#fff;font-size:0.95rem;outline:none;transition:border-color 0.2s;"
-              onfocus="this.style.borderColor='#FFE135'" onblur="this.style.borderColor='#222'"
+            <label style="display:block;font-size:0.875rem;font-weight:500;color:#666;margin-bottom:8px;">Email Address *</label>
+            <input type="email" name="email" required placeholder="you@email.com"
+              style="width:100%;padding:12px 16px;background:#f9f9f9;border:1px solid #e0e0e0;border-radius:10px;color:#111;font-size:0.95rem;outline:none;transition:border-color 0.2s;"
+              onfocus="this.style.borderColor='#d4a800'" onblur="this.style.borderColor='#e0e0e0'"
             />
           </div>
 
-          <!-- Current job -->
           <div>
-            <label style="display:block;font-size:0.875rem;font-weight:500;color:#aaa;margin-bottom:8px;">Current Occupation</label>
-            <input type="text" name="occupation"
-              placeholder="e.g. Teacher, Engineer, Student..."
-              style="width:100%;padding:12px 16px;background:#111;border:1px solid #222;border-radius:10px;color:#fff;font-size:0.95rem;outline:none;transition:border-color 0.2s;"
-              onfocus="this.style.borderColor='#FFE135'" onblur="this.style.borderColor='#222'"
+            <label style="display:block;font-size:0.875rem;font-weight:500;color:#666;margin-bottom:8px;">Current Occupation</label>
+            <input type="text" name="occupation" placeholder="e.g. Teacher, Engineer, Student..."
+              style="width:100%;padding:12px 16px;background:#f9f9f9;border:1px solid #e0e0e0;border-radius:10px;color:#111;font-size:0.95rem;outline:none;transition:border-color 0.2s;"
+              onfocus="this.style.borderColor='#d4a800'" onblur="this.style.borderColor='#e0e0e0'"
             />
           </div>
 
-          <!-- Hours available -->
           <div>
-            <label style="display:block;font-size:0.875rem;font-weight:500;color:#aaa;margin-bottom:8px;">Hours available per week</label>
+            <label style="display:block;font-size:0.875rem;font-weight:500;color:#666;margin-bottom:8px;">Hours available per week</label>
             <select name="hours_available"
-              style="width:100%;padding:12px 16px;background:#111;border:1px solid #222;border-radius:10px;color:#fff;font-size:0.95rem;outline:none;transition:border-color 0.2s;cursor:pointer;"
-              onfocus="this.style.borderColor='#FFE135'" onblur="this.style.borderColor='#222'"
+              style="width:100%;padding:12px 16px;background:#f9f9f9;border:1px solid #e0e0e0;border-radius:10px;color:#111;font-size:0.95rem;outline:none;transition:border-color 0.2s;cursor:pointer;"
+              onfocus="this.style.borderColor='#d4a800'" onblur="this.style.borderColor='#e0e0e0'"
             >
               <option value="">Select...</option>
-              <option value="5-10">5–10 hours</option>
-              <option value="10-20">10–20 hours</option>
+              <option value="5-10">5 to 10 hours</option>
+              <option value="10-20">10 to 20 hours</option>
               <option value="20+">20+ hours (serious!)</option>
             </select>
           </div>
 
-          <!-- Submit -->
           <button type="submit" id="submit-btn"
-            class="w-full py-4 rounded-xl font-semibold text-base transition-all duration-200 hover:scale-[1.02]"
-            style="background: #FFE135; color: #080808; font-family: 'Space Grotesk',sans-serif; cursor: pointer; border: none;">
-            Send — let's talk →
+            class="w-full py-4 rounded-xl font-semibold text-base transition-all duration-200 hover:opacity-80"
+            style="background: #111; color: #fff; font-family: 'Space Grotesk',sans-serif; cursor: pointer; border: none;">
+            Send. Let's talk.
           </button>
 
-          <!-- Success / Error messages -->
-          <div id="form-success" style="display:none;text-align:center;padding:16px;background:rgba(255,225,53,0.1);border:1px solid rgba(255,225,53,0.3);border-radius:10px;color:#FFE135;font-size:0.9rem;">
-            ✓ Got it! Charles will reach out within 24 hours.
+          <div id="form-success" style="display:none;text-align:center;padding:16px;background:#FFF8D0;border:1px solid #FFE135;border-radius:10px;color:#996600;font-size:0.9rem;">
+            Done! We'll reach out within 24 hours.
           </div>
-          <div id="form-error" style="display:none;text-align:center;padding:16px;background:rgba(255,50,50,0.1);border:1px solid rgba(255,50,50,0.3);border-radius:10px;color:#ff6b6b;font-size:0.9rem;">
-            Something went wrong. Please try again or WhatsApp Charles directly.
+          <div id="form-error" style="display:none;text-align:center;padding:16px;background:#fff0f0;border:1px solid #ffcccc;border-radius:10px;color:#cc3333;font-size:0.9rem;">
+            Something went wrong. Please try again.
           </div>
         </div>
       </form>
@@ -491,24 +414,17 @@ import Layout from '../layouts/Layout.astro';
   </section>
 
   <!-- ===== FOOTER ===== -->
-  <footer class="py-12 px-6" style="border-top: 1px solid #111;">
-    <div class="max-w-6xl mx-auto">
-      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
-        <div>
-          <div class="font-bold text-xl mb-2" style="font-family: 'Space Grotesk', sans-serif;">
-            not<span style="color: #FFE135;">bad</span>lah<span style="color: #FFE135;">.</span>com
-          </div>
-          <p style="color: #444; font-size: 0.8rem;">A Charles Shazemeen initiative. Proudly Malaysian 🇲🇾</p>
-        </div>
-        <div class="flex gap-6" style="color: #444; font-size: 0.8rem;">
-          <a href="https://shazemeen.com" target="_blank" rel="noopener" style="color:#444;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#FFE135'" onmouseout="this.style.color='#444'">shazemeen.com</a>
-          <a href="https://instagram.com/shazemeen" target="_blank" rel="noopener" style="color:#444;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#FFE135'" onmouseout="this.style.color='#444'">@shazemeen</a>
-          <a href="#apply" style="color:#444;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#FFE135'" onmouseout="this.style.color='#444'">Apply</a>
-        </div>
-        <p style="color: #333; font-size: 0.75rem; text-align: center;">
-          © 2026 notbadlah.com · AIA Financial Advisor Recruitment
-        </p>
+  <footer class="py-10 px-6" style="border-top: 1px solid #eee; background: #fff;">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="font-bold text-lg" style="font-family: 'Space Grotesk', sans-serif; color: #111;">
+        not<span style="color: #d4a800;">bad</span>lah<span style="color: #d4a800;">.</span>com
       </div>
+      <p style="color: #aaa; font-size: 0.8rem; text-align: center;">
+        An authorised AIA agency in Malaysia. Proudly Malaysian 🇲🇾
+      </p>
+      <p style="color: #ccc; font-size: 0.75rem;">
+        &copy; 2026 notbadlah.com
+      </p>
     </div>
   </footer>
 </Layout>
@@ -526,14 +442,14 @@ import Layout from '../layouts/Layout.astro';
     start: 'top -80',
     onUpdate: (self) => {
       if (nav) {
-        nav.style.background = self.progress > 0 ? 'rgba(8,8,8,0.95)' : 'transparent';
+        nav.style.background = self.progress > 0 ? 'rgba(255,255,255,0.95)' : 'transparent';
         nav.style.backdropFilter = self.progress > 0 ? 'blur(12px)' : 'none';
-        nav.style.borderBottom = self.progress > 0 ? '1px solid #111' : 'none';
+        nav.style.borderBottom = self.progress > 0 ? '1px solid #eee' : 'none';
       }
     }
   });
 
-  // Fade up animations
+  // Scroll-triggered fade-up for below-fold elements
   gsap.utils.toArray('.fade-up').forEach((el: any) => {
     gsap.fromTo(el,
       { opacity: 0, y: 40 },
@@ -550,13 +466,13 @@ import Layout from '../layouts/Layout.astro';
     );
   });
 
-  // Hero entrance — use fromTo so opacity:1 is explicit (avoids CSS class conflict)
+  // Hero entrance
   const heroTl = gsap.timeline({ delay: 0.1 });
   heroTl
-    .fromTo('#hero-h1',   { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 1.1, ease: 'power4.out' })
-    .fromTo('#hero-p',    { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out' }, '-=0.7')
-    .fromTo('#hero-cta',  { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }, '-=0.6')
-    .fromTo('#hero-stats',{ opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }, '-=0.5');
+    .fromTo('#hero-h1',    { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 1.1, ease: 'power4.out' })
+    .fromTo('#hero-p',     { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out' }, '-=0.7')
+    .fromTo('#hero-cta',   { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }, '-=0.6')
+    .fromTo('#hero-stats', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }, '-=0.5');
 
   // Chat messages stagger
   ScrollTrigger.create({
@@ -572,43 +488,51 @@ import Layout from '../layouts/Layout.astro';
     }
   });
 
-  // Income calculator logic
+  // Income calculator
   const contactsSlider = document.getElementById('contacts-slider') as HTMLInputElement;
-  const hoursSlider = document.getElementById('hours-slider') as HTMLInputElement;
+  const hoursSlider    = document.getElementById('hours-slider')    as HTMLInputElement;
   const contactsDisplay = document.getElementById('contacts-display');
-  const hoursDisplay = document.getElementById('hours-display');
-  const calcResult = document.getElementById('calc-result');
-  const bdMeetings = document.getElementById('bd-meetings');
-  const bdPolicies = document.getElementById('bd-policies');
+  const hoursDisplay    = document.getElementById('hours-display');
+  const calcResult  = document.getElementById('calc-result');
+  const bdMeetings  = document.getElementById('bd-meetings');
+  const bdPolicies  = document.getElementById('bd-policies');
 
   function updateCalc() {
-    const contacts = parseInt(contactsSlider?.value || '10');
-    const hours = parseInt(hoursSlider?.value || '10');
+    const contacts = parseInt(contactsSlider?.value || '0');
+    const hours    = parseInt(hoursSlider?.value    || '0');
 
     if (contactsDisplay) contactsDisplay.textContent = String(contacts);
-    if (hoursDisplay) hoursDisplay.textContent = String(hours);
+    if (hoursDisplay)    hoursDisplay.textContent    = String(hours);
 
-    // Calculation: meetings/month, 20% conversion, RM750 avg commission
+    // Zero effort = zero income
+    if (contacts === 0 || hours === 0) {
+      if (bdMeetings) bdMeetings.textContent = '0';
+      if (bdPolicies) bdPolicies.textContent = '0';
+      if (calcResult) {
+        gsap.to({ val: parseInt(calcResult.textContent?.replace(/,/g,'') || '0') }, {
+          val: 0, duration: 0.4, ease: 'power2.out',
+          onUpdate: function() {
+            if (calcResult) calcResult.textContent = Math.round(this.targets()[0].val).toLocaleString('en-MY');
+          }
+        });
+      }
+      return;
+    }
+
     const meetingsPerMonth = Math.round(contacts * 4.3);
-    // More hours = slightly better conversion (engagement quality)
-    const conversionRate = Math.min(0.20 + (hours - 5) * 0.003, 0.30);
-    const policies = Math.max(1, Math.round(meetingsPerMonth * conversionRate));
-    const income = policies * 750;
+    const conversionRate   = Math.min(0.20 + (hours - 1) * 0.003, 0.30);
+    const policies         = Math.max(1, Math.round(meetingsPerMonth * conversionRate));
+    const income           = policies * 750;
 
     if (bdMeetings) bdMeetings.textContent = String(meetingsPerMonth);
     if (bdPolicies) bdPolicies.textContent = String(policies);
 
-    // Animate the number
     if (calcResult) {
       const current = parseInt(calcResult.textContent?.replace(/,/g, '') || '0');
       gsap.to({ val: current }, {
-        val: income,
-        duration: 0.5,
-        ease: 'power2.out',
+        val: income, duration: 0.5, ease: 'power2.out',
         onUpdate: function() {
-          if (calcResult) {
-            calcResult.textContent = Math.round(this.targets()[0].val).toLocaleString('en-MY');
-          }
+          if (calcResult) calcResult.textContent = Math.round(this.targets()[0].val).toLocaleString('en-MY');
         }
       });
     }
@@ -616,42 +540,39 @@ import Layout from '../layouts/Layout.astro';
 
   contactsSlider?.addEventListener('input', updateCalc);
   hoursSlider?.addEventListener('input', updateCalc);
-  updateCalc(); // init
+  updateCalc(); // init — sliders at 0, shows RM0
 
   // FAQ accordion
   document.querySelectorAll('.faq-toggle').forEach(btn => {
     btn.addEventListener('click', () => {
-      const item = btn.closest('.faq-item');
+      const item   = btn.closest('.faq-item');
       const answer = item?.querySelector('.faq-answer') as HTMLElement;
-      const icon = btn.querySelector('.faq-icon') as HTMLElement;
-
+      const icon   = btn.querySelector('.faq-icon') as HTMLElement;
       const isOpen = answer?.style.maxHeight && answer.style.maxHeight !== '0px';
 
-      // Close all
       document.querySelectorAll('.faq-answer').forEach((a: any) => { a.style.maxHeight = '0'; });
       document.querySelectorAll('.faq-icon').forEach((i: any) => { i.style.transform = 'rotate(0)'; i.textContent = '+'; });
 
       if (!isOpen && answer) {
         answer.style.maxHeight = answer.scrollHeight + 'px';
-        if (icon) { icon.style.transform = 'rotate(45deg)'; }
+        if (icon) icon.style.transform = 'rotate(45deg)';
       }
     });
   });
 
-  // Apply form submission
+  // Apply form
   const applyForm = document.getElementById('apply-form') as HTMLFormElement;
   applyForm?.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const btn = document.getElementById('submit-btn') as HTMLButtonElement;
+    const btn     = document.getElementById('submit-btn') as HTMLButtonElement;
     const success = document.getElementById('form-success');
-    const error = document.getElementById('form-error');
+    const error   = document.getElementById('form-error');
 
     btn.textContent = 'Sending...';
-    btn.style.opacity = '0.7';
+    btn.style.opacity = '0.6';
     btn.disabled = true;
 
-    const formData = new FormData(applyForm);
-    const data = Object.fromEntries(formData.entries());
+    const data = Object.fromEntries(new FormData(applyForm).entries());
 
     try {
       const res = await fetch('/api/apply', {
@@ -659,26 +580,22 @@ import Layout from '../layouts/Layout.astro';
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
       });
-
       if (res.ok) {
         applyForm.style.display = 'none';
         if (success) success.style.display = 'block';
       } else {
-        throw new Error('Server error');
+        throw new Error('error');
       }
     } catch {
-      btn.textContent = 'Send — let\'s talk →';
+      btn.textContent = 'Send. Let\'s talk.';
       btn.style.opacity = '1';
       btn.disabled = false;
       if (error) error.style.display = 'block';
     }
   });
 
-  // Bounce animation for scroll indicator
+  // Animations
   const style = document.createElement('style');
-  style.textContent = `
-    @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(-8px)} }
-    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
-  `;
+  style.textContent = `@keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(-8px)} }`;
   document.head.appendChild(style);
 </script>
