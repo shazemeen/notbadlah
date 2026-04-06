@@ -18,62 +18,66 @@ import Layout from '../layouts/Layout.astro';
   </nav>
 
   <!-- ===== HERO ===== -->
-  <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden" style="padding: 120px 24px 80px; background: #ffffff;">
-    <div class="absolute inset-0" style="background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(255,225,53,0.12) 0%, transparent 70%);"></div>
+  <section id="hero" class="grid grid-cols-1 md:grid-cols-2 overflow-hidden" style="min-height: 100vh;">
 
-    <div class="relative z-10 max-w-5xl mx-auto text-center">
-      <!-- Tag -->
-      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-8 text-sm font-medium"
-        style="background: #FFF8D0; border: 1px solid #FFE135; color: #996600;">
-        <span style="width:6px;height:6px;border-radius:50%;background:#d4a800;display:inline-block;"></span>
-        Part-time opportunity in Malaysia
+    <!-- LEFT: Headline + CTA -->
+    <div id="hero-left" class="flex flex-col justify-center" style="background: #FFE135; padding: clamp(96px, 10vw, 140px) clamp(28px, 5vw, 64px) clamp(48px, 6vw, 72px);">
+      <div class="inline-flex items-center gap-2 mb-6" style="background: rgba(0,0,0,0.08); border-radius: 999px; padding: 5px 14px; width: fit-content;">
+        <span style="width:5px;height:5px;border-radius:50%;background:#111;display:inline-block;"></span>
+        <span style="font-size:0.72rem;font-weight:600;color:#555;letter-spacing:0.06em;text-transform:uppercase;">AIA Malaysia · RintiZ Programme</span>
       </div>
 
-      <!-- Main headline -->
-      <h1 id="hero-h1" style="font-size: clamp(2.8rem, 8vw, 7rem); line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 24px; color: #111;">
-        Extra&nbsp;<span style="color: #d4a800;">RM5,000</span><br />
-        a month.<br />
-        <span style="color: #aaa;">Part&#8209;time.</span>
+      <h1 id="hero-h1" style="font-size: clamp(2rem, 4.5vw, 4rem); line-height: 1.08; letter-spacing: -0.03em; color: #111; margin-bottom: 20px;">
+        Extra RM5,000<br/>a month.<br/>
+        <span style="opacity: 0.5;">What would you<br/>do with it?</span>
       </h1>
 
-      <p id="hero-p" style="font-size: clamp(1rem, 2.5vw, 1.25rem); color: #666; max-width: 500px; margin: 0 auto 40px; line-height: 1.7;">
-        We walked up to strangers and told them. Most said "cannot lah."
-        After we showed them the math, they changed their tune.
+      <p id="hero-p" style="font-size: clamp(0.88rem, 1.6vw, 1.05rem); color: #555; line-height: 1.75; margin-bottom: 32px; max-width: 360px;">
+        Join AIA Malaysia part-time. No experience needed. We train you. You earn real commission from people you already know.
       </p>
 
-      <div id="hero-cta" class="flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a href="#calculator"
-          class="px-8 py-4 rounded-full font-semibold text-base transition-all duration-200 hover:scale-105"
-          style="background: #111111; color: #ffffff;">
-          Calculate My Income
+      <div id="hero-cta" class="flex flex-wrap gap-3">
+        <a href="#apply" class="inline-block px-7 py-3.5 rounded-full font-semibold text-sm transition-all hover:scale-105" style="background: #111; color: #fff;">
+          Apply — it's free
         </a>
-        <a href="#how-it-works"
-          class="px-8 py-4 rounded-full font-semibold text-base transition-all duration-200 hover:border-gray-400"
-          style="border: 1px solid #ddd; color: #666;">
-          How does it work?
+        <a href="#calculator" class="inline-block px-7 py-3.5 rounded-full font-semibold text-sm transition-all" style="border: 1.5px solid rgba(0,0,0,0.2); color: #111;">
+          See the income calc
         </a>
-      </div>
-
-      <!-- Proof numbers -->
-      <div id="hero-stats" class="grid grid-cols-3 gap-4 mt-20 max-w-2xl mx-auto">
-        {[
-          { num: "1,800+", label: "Part-time agents in Malaysia" },
-          { num: "RM750", label: "Avg. commission per policy" },
-          { num: "#1", label: "Insurance company in Malaysia" }
-        ].map(item => (
-          <div class="text-center">
-            <div class="tabular" style="font-family:'Space Grotesk',sans-serif; font-size: clamp(1.5rem,4vw,2.5rem); font-weight:800; color:#d4a800;">{item.num}</div>
-            <div style="font-size:0.75rem; color:#999; margin-top:4px;">{item.label}</div>
-          </div>
-        ))}
       </div>
     </div>
 
-    <!-- Scroll indicator -->
-    <div class="absolute bottom-10 left-1/2 -translate-x-1/2" style="animation: bounce 2s infinite;">
-      <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#bbb" stroke-width="2">
-        <path d="M19 9l-7 7-7-7" />
-      </svg>
+    <!-- RIGHT: 2×3 reasons grid -->
+    <div id="hero-grid" style="display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: repeat(3, 1fr); min-height: 480px;">
+      <div style="background:#FF6B6B;padding:clamp(18px,3vw,36px);display:flex;flex-direction:column;justify-content:flex-end;">
+        <span style="font-size:1.6rem;margin-bottom:8px;">🎓</span>
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(0.9rem,1.6vw,1.2rem);font-weight:700;color:#fff;line-height:1.25;margin-bottom:5px;">Tuition fees dah naik</h3>
+        <p style="font-size:clamp(0.68rem,1vw,0.82rem);color:rgba(255,255,255,0.8);line-height:1.5;">SPM prep costs RM400+ per child. Every month.</p>
+      </div>
+      <div style="background:#4D96FF;padding:clamp(18px,3vw,36px);display:flex;flex-direction:column;justify-content:flex-end;">
+        <span style="font-size:1.6rem;margin-bottom:8px;">🏠</span>
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(0.9rem,1.6vw,1.2rem);font-weight:700;color:#fff;line-height:1.25;margin-bottom:5px;">Sewa naik, gaji tak naik</h3>
+        <p style="font-size:clamp(0.68rem,1vw,0.82rem);color:rgba(255,255,255,0.8);line-height:1.5;">KL rent up 30% since 2020. Your salary didn't follow.</p>
+      </div>
+      <div style="background:#FF6B35;padding:clamp(18px,3vw,36px);display:flex;flex-direction:column;justify-content:flex-end;">
+        <span style="font-size:1.6rem;margin-bottom:8px;">💸</span>
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(0.9rem,1.6vw,1.2rem);font-weight:700;color:#fff;line-height:1.25;margin-bottom:5px;">PTPTN masih ada</h3>
+        <p style="font-size:clamp(0.68rem,1vw,0.82rem);color:rgba(255,255,255,0.8);line-height:1.5;">That loan won't disappear on its own. Make it gone faster.</p>
+      </div>
+      <div style="background:#6BCB77;padding:clamp(18px,3vw,36px);display:flex;flex-direction:column;justify-content:flex-end;">
+        <span style="font-size:1.6rem;margin-bottom:8px;">🛒</span>
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(0.9rem,1.6vw,1.2rem);font-weight:700;color:#111;line-height:1.25;margin-bottom:5px;">Barang semua naik</h3>
+        <p style="font-size:clamp(0.68rem,1vw,0.82rem);color:rgba(0,0,0,0.6);line-height:1.5;">Groceries, petrol, Grab. RM500 feels like RM200 these days.</p>
+      </div>
+      <div style="background:#111111;padding:clamp(18px,3vw,36px);display:flex;flex-direction:column;justify-content:flex-end;">
+        <span style="font-size:1.6rem;margin-bottom:8px;">✈️</span>
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(0.9rem,1.6vw,1.2rem);font-weight:700;color:#FFE135;line-height:1.25;margin-bottom:5px;">Holiday masih screenshot</h3>
+        <p style="font-size:clamp(0.68rem,1vw,0.82rem);color:rgba(255,255,255,0.5);line-height:1.5;">Bali. Tokyo. Gold Coast. Still in your wish list folder.</p>
+      </div>
+      <div style="background:#E8E8E8;padding:clamp(18px,3vw,36px);display:flex;flex-direction:column;justify-content:flex-end;">
+        <span style="font-size:1.6rem;margin-bottom:8px;">💰</span>
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(0.9rem,1.6vw,1.2rem);font-weight:700;color:#111;line-height:1.25;margin-bottom:5px;">EPF alone won't cut it</h3>
+        <p style="font-size:clamp(0.68rem,1vw,0.82rem);color:rgba(0,0,0,0.55);line-height:1.5;">You'll outlive your savings. Build a second income stream now.</p>
+      </div>
     </div>
   </section>
 
@@ -176,6 +180,36 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </section>
 
+  <!-- ===== MARKET OPPORTUNITY ===== -->
+  <section class="py-20 px-6" style="background: #fff;">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-12 fade-up">
+        <p style="color:#d4a800;font-size:0.875rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;">The Opportunity</p>
+        <h2 style="font-size: clamp(1.75rem, 4vw, 3rem); line-height: 1.2;">Malaysia is massively underserved.<br/>There's market for everyone.</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6 fade-up">
+        <div class="glow-card rounded-2xl p-8 text-center" style="background:#fff;">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:clamp(2.5rem,6vw,4rem);font-weight:800;color:#111;line-height:1;">33M</div>
+          <div style="color:#888;font-size:0.9rem;margin-top:8px;">Malaysians</div>
+          <div style="color:#bbb;font-size:0.75rem;margin-top:4px;">Total population</div>
+        </div>
+        <div class="glow-card rounded-2xl p-8 text-center" style="background:#fff;">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:clamp(2.5rem,6vw,4rem);font-weight:800;color:#111;line-height:1;">48K</div>
+          <div style="color:#888;font-size:0.9rem;margin-top:8px;">Part-time agents</div>
+          <div style="color:#bbb;font-size:0.75rem;margin-top:4px;">Nationwide</div>
+        </div>
+        <div class="glow-card rounded-2xl p-8 text-center" style="background:#FFE135;border-color:#d4a800;">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:clamp(2.5rem,6vw,4rem);font-weight:800;color:#111;line-height:1;">688</div>
+          <div style="color:#555;font-size:0.9rem;margin-top:8px;">Malaysians per agent</div>
+          <div style="color:#777;font-size:0.75rem;margin-top:4px;">You can't run out of market</div>
+        </div>
+      </div>
+      <p class="text-center fade-up" style="color:#aaa;font-size:0.82rem;margin-top:20px;">
+        Only 1 in 688 Malaysians has a part-time agent to call. Most people still haven't been approached. That's your market.
+      </p>
+    </div>
+  </section>
+
   <!-- ===== INCOME CALCULATOR ===== -->
   <section id="calculator" class="py-24 px-6" style="background: #f9f9f9;">
     <div class="max-w-3xl mx-auto">
@@ -207,7 +241,7 @@ import Layout from '../layouts/Layout.astro';
         <!-- Year-by-year bars -->
         <div class="mb-6">
           <p style="font-family:'Space Grotesk',sans-serif;font-size:0.8rem;font-weight:600;color:#888;margin-bottom:12px;text-transform:uppercase;letter-spacing:0.05em;">Commission earned per year</p>
-          <div id="p1-bars" class="flex gap-2 items-end" style="height:120px;">
+          <div id="p1-bars" class="flex gap-2 items-end" style="height:120px;padding-top:32px;box-sizing:content-box;">
             <!-- bars injected by JS -->
           </div>
           <div class="flex gap-2 mt-1" id="p1-bar-labels">
@@ -298,7 +332,7 @@ import Layout from '../layouts/Layout.astro';
 
       <div class="grid md:grid-cols-4 gap-6">
         {[
-          { step: "01", title: "Register", desc: "Sign up as an AIA part-time Financial Advisor. Takes less than 10 minutes online.", tag: "Free" },
+          { step: "01", title: "Register", desc: "Sign up as an AIA part-time insurance agent. Takes less than 10 minutes online.", tag: "Free" },
           { step: "02", title: "Get Certified", desc: "Complete your PCE (Pre-Contract Exam). We guide you through it. Most pass in 2 weeks.", tag: "2 weeks" },
           { step: "03", title: "Get Trained", desc: "Two-day onboarding with our team. Learn how to have real conversations, not hard selling.", tag: "Day 15" },
           { step: "04", title: "First Commission", desc: "Close your first policy. Earn your first RM750 to RM1,200. It usually happens faster than you expect.", tag: "Day 30+" }
@@ -331,7 +365,7 @@ import Layout from '../layouts/Layout.astro';
         {[
           {
             q: "Is this MLM?",
-            a: "No. AIA (AIA Berhad) is listed on Bursa Malaysia. It has been operating in Malaysia for over 80 years. You are a licensed Financial Advisor registered with Bank Negara, not a downline."
+            a: "No. AIA (AIA Berhad) is listed on Bursa Malaysia. It has been operating in Malaysia for over 75 years. You are a licensed insurance agent registered with Bank Negara, not a downline."
           },
           {
             q: "Do I need experience?",
@@ -502,10 +536,15 @@ import Layout from '../layouts/Layout.astro';
   // Hero entrance
   const heroTl = gsap.timeline({ delay: 0.1 });
   heroTl
-    .fromTo('#hero-h1',    { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 1.1, ease: 'power4.out' })
-    .fromTo('#hero-p',     { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out' }, '-=0.7')
-    .fromTo('#hero-cta',   { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }, '-=0.6')
-    .fromTo('#hero-stats', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }, '-=0.5');
+    .fromTo('#hero-h1',   { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 1.0, ease: 'power4.out' })
+    .fromTo('#hero-p',    { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }, '-=0.6')
+    .fromTo('#hero-cta',  { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }, '-=0.5');
+
+  // Hero grid: stagger each box in from the right
+  gsap.fromTo('#hero-grid > div',
+    { opacity: 0, x: 40 },
+    { opacity: 1, x: 0, duration: 0.55, ease: 'power3.out', stagger: 0.08, delay: 0.3 }
+  );
 
   // Chat messages stagger
   ScrollTrigger.create({
