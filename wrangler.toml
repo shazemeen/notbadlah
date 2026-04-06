@@ -7,7 +7,7 @@ pages_build_output_dir = "dist"
 [[d1_databases]]
 binding = "NOTBADLAH_DB"
 database_name = "notbadlah-db"
-database_id = "REPLACE_WITH_YOUR_D1_DATABASE_ID"
+database_id = "4d59907f-c579-494a-bfad-cb9a37c62f8b"
 
 # Environment variables (set sensitive ones in Cloudflare Pages dashboard, not here)
 # RESEND_API_KEY   — Resend.com API key
