@@ -182,71 +182,104 @@ import Layout from '../layouts/Layout.astro';
       <div class="text-center mb-14 fade-up">
         <p style="color:#d4a800;font-size:0.875rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;">Income Calculator</p>
         <h2 style="font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.1;">See what you could earn</h2>
-        <p style="color: #888; margin-top: 12px; font-size: 0.95rem;">Based on real AIA commission structures</p>
+        <p style="color: #888; margin-top: 12px; font-size: 0.95rem;">Based on real AIA RintiZ commission structure</p>
       </div>
 
-      <div class="glow-card rounded-2xl p-8 fade-up" style="background: #fff;">
-        <!-- Slider 1 -->
-        <div class="mb-10">
-          <div class="flex justify-between items-end mb-4">
-            <label style="font-family:'Space Grotesk',sans-serif; font-size: 1.1rem; font-weight: 600; color: #111;">
-              People you can reach per week
-            </label>
-            <span id="contacts-display" style="font-size:1.5rem;font-weight:800;color:#d4a800;font-family:'Space Grotesk',sans-serif;">0</span>
+      <!-- PART 1: One Policy, 6 Years -->
+      <div class="glow-card rounded-2xl p-8 mb-6 fade-up" style="background: #fff;">
+        <p style="font-family:'Space Grotesk',sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#d4a800;margin-bottom:6px;">Part 1</p>
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-size:1.25rem;font-weight:700;color:#111;margin-bottom:4px;">What one policy earns you over 6 years</h3>
+        <p style="color:#888;font-size:0.875rem;margin-bottom:24px;">Set your client's monthly premium below.</p>
+
+        <!-- Premium slider -->
+        <div class="mb-8">
+          <div class="flex justify-between items-end mb-3">
+            <label style="font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:600;color:#111;">Monthly premium</label>
+            <span style="font-size:0.8rem;color:#888;">RM<span id="p1-premium-display">200</span>/month</span>
           </div>
-          <input type="range" id="contacts-slider" min="0" max="30" value="0" step="1" />
-          <div class="flex justify-between mt-2" style="color: #bbb; font-size: 0.75rem;">
-            <span>0 (no effort)</span>
-            <span>30 people/week</span>
+          <input type="range" id="p1-premium-slider" min="100" max="800" value="200" step="50" />
+          <div class="flex justify-between mt-2" style="color:#bbb;font-size:0.75rem;">
+            <span>RM100</span><span>RM800</span>
+          </div>
+          <p style="color:#aaa;font-size:0.75rem;margin-top:8px;">Annual premium: RM<span id="p1-annual-premium">2,400</span></p>
+        </div>
+
+        <!-- Year-by-year bars -->
+        <div class="mb-6">
+          <p style="font-family:'Space Grotesk',sans-serif;font-size:0.8rem;font-weight:600;color:#888;margin-bottom:12px;text-transform:uppercase;letter-spacing:0.05em;">Commission earned per year</p>
+          <div id="p1-bars" class="flex gap-2 items-end" style="height:120px;">
+            <!-- bars injected by JS -->
+          </div>
+          <div class="flex gap-2 mt-1" id="p1-bar-labels">
+            <!-- labels injected by JS -->
           </div>
         </div>
 
-        <!-- Slider 2 -->
-        <div class="mb-10">
-          <div class="flex justify-between items-end mb-4">
-            <label style="font-family:'Space Grotesk',sans-serif; font-size: 1.1rem; font-weight: 600; color: #111;">
-              Hours per week you can spare
-            </label>
-            <span id="hours-display" style="font-size:1.5rem;font-weight:800;color:#d4a800;font-family:'Space Grotesk',sans-serif;">0</span>
+        <!-- 6-year total -->
+        <div class="rounded-xl p-5 flex items-center justify-between" style="background:#f9f9f9;border:1px solid #e8e8e8;">
+          <div>
+            <p style="color:#888;font-size:0.8rem;">6-year total from this one policy</p>
+            <p style="color:#aaa;font-size:0.7rem;margin-top:2px;">Y1(25%) + Y2(25%) + Y3(19%) + Y4(18%) + Y5(15%) + Y6(15%) = 117%</p>
           </div>
-          <input type="range" id="hours-slider" min="0" max="30" value="0" step="1" />
-          <div class="flex justify-between mt-2" style="color: #bbb; font-size: 0.75rem;">
-            <span>0 (no effort)</span>
-            <span>30 hrs/week</span>
+          <div class="tabular" style="font-family:'Space Grotesk',sans-serif;font-size:clamp(1.75rem,5vw,2.5rem);font-weight:800;color:#111;white-space:nowrap;">
+            RM<span id="p1-total">2,808</span>
           </div>
         </div>
-
-        <!-- Result -->
-        <div class="rounded-xl p-6 text-center" style="background: #f9f9f9; border: 1px solid #e8e8e8;">
-          <p style="color: #888; font-size: 0.875rem; margin-bottom: 8px;">Your estimated monthly income</p>
-          <div class="tabular" style="font-family:'Space Grotesk',sans-serif; font-size: clamp(3rem,8vw,5rem); font-weight:800; color:#111; line-height:1;">
-            RM<span id="calc-result">0</span>
-          </div>
-          <p style="color: #aaa; font-size: 0.8rem; margin-top: 8px;">per month, part-time</p>
-        </div>
-
-        <!-- Breakdown -->
-        <div id="calc-breakdown" class="mt-6 grid grid-cols-3 gap-4 text-center">
-          <div style="background:#f5f5f5;border-radius:12px;padding:16px;border:1px solid #eee;">
-            <div id="bd-meetings" style="font-family:'Space Grotesk',sans-serif;font-size:1.5rem;font-weight:700;color:#111;">0</div>
-            <div style="color:#aaa;font-size:0.75rem;margin-top:4px;">meetings/month</div>
-          </div>
-          <div style="background:#f5f5f5;border-radius:12px;padding:16px;border:1px solid #eee;">
-            <div id="bd-policies" style="font-family:'Space Grotesk',sans-serif;font-size:1.5rem;font-weight:700;color:#111;">0</div>
-            <div style="color:#aaa;font-size:0.75rem;margin-top:4px;">policies/month</div>
-          </div>
-          <div style="background:#f5f5f5;border-radius:12px;padding:16px;border:1px solid #eee;">
-            <div id="bd-commission" style="font-family:'Space Grotesk',sans-serif;font-size:1.5rem;font-weight:700;color:#111;">RM750</div>
-            <div style="color:#aaa;font-size:0.75rem;margin-top:4px;">avg per policy</div>
-          </div>
-        </div>
-
-        <p style="text-align:center;color:#ccc;font-size:0.75rem;margin-top:16px;">
-          Estimates based on 20% conversion rate and RM750 avg. first-year commission. Individual results will vary.
-        </p>
       </div>
 
-      <div class="text-center mt-8">
+      <!-- PART 2: Monthly income with RintiZ -->
+      <div class="glow-card rounded-2xl p-8 mb-8 fade-up" style="background: #fff;">
+        <p style="font-family:'Space Grotesk',sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#d4a800;margin-bottom:6px;">Part 2</p>
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-size:1.25rem;font-weight:700;color:#111;margin-bottom:4px;">Your monthly income with RintiZ</h3>
+        <p style="color:#888;font-size:0.875rem;margin-bottom:24px;">How many policies can you close per month? (using the premium above)</p>
+
+        <!-- Cases slider -->
+        <div class="mb-8">
+          <div class="flex justify-between items-end mb-3">
+            <label style="font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:600;color:#111;">Policies per month</label>
+            <span id="p2-cases-display" style="font-size:1.5rem;font-weight:800;color:#d4a800;font-family:'Space Grotesk',sans-serif;">0</span>
+          </div>
+          <input type="range" id="p2-cases-slider" min="0" max="10" value="0" step="1" />
+          <div class="flex justify-between mt-2" style="color:#bbb;font-size:0.75rem;">
+            <span>0 (no effort)</span><span>10 policies/month</span>
+          </div>
+        </div>
+
+        <!-- RintiZ bonus tier badge -->
+        <div id="p2-tier-badge" class="rounded-xl px-5 py-3 mb-6 flex items-center gap-3" style="background:#f5f5f5;border:1px solid #e8e8e8;">
+          <span id="p2-tier-icon" style="font-size:1.5rem;">--</span>
+          <div>
+            <p id="p2-tier-name" style="font-family:'Space Grotesk',sans-serif;font-weight:700;color:#111;font-size:0.95rem;">Move the slider to see your tier</p>
+            <p id="p2-tier-afyc" style="color:#888;font-size:0.8rem;">AFYC: RM0</p>
+          </div>
+          <div id="p2-tier-bonus-badge" class="ml-auto rounded-full px-4 py-1" style="background:#e8e8e8;display:none;">
+            <span id="p2-tier-bonus-text" style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:0.875rem;color:#111;"></span>
+          </div>
+        </div>
+
+        <!-- Income split -->
+        <div class="grid grid-cols-3 gap-3 mb-4">
+          <div class="rounded-xl p-4 text-center" style="background:#f5f5f5;border:1px solid #eee;">
+            <p style="color:#888;font-size:0.7rem;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.05em;">Commissions</p>
+            <p class="tabular" style="font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:1.4rem;color:#111;">RM<span id="p2-commission">0</span></p>
+            <p style="color:#bbb;font-size:0.65rem;margin-top:4px;">25% of annual premium</p>
+          </div>
+          <div class="rounded-xl p-4 text-center" style="background:#f5f5f5;border:1px solid #eee;">
+            <p style="color:#888;font-size:0.7rem;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.05em;">RintiZ Bonus</p>
+            <p class="tabular" style="font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:1.4rem;color:#d4a800;">RM<span id="p2-bonus">0</span></p>
+            <p style="color:#bbb;font-size:0.65rem;margin-top:4px;">extra from AIA</p>
+          </div>
+          <div class="rounded-xl p-4 text-center" style="background:#111;border:1px solid #111;">
+            <p style="color:#888;font-size:0.7rem;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.05em;">Total</p>
+            <p class="tabular" style="font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:1.4rem;color:#FFE135;">RM<span id="p2-total">0</span></p>
+            <p style="color:#555;font-size:0.65rem;margin-top:4px;">per month</p>
+          </div>
+        </div>
+
+        <p id="p2-note" style="text-align:center;color:#ccc;font-size:0.72rem;">RintiZ bonus requires min. 2 policies/month. Commissions based on Y1 rate (25%).</p>
+      </div>
+
+      <div class="text-center mt-2 fade-up">
         <a href="#apply" class="inline-block px-8 py-4 rounded-full font-semibold transition-all hover:scale-105"
           style="background: #111; color: #fff;">
           I want these numbers. Let me in.
@@ -488,59 +521,153 @@ import Layout from '../layouts/Layout.astro';
     }
   });
 
-  // Income calculator
-  const contactsSlider = document.getElementById('contacts-slider') as HTMLInputElement;
-  const hoursSlider    = document.getElementById('hours-slider')    as HTMLInputElement;
-  const contactsDisplay = document.getElementById('contacts-display');
-  const hoursDisplay    = document.getElementById('hours-display');
-  const calcResult  = document.getElementById('calc-result');
-  const bdMeetings  = document.getElementById('bd-meetings');
-  const bdPolicies  = document.getElementById('bd-policies');
+  // ===== RintiZ Income Calculator =====
 
-  function updateCalc() {
-    const contacts = parseInt(contactsSlider?.value || '0');
-    const hours    = parseInt(hoursSlider?.value    || '0');
+  // Commission rates per year (Y1..Y6)
+  const COMM_RATES = [0.25, 0.25, 0.19, 0.18, 0.15, 0.15];
+  const YEAR_LABELS = ['Y1','Y2','Y3','Y4','Y5','Y6'];
 
-    if (contactsDisplay) contactsDisplay.textContent = String(contacts);
-    if (hoursDisplay)    hoursDisplay.textContent    = String(hours);
+  // RintiZ monthly bonus tiers (months 1-6, requires >= 2 cases)
+  const RINTIZ_TIERS = [
+    { minAfyc: 5000, bonus: 3600, label: 'Tier 5', icon: '🏆' },
+    { minAfyc: 4000, bonus: 2800, label: 'Tier 4', icon: '🥇' },
+    { minAfyc: 3000, bonus: 2000, label: 'Tier 3', icon: '🥈' },
+    { minAfyc: 2000, bonus: 1200, label: 'Tier 2', icon: '🥉' },
+    { minAfyc: 1000, bonus:  400, label: 'Tier 1', icon: '✅' },
+  ];
 
-    // Zero effort = zero income
-    if (contacts === 0 || hours === 0) {
-      if (bdMeetings) bdMeetings.textContent = '0';
-      if (bdPolicies) bdPolicies.textContent = '0';
-      if (calcResult) {
-        gsap.to({ val: parseInt(calcResult.textContent?.replace(/,/g,'') || '0') }, {
-          val: 0, duration: 0.4, ease: 'power2.out',
-          onUpdate: function() {
-            if (calcResult) calcResult.textContent = Math.round(this.targets()[0].val).toLocaleString('en-MY');
-          }
-        });
-      }
-      return;
-    }
-
-    const meetingsPerMonth = Math.round(contacts * 4.3);
-    const conversionRate   = Math.min(0.20 + (hours - 1) * 0.003, 0.30);
-    const policies         = Math.max(1, Math.round(meetingsPerMonth * conversionRate));
-    const income           = policies * 750;
-
-    if (bdMeetings) bdMeetings.textContent = String(meetingsPerMonth);
-    if (bdPolicies) bdPolicies.textContent = String(policies);
-
-    if (calcResult) {
-      const current = parseInt(calcResult.textContent?.replace(/,/g, '') || '0');
-      gsap.to({ val: current }, {
-        val: income, duration: 0.5, ease: 'power2.out',
-        onUpdate: function() {
-          if (calcResult) calcResult.textContent = Math.round(this.targets()[0].val).toLocaleString('en-MY');
-        }
-      });
-    }
+  function fmt(n: number): string {
+    return Math.round(n).toLocaleString('en-MY');
   }
 
-  contactsSlider?.addEventListener('input', updateCalc);
-  hoursSlider?.addEventListener('input', updateCalc);
-  updateCalc(); // init — sliders at 0, shows RM0
+  // ---- Part 1 ----
+  const p1PremiumSlider  = document.getElementById('p1-premium-slider') as HTMLInputElement;
+  const p1PremiumDisplay = document.getElementById('p1-premium-display');
+  const p1AnnualPremium  = document.getElementById('p1-annual-premium');
+  const p1BarsEl         = document.getElementById('p1-bars');
+  const p1BarLabelsEl    = document.getElementById('p1-bar-labels');
+  const p1TotalEl        = document.getElementById('p1-total');
+
+  function updatePart1() {
+    const monthly = parseInt(p1PremiumSlider?.value || '200');
+    const annual  = monthly * 12;
+    if (p1PremiumDisplay) p1PremiumDisplay.textContent = fmt(monthly);
+    if (p1AnnualPremium)  p1AnnualPremium.textContent  = fmt(annual);
+
+    const yearAmounts = COMM_RATES.map(r => annual * r);
+    const maxAmt      = Math.max(...yearAmounts);
+
+    if (p1BarsEl && p1BarLabelsEl) {
+      p1BarsEl.innerHTML = '';
+      p1BarLabelsEl.innerHTML = '';
+      yearAmounts.forEach((amt, i) => {
+        const pct = maxAmt > 0 ? (amt / maxAmt) * 100 : 0;
+        const bar = document.createElement('div');
+        bar.style.cssText = `flex:1;background:#FFE135;border-radius:4px 4px 0 0;height:${pct}%;min-height:4px;position:relative;`;
+        const tooltip = document.createElement('span');
+        tooltip.style.cssText = 'position:absolute;top:-22px;left:50%;transform:translateX(-50%);font-size:0.6rem;font-weight:700;font-family:Space Grotesk,sans-serif;color:#111;white-space:nowrap;';
+        tooltip.textContent = 'RM' + fmt(amt);
+        bar.appendChild(tooltip);
+        p1BarsEl.appendChild(bar);
+
+        const lbl = document.createElement('div');
+        lbl.style.cssText = 'flex:1;text-align:center;font-size:0.7rem;color:#888;font-family:Space Grotesk,sans-serif;font-weight:600;';
+        lbl.textContent = YEAR_LABELS[i];
+        p1BarLabelsEl.appendChild(lbl);
+      });
+    }
+
+    const total6yr = yearAmounts.reduce((s, v) => s + v, 0);
+    if (p1TotalEl) p1TotalEl.textContent = fmt(total6yr);
+
+    // Also re-run part 2 since premium changed
+    updatePart2();
+  }
+
+  // ---- Part 2 ----
+  const p2CasesSlider  = document.getElementById('p2-cases-slider') as HTMLInputElement;
+  const p2CasesDisplay = document.getElementById('p2-cases-display');
+  const p2TierName     = document.getElementById('p2-tier-name');
+  const p2TierAfyc     = document.getElementById('p2-tier-afyc');
+  const p2TierIcon     = document.getElementById('p2-tier-icon');
+  const p2TierBonusBadge = document.getElementById('p2-tier-bonus-badge');
+  const p2TierBonusText  = document.getElementById('p2-tier-bonus-text');
+  const p2CommEl       = document.getElementById('p2-commission');
+  const p2BonusEl      = document.getElementById('p2-bonus');
+  const p2TotalEl      = document.getElementById('p2-total');
+  const p2NoteEl       = document.getElementById('p2-note');
+
+  function animateVal(el: HTMLElement | null, targetVal: number) {
+    if (!el) return;
+    const startVal = parseInt(el.textContent?.replace(/,/g,'') || '0');
+    gsap.to({ val: startVal }, {
+      val: targetVal, duration: 0.45, ease: 'power2.out',
+      onUpdate: function() { if (el) el.textContent = fmt(this.targets()[0].val); }
+    });
+  }
+
+  function updatePart2() {
+    const cases   = parseInt(p2CasesSlider?.value || '0');
+    const monthly = parseInt(p1PremiumSlider?.value || '200');
+    const annual  = monthly * 12;
+    const afyc    = cases * annual * 0.25;
+    const commission = afyc; // Y1 = 25% of annual premium per policy = AFYC
+
+    if (p2CasesDisplay) p2CasesDisplay.textContent = String(cases);
+
+    // Determine RintiZ tier
+    let bonusAmt = 0;
+    let tierLabel = '';
+    let tierIcon = '';
+    let tierFound = false;
+
+    if (cases >= 2 && afyc > 0) {
+      for (const tier of RINTIZ_TIERS) {
+        if (afyc >= tier.minAfyc) {
+          bonusAmt   = tier.bonus;
+          tierLabel  = tier.label;
+          tierIcon   = tier.icon;
+          tierFound  = true;
+          break;
+        }
+      }
+    }
+
+    // Update tier badge
+    if (cases === 0) {
+      if (p2TierIcon) p2TierIcon.textContent = '--';
+      if (p2TierName) p2TierName.textContent = 'Move the slider to see your tier';
+      if (p2TierAfyc) p2TierAfyc.textContent = 'AFYC: RM0';
+      if (p2TierBonusBadge) p2TierBonusBadge.style.display = 'none';
+    } else if (cases === 1) {
+      if (p2TierIcon) p2TierIcon.textContent = '❌';
+      if (p2TierName) p2TierName.textContent = 'Need at least 2 policies for RintiZ bonus';
+      if (p2TierAfyc) p2TierAfyc.textContent = `AFYC: RM${fmt(afyc)}`;
+      if (p2TierBonusBadge) p2TierBonusBadge.style.display = 'none';
+    } else if (!tierFound) {
+      if (p2TierIcon) p2TierIcon.textContent = '📋';
+      if (p2TierName) p2TierName.textContent = 'Just below Tier 1 — close to qualifying!';
+      if (p2TierAfyc) p2TierAfyc.textContent = `AFYC: RM${fmt(afyc)} (need RM1,000)`;
+      if (p2TierBonusBadge) p2TierBonusBadge.style.display = 'none';
+    } else {
+      if (p2TierIcon) p2TierIcon.textContent = tierIcon;
+      if (p2TierName) p2TierName.textContent = `RintiZ ${tierLabel} unlocked!`;
+      if (p2TierAfyc) p2TierAfyc.textContent = `AFYC: RM${fmt(afyc)}`;
+      if (p2TierBonusBadge) {
+        p2TierBonusBadge.style.display = 'block';
+        (p2TierBonusBadge as HTMLElement).style.background = '#FFE135';
+      }
+      if (p2TierBonusText) p2TierBonusText.textContent = `+RM${fmt(bonusAmt)} bonus`;
+    }
+
+    animateVal(p2CommEl,  commission);
+    animateVal(p2BonusEl, bonusAmt);
+    animateVal(p2TotalEl, commission + bonusAmt);
+  }
+
+  p1PremiumSlider?.addEventListener('input', updatePart1);
+  p2CasesSlider?.addEventListener('input', updatePart2);
+  updatePart1(); // init
 
   // FAQ accordion
   document.querySelectorAll('.faq-toggle').forEach(btn => {
