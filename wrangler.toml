@@ -1,0 +1,13 @@
+name = "notbadlah"
+compatibility_date = "2024-01-01"
+
+# D1 Database binding
+# After creating the DB (see SETUP.md), paste the database_id here
+[[d1_databases]]
+binding = "NOTBADLAH_DB"
+database_name = "notbadlah-db"
+database_id = "REPLACE_WITH_YOUR_D1_DATABASE_ID"
+
+# Environment variables (set sensitive ones in Cloudflare Pages dashboard, not here)
+# RESEND_API_KEY   — Resend.com API key
+# NOTIFY_EMAIL     — Email to send lead notifications to (default: shazemeen@gmail.com)
