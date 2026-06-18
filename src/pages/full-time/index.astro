@@ -209,6 +209,39 @@ import LeadForm from '../../components/LeadForm.astro';
 
       </div>
 
+      <!-- Why the bonus steps down -->
+      <div class="fade-up" style="margin-top:40px;border:1.5px solid #e8e8e8;border-radius:18px;padding:clamp(24px,4vw,40px);background:#F8F8F6;">
+        <p style="color:#D4AF37;font-size:0.75rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:10px;">Why the bonus steps down</p>
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(1.4rem,3vw,2rem);font-weight:700;color:#0C1B33;line-height:1.2;margin-bottom:14px;">Your bonus tapers. Your income doesn't.</h3>
+        <p style="font-size:0.95rem;color:#555;line-height:1.8;max-width:620px;margin-bottom:28px;">The bonus is biggest early, while your commission is still small. But each month's sales pay out across the following year — so your commission stacks up and keeps climbing, even after the bonus ends. You're not losing income. You're building it.</p>
+
+        <!-- Legend -->
+        <div style="display:flex;flex-wrap:wrap;gap:18px;margin-bottom:28px;">
+          <span style="display:inline-flex;align-items:center;gap:8px;font-size:0.8rem;color:#555;"><span style="width:12px;height:12px;border-radius:3px;background:#0C1B33;flex-shrink:0;"></span>Your commission &amp; renewals</span>
+          <span style="display:inline-flex;align-items:center;gap:8px;font-size:0.8rem;color:#555;"><span style="width:12px;height:12px;border-radius:3px;background:#D4AF37;flex-shrink:0;"></span>AIA bonus</span>
+        </div>
+
+        <!-- Stacked-bar chart: heights proportional to totals (scale: 220px / RM25,000) -->
+        <div style="display:flex;align-items:stretch;gap:clamp(12px,5vw,48px);max-width:520px;">
+          {[
+            { label: "Months 1–6",   total: "RM19,500", bonusPx: 141, commPx: 31  },
+            { label: "Months 7–12",  total: "RM21,500", bonusPx: 106, commPx: 84  },
+            { label: "Months 13–24", total: "RM25,000", bonusPx: 88,  commPx: 132 },
+          ].map((b) => (
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;">
+              <div class="tabular" style="font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:clamp(0.85rem,2.4vw,1rem);color:#0C1B33;margin-bottom:10px;">{b.total}</div>
+              <div style="width:100%;max-width:84px;height:240px;display:flex;flex-direction:column;justify-content:flex-end;">
+                <div title={`AIA bonus (${b.total} total)`} style={`height:${b.bonusPx}px;background:#D4AF37;border-radius:6px 6px 0 0;`}></div>
+                <div title={`Commission & renewals (${b.total} total)`} style={`height:${b.commPx}px;background:#0C1B33;border-radius:0 0 6px 6px;`}></div>
+              </div>
+              <div style="font-size:0.78rem;color:#888;margin-top:12px;text-align:center;line-height:1.4;">{b.label}</div>
+            </div>
+          ))}
+        </div>
+
+        <p style="font-size:0.75rem;color:#999;line-height:1.7;margin-top:24px;max-width:620px;">Illustrative, top-tier example. Each month's AFYC pays out over the following year, so your commission builds as you keep selling; renewals add more in years 2+. The bonus ends after Month 24, but your commission keeps growing. Actual income depends on your production and persistency.</p>
+      </div>
+
       <!-- Quarterly bonus callout -->
       <div class="fade-up" style="border:1.5px solid #E8E0CC;border-radius:16px;padding:28px 32px;background:#FFFDF5;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px;">
         <div>
