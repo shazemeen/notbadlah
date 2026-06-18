@@ -10,11 +10,27 @@ const trust = [
   { label: "75+ years", sub: "Operating in Malaysia" },
   { label: "Licensed", sub: "Registered with Bank Negara" },
 ];
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "notbadlah.com",
+  "url": "https://notbadlah.com",
+  "description": "One place, two paths. Get protected, or build a career in insurance with a licensed AIA agent in Malaysia.",
+  "publisher": {
+    "@type": "Person",
+    "name": "Charles Shazemeen",
+    "url": "https://shazemeen.com",
+    "jobTitle": "Unit Manager, AIA Malaysia"
+  }
+};
 ---
 
 <Layout
   title="not bad lah. | Get covered or build a career with AIA Malaysia"
   description="One place, two paths. Protect your income and family with a licensed AIA agent, or build a part-time or full-time career in insurance."
+  canonicalPath="/"
+  jsonLd={jsonLd}
 >
   <Nav cta={{ label: "Get covered", href: "/insure" }} />
 

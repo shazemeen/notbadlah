@@ -4,9 +4,48 @@ import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
 import Card from '../../components/Card.astro';
 import LeadForm from '../../components/LeadForm.astro';
+
+const keywords = "part-time job Malaysia, extra income Malaysia, kerja sambilan Malaysia, side income KL, earn money part-time, AIA agent Malaysia, insurance agent part-time, part-time work from home Malaysia, how to earn 5000 a month Malaysia, pendapatan sampingan Malaysia";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "notbadlah.com — Part-time with RintiZ",
+  "description": "Part-time insurance agent opportunity in Malaysia. Earn RM5,000-RM10,000 extra per month.",
+  "url": "https://notbadlah.com/part-time",
+  "publisher": {
+    "@type": "Person",
+    "name": "Charles Shazemeen",
+    "url": "https://shazemeen.com",
+    "jobTitle": "Unit Manager, AIA Malaysia"
+  },
+  "mainEntity": {
+    "@type": "JobPosting",
+    "title": "Part-Time Insurance Agent",
+    "description": "Earn extra RM5,000–RM10,000 per month as a part-time AIA insurance agent in Malaysia. No experience required. Flexible hours.",
+    "hiringOrganization": { "@type": "Organization", "name": "AIA Malaysia" },
+    "jobLocationType": "TELECOMMUTE",
+    "employmentType": "PART_TIME",
+    "jobLocation": {
+      "@type": "Place",
+      "address": { "@type": "PostalAddress", "addressCountry": "MY" }
+    },
+    "baseSalary": {
+      "@type": "MonetaryAmount",
+      "currency": "MYR",
+      "value": { "@type": "QuantitativeValue", "minValue": 5000, "maxValue": 10000, "unitText": "MONTH" }
+    }
+  }
+};
 ---
 
-<Layout>
+<Layout
+  title="Not Bad Lah | Earn Extra RM5,000/Month Part-Time in Malaysia"
+  description="Can you really earn RM5,000 extra per month, part-time? We showed people on the street. Their reaction? 'Insurance... not bad lah!' Find out how with AIA Malaysia."
+  canonicalPath="/part-time"
+  keywords={keywords}
+  jsonLd={jsonLd}
+>
   <!-- ===== NAV ===== -->
   <Nav active="part-time" cta={{ label: "Find Out More", href: "#apply" }} />
 

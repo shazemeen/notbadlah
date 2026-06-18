@@ -1,19 +1,35 @@
 ---
 import '../styles/global.css';
 
+const SITE = "https://notbadlah.com";
+
 interface Props {
   title?: string;
   description?: string;
   ogImage?: string;
   theme?: "default" | "full-time";
+  /** Path for this route, used to build canonical + og:url, e.g. "/full-time". */
+  canonicalPath?: string;
+  /** Optional comma-separated keywords meta (omitted if not set). */
+  keywords?: string;
+  /** When true, emits noindex (used for the NGM+ coming-soon stub). */
+  noindex?: boolean;
+  /** Optional Schema.org JSON-LD object, rendered per route. */
+  jsonLd?: Record<string, any> | Record<string, any>[];
 }
 
 const {
-  title = "Not Bad Lah | Earn Extra RM5,000/Month Part-Time in Malaysia",
-  description = "Can you really earn RM5,000 extra per month, part-time? We showed people on the street. Their reaction? 'Insurance... not bad lah!' Find out how with AIA Malaysia.",
-  ogImage = "https://notbadlah.com/og-image.jpg",
-  theme = "default"
+  title = "not bad lah. | AIA Malaysia",
+  description = "Get covered or build a career with a licensed AIA agent in Malaysia.",
+  ogImage = `${SITE}/og-image.jpg`,
+  theme = "default",
+  canonicalPath = "/",
+  keywords,
+  noindex = false,
+  jsonLd,
 } = Astro.props;
+
+const canonical = new URL(canonicalPath, SITE).href;
 ---
 
 <!doctype html>
@@ -26,14 +42,14 @@ const {
     <!-- Primary SEO -->
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="keywords" content="part-time job Malaysia, extra income Malaysia, kerja sambilan Malaysia, side income KL, earn money part-time, AIA agent Malaysia, insurance agent part-time, part-time work from home Malaysia, how to earn 5000 a month Malaysia, pendapatan sampingan Malaysia" />
-    <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://notbadlah.com" />
+    {keywords && <meta name="keywords" content={keywords} />}
+    <meta name="robots" content={noindex ? "noindex, follow" : "index, follow"} />
+    <link rel="canonical" href={canonical} />
     <meta name="author" content="Charles Shazemeen" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://notbadlah.com" />
+    <meta property="og:url" content={canonical} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImage} />
@@ -54,50 +70,8 @@ const {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
-    <!-- Schema.org structured data -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "notbadlah.com",
-      "description": "Part-time insurance agent opportunity in Malaysia. Earn RM5,000-RM10,000 extra per month.",
-      "url": "https://notbadlah.com",
-      "publisher": {
-        "@type": "Person",
-        "name": "Charles Shazemeen",
-        "url": "https://shazemeen.com",
-        "jobTitle": "Unit Manager, AIA Malaysia"
-      },
-      "mainEntity": {
-        "@type": "JobPosting",
-        "title": "Part-Time Insurance Agent",
-        "description": "Earn extra RM5,000–RM10,000 per month as a part-time AIA insurance agent in Malaysia. No experience required. Flexible hours.",
-        "hiringOrganization": {
-          "@type": "Organization",
-          "name": "AIA Malaysia"
-        },
-        "jobLocationType": "TELECOMMUTE",
-        "employmentType": "PART_TIME",
-        "jobLocation": {
-          "@type": "Place",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "MY"
-          }
-        },
-        "baseSalary": {
-          "@type": "MonetaryAmount",
-          "currency": "MYR",
-          "value": {
-            "@type": "QuantitativeValue",
-            "minValue": 5000,
-            "maxValue": 10000,
-            "unitText": "MONTH"
-          }
-        }
-      }
-    }
-    </script>
+    <!-- Schema.org structured data (per route) -->
+    {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
   </head>
   <body class="grain-overlay" data-theme={theme === "full-time" ? "full-time" : undefined}>
     <slot />

@@ -1,0 +1,21 @@
+# Cloudflare Pages redirects — PATH-based, same host as this Pages project.
+# https://developers.cloudflare.com/pages/configuration/redirects/
+
+# Friendly aliases -> canonical routes
+/get-covered   /insure           301
+/clients       /insure           301
+/parttime      /part-time        301
+/fulltime      /full-time        301
+/plus          /full-time/plus   301
+
+# -------------------------------------------------------------------------
+# The old SUBDOMAINS below CANNOT be redirected from this file.
+# Cloudflare Pages _redirects matches on PATH only, never on hostname, so a
+# different subdomain (a separate DNS hostname) never reaches these rules.
+# They must be created as Cloudflare Redirect Rules (zone/dashboard, MANUAL):
+#
+#   nextgenmillionaire.notbadlah.com/*      -> https://notbadlah.com/full-time      (301)
+#   nextgenmillionaire-plus.notbadlah.com/* -> https://notbadlah.com/full-time/plus (301)
+#
+# See REDIRECTS.md for the exact rules and the DNS steps.
+# -------------------------------------------------------------------------
