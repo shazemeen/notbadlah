@@ -5,12 +5,14 @@ interface Props {
   title?: string;
   description?: string;
   ogImage?: string;
+  theme?: "default" | "full-time";
 }
 
 const {
   title = "Not Bad Lah | Earn Extra RM5,000/Month Part-Time in Malaysia",
   description = "Can you really earn RM5,000 extra per month, part-time? We showed people on the street. Their reaction? 'Insurance... not bad lah!' Find out how with AIA Malaysia.",
-  ogImage = "https://notbadlah.com/og-image.jpg"
+  ogImage = "https://notbadlah.com/og-image.jpg",
+  theme = "default"
 } = Astro.props;
 ---
 
@@ -97,7 +99,7 @@ const {
     }
     </script>
   </head>
-  <body class="grain-overlay">
+  <body class="grain-overlay" data-theme={theme === "full-time" ? "full-time" : undefined}>
     <slot />
   </body>
 </html>

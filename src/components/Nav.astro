@@ -1,0 +1,74 @@
+---
+/**
+ * Shared floating nav. Transparent on load, frosted-glass on scroll.
+ * Supports the unified site structure (/insure, /part-time, /full-time).
+ * Theme-aware via CSS variables inherited from <body data-theme>.
+ */
+interface Props {
+  /** primary CTA button */
+  cta?: { label: string; href: string };
+  /** which top-level link to mark active */
+  active?: "insure" | "part-time" | "full-time" | null;
+}
+
+const {
+  cta = { label: "Get covered", href: "/insure" },
+  active = null,
+} = Astro.props;
+
+const links = [
+  { key: "insure", label: "Get covered", href: "/insure" },
+  { key: "part-time", label: "Part-time", href: "/part-time" },
+  { key: "full-time", label: "Full-time", href: "/full-time" },
+];
+---
+
+<nav id="nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" style="background: transparent;">
+  <div class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
+    <a href="/" class="font-bold text-xl" style="font-family: 'Space Grotesk', sans-serif; color: var(--ink);">
+      notbadlah<span style="color: var(--accent-strong);">.</span>
+    </a>
+
+    <div class="hidden sm:flex items-center gap-6">
+      {links.map((link) => (
+        <a
+          href={link.href}
+          class="text-sm font-medium transition-all duration-200 hover:opacity-70"
+          style={`color: ${active === link.key ? "var(--ink)" : "var(--muted)"}; font-weight: ${active === link.key ? 600 : 500};`}
+        >
+          {link.label}
+        </a>
+      ))}
+      <a
+        href={cta.href}
+        class="inline-flex items-center gap-2 px-5 py-2 rounded-full text-sm font-semibold transition-all duration-200 hover:opacity-80"
+        style="background: var(--ink); color: #ffffff;"
+      >
+        {cta.label}
+      </a>
+    </div>
+
+    <a
+      href={cta.href}
+      class="sm:hidden inline-flex items-center gap-2 px-5 py-2 rounded-full text-sm font-semibold"
+      style="background: var(--ink); color: #ffffff;"
+    >
+      {cta.label}
+    </a>
+  </div>
+</nav>
+
+<script>
+  // Self-contained scroll effect (no GSAP dependency) so the nav works on
+  // every page that includes this component.
+  const nav = document.getElementById("nav");
+  function onScroll() {
+    if (!nav) return;
+    const scrolled = window.scrollY > 80;
+    nav.style.background = scrolled ? "rgba(255,255,255,0.95)" : "transparent";
+    nav.style.backdropFilter = scrolled ? "blur(12px)" : "none";
+    nav.style.borderBottom = scrolled ? "1px solid var(--border)" : "none";
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+</script>

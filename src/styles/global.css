@@ -1,5 +1,41 @@
 @import "tailwindcss";
 
+/* ===================================================================
+   UNIFIED DESIGN SYSTEM — notbadlah.com
+   One palette, themeable per section.
+   Default theme  = energetic yellow (part-time / client / hub)
+   [data-theme="full-time"] = premium gold (Next Gen Millionaire pages)
+   =================================================================== */
+:root {
+  /* Brand palette */
+  --brand: #FFE135;   /* "not bad lah" yellow — master identity */
+  --navy:  #0C1B33;   /* deep neutral for dark sections / premium contrast */
+  --gold:  #D4AF37;   /* premium accent, reserved for full-time tier */
+
+  /* Neutrals already in use across the sites */
+  --ink:       #111111;
+  --muted:     #555555;
+  --muted-2:   #888888;
+  --bg:        #ffffff;
+  --bg-soft:   #f9f9f9;
+  --border:    #e8e8e8;
+  --border-2:  #e0e0e0;
+
+  /* Themeable accent — overridden by [data-theme] below */
+  --accent:        var(--brand);
+  --accent-strong: #d4a800;                 /* darker yellow used in copy/labels */
+  --accent-glow:   rgba(255, 225, 53, 0.15);
+  --accent-tint:   #FFF8D0;                 /* soft accent fill (badges/success) */
+}
+
+/* Full-time pages signal the "serious tier": yellow base + gold accent. */
+[data-theme="full-time"] {
+  --accent:        var(--gold);
+  --accent-strong: #b8962e;
+  --accent-glow:   rgba(212, 175, 55, 0.18);
+  --accent-tint:   #F6EFD2;
+}
+
 @layer base {
   * {
     box-sizing: border-box;
@@ -12,40 +48,43 @@
   }
 
   body {
-    background-color: #ffffff;
-    color: #111111;
+    background-color: var(--bg);
+    color: var(--ink);
     font-family: 'Inter', sans-serif;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
   }
 
   ::selection {
-    background-color: #FFE135;
-    color: #111111;
+    background-color: var(--accent);
+    color: var(--ink);
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Space Grotesk', sans-serif;
     font-weight: 700;
-    color: #111111;
+    color: var(--ink);
   }
 }
 
 /* Scrollbar */
 ::-webkit-scrollbar { width: 3px; }
 ::-webkit-scrollbar-track { background: #f5f5f5; }
-::-webkit-scrollbar-thumb { background: #FFE135; border-radius: 2px; }
+::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
 
-/* Cards */
-.glow-card {
+/* ===== Unified card =====
+   Single component class (replaces the old .glow-card from this repo and
+   .card from the NGM repo). Theming comes from --accent via CSS variables,
+   so the same markup renders yellow on default pages and gold on full-time. */
+.card {
   position: relative;
-  background: #f9f9f9;
-  border: 1px solid #e8e8e8;
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
   transition: border-color 0.3s, box-shadow 0.3s;
 }
-.glow-card:hover {
-  border-color: #FFE135;
-  box-shadow: 0 4px 24px rgba(255, 225, 53, 0.15);
+.card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 4px 24px var(--accent-glow);
 }
 
 /* Custom slider */
@@ -65,7 +104,7 @@ input[type=range]::-webkit-slider-thumb {
   width: 22px;
   height: 22px;
   border-radius: 50%;
-  background: #111111;
+  background: var(--ink);
   cursor: pointer;
   border: 2px solid #ffffff;
   box-shadow: 0 0 0 4px rgba(17, 17, 17, 0.1);
@@ -74,6 +113,21 @@ input[type=range]::-webkit-slider-thumb {
 input[type=range]::-webkit-slider-thumb:hover {
   box-shadow: 0 0 0 8px rgba(17, 17, 17, 0.12);
 }
+
+/* Shared lead-form fields (used by LeadForm.astro, theme-aware focus) */
+.lead-input, .lead-select {
+  width: 100%;
+  padding: 12px 16px;
+  background: var(--bg-soft);
+  border: 1px solid var(--border-2);
+  border-radius: 10px;
+  color: var(--ink);
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.lead-select { cursor: pointer; }
+.lead-input:focus, .lead-select:focus { border-color: var(--accent-strong); }
 
 /* Chat bubbles */
 .bubble-left  { border-radius: 4px 18px 18px 18px; }

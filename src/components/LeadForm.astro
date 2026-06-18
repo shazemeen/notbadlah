@@ -1,0 +1,169 @@
+---
+/**
+ * Shared lead-capture form. One component, three field sets selected by
+ * `variant`. A hidden `type` field tags the submission so the (future)
+ * unified /api/lead endpoint can triage by audience.
+ *
+ *   variant="part_time" → occupation + hours available   (RintiZ)
+ *   variant="full_time" → occupation + experience         (NGM career)
+ *   variant="client"    → interest + preferred contact    (insurance buyer)
+ *
+ * NOTE: posts to /api/apply today. Prompt 5 consolidates the backend and
+ * switches the action to /api/lead.
+ */
+interface Props {
+  variant?: "part_time" | "full_time" | "client";
+  action?: string;
+  submitLabel?: string;
+}
+
+const {
+  variant = "part_time",
+  action = "/api/apply",
+  submitLabel = "Send. Let's talk.",
+} = Astro.props;
+
+const labelStyle = "display:block;font-size:0.875rem;font-weight:500;color:var(--muted);margin-bottom:8px;";
+---
+
+<form class="lead-form card rounded-2xl p-8" method="POST" action={action} novalidate style="background: var(--bg);">
+  <input type="hidden" name="type" value={variant} />
+
+  <div class="space-y-5">
+    <div>
+      <label style={labelStyle}>Full Name *</label>
+      <input class="lead-input" type="text" name="name" required placeholder="Your name" />
+    </div>
+
+    <div>
+      <label style={labelStyle}>Phone Number (WhatsApp) *</label>
+      <input class="lead-input" type="tel" name="phone" required placeholder="e.g. 012-3456789" />
+    </div>
+
+    <div>
+      <label style={labelStyle}>Email Address *</label>
+      <input class="lead-input" type="email" name="email" required placeholder="you@email.com" />
+    </div>
+
+    {variant === "part_time" && (
+      <>
+        <div>
+          <label style={labelStyle}>Current Occupation</label>
+          <input class="lead-input" type="text" name="occupation" placeholder="e.g. Teacher, Engineer, Student..." />
+        </div>
+        <div>
+          <label style={labelStyle}>Hours available per week</label>
+          <select class="lead-select" name="hours_available">
+            <option value="">Select...</option>
+            <option value="5-10">5 to 10 hours</option>
+            <option value="10-20">10 to 20 hours</option>
+            <option value="20+">20+ hours (serious!)</option>
+          </select>
+        </div>
+      </>
+    )}
+
+    {variant === "full_time" && (
+      <>
+        <div>
+          <label style={labelStyle}>Current Occupation</label>
+          <input class="lead-input" type="text" name="occupation" placeholder="e.g. Banker, Sales, Self-employed..." />
+        </div>
+        <div>
+          <label style={labelStyle}>Experience in financial services</label>
+          <select class="lead-select" name="experience">
+            <option value="">Select...</option>
+            <option value="none">No experience yet</option>
+            <option value="1-3">1 to 3 years</option>
+            <option value="3+">3+ years</option>
+          </select>
+        </div>
+      </>
+    )}
+
+    {variant === "client" && (
+      <>
+        <div>
+          <label style={labelStyle}>What are you interested in?</label>
+          <select class="lead-select" name="interest">
+            <option value="">Select...</option>
+            <option value="income">Income protection</option>
+            <option value="medical">Medical / hospital cover</option>
+            <option value="life">Life / family protection</option>
+            <option value="savings">Savings / retirement</option>
+            <option value="unsure">Not sure yet, just exploring</option>
+          </select>
+        </div>
+        <div>
+          <label style={labelStyle}>Preferred contact time</label>
+          <select class="lead-select" name="preferred_time">
+            <option value="">Select...</option>
+            <option value="morning">Morning</option>
+            <option value="afternoon">Afternoon</option>
+            <option value="evening">Evening</option>
+            <option value="weekend">Weekend</option>
+          </select>
+        </div>
+      </>
+    )}
+
+    <button
+      type="submit"
+      class="lead-submit w-full py-4 rounded-xl font-semibold text-base transition-all duration-200 hover:opacity-80"
+      style="background: var(--ink); color: #fff; font-family: 'Space Grotesk',sans-serif; cursor: pointer; border: none;"
+    >
+      {submitLabel}
+    </button>
+
+    <div class="lead-success" style="display:none;text-align:center;padding:16px;background:var(--accent-tint);border:1px solid var(--accent);border-radius:10px;color:var(--accent-strong);font-size:0.9rem;">
+      Done! We'll reach out within 24 hours.
+    </div>
+    <div class="lead-error" style="display:none;text-align:center;padding:16px;background:#fff0f0;border:1px solid #ffcccc;border-radius:10px;color:#cc3333;font-size:0.9rem;">
+      Something went wrong. Please try again.
+    </div>
+  </div>
+</form>
+
+<script>
+  // Handles every LeadForm instance on the page generically.
+  document.querySelectorAll<HTMLFormElement>("form.lead-form").forEach((form) => {
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const btn = form.querySelector<HTMLButtonElement>(".lead-submit");
+      const success = form.querySelector<HTMLElement>(".lead-success");
+      const error = form.querySelector<HTMLElement>(".lead-error");
+      const originalLabel = btn?.textContent ?? "Send";
+
+      if (btn) {
+        btn.textContent = "Sending...";
+        btn.style.opacity = "0.6";
+        btn.disabled = true;
+      }
+      if (error) error.style.display = "none";
+
+      const data = Object.fromEntries(new FormData(form).entries());
+
+      try {
+        const res = await fetch(form.action, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        });
+        if (!res.ok) throw new Error("bad response");
+        const fields = form.querySelector<HTMLElement>(".space-y-5");
+        form.querySelectorAll("input, select, .lead-submit").forEach((el) => {
+          (el as HTMLElement).style.display = "none";
+        });
+        if (success) success.style.display = "block";
+        if (fields) fields.querySelectorAll("label").forEach((l) => (l.style.display = "none"));
+      } catch {
+        if (btn) {
+          btn.textContent = originalLabel;
+          btn.style.opacity = "1";
+          btn.disabled = false;
+        }
+        if (error) error.style.display = "block";
+      }
+    });
+  });
+</script>

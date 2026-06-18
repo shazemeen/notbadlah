@@ -200,17 +200,17 @@ import Layout from '../layouts/Layout.astro';
         <h2 style="font-size: clamp(1.75rem, 4vw, 3rem); line-height: 1.2;">Malaysia is massively underserved.<br/>There's market for everyone.</h2>
       </div>
       <div class="grid md:grid-cols-3 gap-6 fade-up">
-        <div class="glow-card rounded-2xl p-8 text-center" style="background:#fff;">
+        <div class="card rounded-2xl p-8 text-center" style="background:#fff;">
           <div style="font-family:'Space Grotesk',sans-serif;font-size:clamp(2.5rem,6vw,4rem);font-weight:800;color:#111;line-height:1;">33M</div>
           <div style="color:#888;font-size:0.9rem;margin-top:8px;">Malaysians</div>
           <div style="color:#bbb;font-size:0.75rem;margin-top:4px;">Total population</div>
         </div>
-        <div class="glow-card rounded-2xl p-8 text-center" style="background:#fff;">
+        <div class="card rounded-2xl p-8 text-center" style="background:#fff;">
           <div style="font-family:'Space Grotesk',sans-serif;font-size:clamp(2.5rem,6vw,4rem);font-weight:800;color:#111;line-height:1;">48K</div>
           <div style="color:#888;font-size:0.9rem;margin-top:8px;">Part-time agents</div>
           <div style="color:#bbb;font-size:0.75rem;margin-top:4px;">Nationwide</div>
         </div>
-        <div class="glow-card rounded-2xl p-8 text-center" style="background:#FFE135;border-color:#d4a800;">
+        <div class="card rounded-2xl p-8 text-center" style="background:#FFE135;border-color:#d4a800;">
           <div style="font-family:'Space Grotesk',sans-serif;font-size:clamp(2.5rem,6vw,4rem);font-weight:800;color:#111;line-height:1;">688</div>
           <div style="color:#555;font-size:0.9rem;margin-top:8px;">Malaysians per agent</div>
           <div style="color:#777;font-size:0.75rem;margin-top:4px;">You can't run out of market</div>
@@ -232,7 +232,7 @@ import Layout from '../layouts/Layout.astro';
       </div>
 
       <!-- PART 1: One Policy, 6 Years -->
-      <div class="glow-card rounded-2xl p-8 mb-6 fade-up" style="background: #fff;">
+      <div class="card rounded-2xl p-8 mb-6 fade-up" style="background: #fff;">
         <p style="font-family:'Space Grotesk',sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#d4a800;margin-bottom:6px;">Part 1</p>
         <h3 style="font-family:'Space Grotesk',sans-serif;font-size:1.25rem;font-weight:700;color:#111;margin-bottom:4px;">What one policy earns you over 6 years</h3>
         <p style="color:#888;font-size:0.875rem;margin-bottom:24px;">Set your client's monthly premium below.</p>
@@ -274,7 +274,7 @@ import Layout from '../layouts/Layout.astro';
       </div>
 
       <!-- PART 2: Monthly income with RintiZ -->
-      <div class="glow-card rounded-2xl p-8 mb-8 fade-up" style="background: #fff;">
+      <div class="card rounded-2xl p-8 mb-8 fade-up" style="background: #fff;">
         <p style="font-family:'Space Grotesk',sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#d4a800;margin-bottom:6px;">Part 2</p>
         <h3 style="font-family:'Space Grotesk',sans-serif;font-size:1.25rem;font-weight:700;color:#111;margin-bottom:4px;">Your monthly income with RintiZ</h3>
         <p style="color:#888;font-size:0.875rem;margin-bottom:24px;">How many policies can you close per month? (using the premium above)</p>
@@ -349,7 +349,7 @@ import Layout from '../layouts/Layout.astro';
           { step: "03", title: "Get Trained", desc: "Two-day onboarding with our team. Learn how to have real conversations, not hard selling.", tag: "Day 15" },
           { step: "04", title: "First Commission", desc: "Close your first policy. Earn your first RM750 to RM1,200. It usually happens faster than you expect.", tag: "Day 30+" }
         ].map((item, i) => (
-          <div class="glow-card rounded-xl p-6 fade-up" style={`animation-delay: ${i * 0.1}s`}>
+          <div class="card rounded-xl p-6 fade-up" style={`animation-delay: ${i * 0.1}s`}>
             <div style="font-size:0.75rem;font-weight:700;color:#d4a800;margin-bottom:16px;font-family:'Space Grotesk',sans-serif;">
               STEP {item.step}
             </div>
@@ -404,7 +404,7 @@ import Layout from '../layouts/Layout.astro';
             a: "AIA Malaysia has the widest product range, strongest brand trust, and best support system for new agents. Most Malaysians already know and trust AIA, which makes conversations easier."
           }
         ].map((item, i) => (
-          <div class="faq-item glow-card rounded-xl overflow-hidden fade-up" style={`animation-delay: ${i * 0.05}s; background: #fff;`} data-index={i}>
+          <div class="faq-item card rounded-xl overflow-hidden fade-up" style={`animation-delay: ${i * 0.05}s; background: #fff;`} data-index={i}>
             <button class="faq-toggle w-full flex justify-between items-center p-6 text-left"
               style="background: none; border: none; color: #111; cursor: pointer; font-family: 'Space Grotesk', sans-serif;">
               <span style="font-size:1rem;font-weight:600;">{item.q}</span>
@@ -428,7 +428,7 @@ import Layout from '../layouts/Layout.astro';
         <p style="color:#888;margin-top:12px;font-size:0.95rem;">We'll reach out within 24 hours to set up a casual chat.</p>
       </div>
 
-      <form id="apply-form" class="glow-card rounded-2xl p-8 fade-up" method="POST" action="/api/apply" novalidate style="background: #fff;">
+      <form id="apply-form" class="card rounded-2xl p-8 fade-up" method="POST" action="/api/apply" novalidate style="background: #fff;">
         <div class="space-y-5">
           <div>
             <label style="display:block;font-size:0.875rem;font-weight:500;color:#666;margin-bottom:8px;">Full Name *</label>
