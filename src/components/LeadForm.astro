@@ -8,8 +8,7 @@
  *   variant="full_time" → occupation + experience         (NGM career)
  *   variant="client"    → interest + preferred contact    (insurance buyer)
  *
- * NOTE: posts to /api/apply today. Prompt 5 consolidates the backend and
- * switches the action to /api/lead.
+ * Submissions post to the unified /api/lead endpoint, tagged by `type`.
  */
 interface Props {
   variant?: "part_time" | "full_time" | "client";
@@ -20,7 +19,7 @@ interface Props {
 
 const {
   variant = "part_time",
-  action = "/api/apply",
+  action = "/api/lead",
   submitLabel = "Send. Let's talk.",
   successMessage = "Done! We'll reach out within 24 hours.",
 } = Astro.props;

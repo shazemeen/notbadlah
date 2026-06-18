@@ -22,6 +22,10 @@ pnpm-debug.log*
 .wrangler/
 .dev.vars
 
+# D1 backups / exports — contain personal lead data, never commit
+backup-*.sql
+*.backup.sql
+
 # macOS-specific files
 .DS_Store
 
