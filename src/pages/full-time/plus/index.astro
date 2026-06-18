@@ -1,0 +1,60 @@
+---
+/*
+ * ============================================================
+ *  TODO — BUILD FRESH
+ *  Next Gen Millionaire+ (/full-time/plus)
+ *
+ *  No source exists for this page. The old
+ *  nextgenmillionaire-plus.notbadlah.com had NO repo
+ *  (github.com/shazemeen/nextgenmillionaire-plus → "Repository
+ *  not found") and no other source was found in this repo.
+ *
+ *  Per the master plan, NGM+ targets experienced Financial
+ *  Services professionals (banks, other insurers, IFAs) who
+ *  want to make AIA their full-time home, with a package based
+ *  on their current income.
+ *
+ *  This is a placeholder so internal links to /full-time/plus
+ *  resolve. Replace with the real page when content is ready.
+ * ============================================================
+ */
+import Layout from '../../../layouts/Layout.astro';
+import Nav from '../../../components/Nav.astro';
+import Footer from '../../../components/Footer.astro';
+---
+
+<Layout
+  theme="full-time"
+  title="Next Gen Millionaire+ | Coming Soon"
+  description="Next Gen Millionaire+ — the AIA full-time programme for experienced Financial Services professionals. Details coming soon."
+>
+  <Nav active="full-time" cta={{ label: "Talk to Charles", href: "/full-time#apply" }} />
+
+  <section class="px-6" style="min-height: 100vh; display: flex; align-items: center; background: var(--bg);">
+    <div class="max-w-2xl mx-auto text-center" style="padding-top: 120px; padding-bottom: 80px;">
+      <div class="inline-flex items-center gap-2 mb-7" style="background: #FEF9E6; border-radius: 999px; padding: 5px 14px; width: fit-content;">
+        <span style="width:5px;height:5px;border-radius:50%;background:var(--gold);display:inline-block;"></span>
+        <span style="font-size:0.72rem;font-weight:700;color:#8B6914;letter-spacing:0.08em;text-transform:uppercase;">For experienced FS professionals</span>
+      </div>
+
+      <h1 style="font-size: clamp(2.4rem, 6vw, 4rem); line-height: 1.05; letter-spacing: -0.03em; color: var(--navy); margin-bottom: 20px;">
+        Next Gen Millionaire<span style="color: var(--gold);">+</span>
+      </h1>
+
+      <p style="font-size: clamp(1rem, 1.8vw, 1.15rem); color: var(--muted); line-height: 1.8; margin-bottom: 36px; max-width: 480px; margin-left: auto; margin-right: auto;">
+        For people already working in Financial Services who want to make AIA their full-time home. A package based on your current income. Full details are coming soon.
+      </p>
+
+      <div class="flex flex-wrap gap-3 justify-center">
+        <a href="/full-time#apply" class="inline-block px-8 py-4 rounded-full font-bold text-sm transition-all hover:scale-105" style="background: var(--navy); color: #ffffff;">
+          Talk to Charles
+        </a>
+        <a href="/full-time" class="inline-block px-8 py-4 rounded-full font-semibold text-sm transition-all" style="border: 1.5px solid #d0d0d0; color: #333;">
+          ← Back to full-time
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

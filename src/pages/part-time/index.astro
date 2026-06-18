@@ -1,33 +1,14 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import Card from '../../components/Card.astro';
+import LeadForm from '../../components/LeadForm.astro';
 ---
 
 <Layout>
   <!-- ===== NAV ===== -->
-  <nav id="nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" style="background: transparent;">
-    <div class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
-      <a href="/" class="font-bold text-xl" style="font-family: 'Space Grotesk', sans-serif; color: #111;">
-        notbadlah.
-      </a>
-      <div class="hidden sm:flex items-center gap-3">
-        <a href="#apply"
-          class="inline-flex items-center gap-2 px-5 py-2 rounded-full text-sm font-semibold transition-all duration-200 hover:opacity-80"
-          style="background: #111111; color: #ffffff;">
-          Find Out More
-        </a>
-        <a href="https://nextgenmillionaire.notbadlah.com"
-          class="text-sm font-medium transition-all duration-200 hover:opacity-70"
-          style="color: #555;">
-          Go full-time →
-        </a>
-      </div>
-      <a href="#apply"
-        class="sm:hidden inline-flex items-center gap-2 px-5 py-2 rounded-full text-sm font-semibold"
-        style="background: #111111; color: #ffffff;">
-        Find Out More
-      </a>
-    </div>
-  </nav>
+  <Nav active="part-time" cta={{ label: "Find Out More", href: "#apply" }} />
 
   <!-- ===== HERO ===== -->
   <section id="hero" class="grid grid-cols-1 md:grid-cols-2 overflow-hidden" style="min-height: 100vh;">
@@ -200,21 +181,21 @@ import Layout from '../layouts/Layout.astro';
         <h2 style="font-size: clamp(1.75rem, 4vw, 3rem); line-height: 1.2;">Malaysia is massively underserved.<br/>There's market for everyone.</h2>
       </div>
       <div class="grid md:grid-cols-3 gap-6 fade-up">
-        <div class="card rounded-2xl p-8 text-center" style="background:#fff;">
+        <Card class="p-8 text-center" style="background:#fff;">
           <div style="font-family:'Space Grotesk',sans-serif;font-size:clamp(2.5rem,6vw,4rem);font-weight:800;color:#111;line-height:1;">33M</div>
           <div style="color:#888;font-size:0.9rem;margin-top:8px;">Malaysians</div>
           <div style="color:#bbb;font-size:0.75rem;margin-top:4px;">Total population</div>
-        </div>
-        <div class="card rounded-2xl p-8 text-center" style="background:#fff;">
+        </Card>
+        <Card class="p-8 text-center" style="background:#fff;">
           <div style="font-family:'Space Grotesk',sans-serif;font-size:clamp(2.5rem,6vw,4rem);font-weight:800;color:#111;line-height:1;">48K</div>
           <div style="color:#888;font-size:0.9rem;margin-top:8px;">Part-time agents</div>
           <div style="color:#bbb;font-size:0.75rem;margin-top:4px;">Nationwide</div>
-        </div>
-        <div class="card rounded-2xl p-8 text-center" style="background:#FFE135;border-color:#d4a800;">
+        </Card>
+        <Card class="p-8 text-center" style="background:#FFE135;border-color:#d4a800;">
           <div style="font-family:'Space Grotesk',sans-serif;font-size:clamp(2.5rem,6vw,4rem);font-weight:800;color:#111;line-height:1;">688</div>
           <div style="color:#555;font-size:0.9rem;margin-top:8px;">Malaysians per agent</div>
           <div style="color:#777;font-size:0.75rem;margin-top:4px;">You can't run out of market</div>
-        </div>
+        </Card>
       </div>
       <p class="text-center fade-up" style="color:#aaa;font-size:0.82rem;margin-top:20px;">
         Only 1 in 688 Malaysians has a part-time agent to call. Most people still haven't been approached. That's your market.
@@ -349,7 +330,7 @@ import Layout from '../layouts/Layout.astro';
           { step: "03", title: "Get Trained", desc: "Two-day onboarding with our team. Learn how to have real conversations, not hard selling.", tag: "Day 15" },
           { step: "04", title: "First Commission", desc: "Close your first policy. Earn your first RM750 to RM1,200. It usually happens faster than you expect.", tag: "Day 30+" }
         ].map((item, i) => (
-          <div class="card rounded-xl p-6 fade-up" style={`animation-delay: ${i * 0.1}s`}>
+          <Card class="p-6 fade-up" rounded="rounded-xl" style={`animation-delay: ${i * 0.1}s`}>
             <div style="font-size:0.75rem;font-weight:700;color:#d4a800;margin-bottom:16px;font-family:'Space Grotesk',sans-serif;">
               STEP {item.step}
             </div>
@@ -359,7 +340,7 @@ import Layout from '../layouts/Layout.astro';
             </div>
             <h3 style="font-size:1.25rem;font-family:'Space Grotesk',sans-serif;font-weight:700;margin-bottom:8px;color:#111;">{item.title}</h3>
             <p style="color:#777;font-size:0.875rem;line-height:1.7;">{item.desc}</p>
-          </div>
+          </Card>
         ))}
       </div>
     </div>
@@ -428,87 +409,14 @@ import Layout from '../layouts/Layout.astro';
         <p style="color:#888;margin-top:12px;font-size:0.95rem;">We'll reach out within 24 hours to set up a casual chat.</p>
       </div>
 
-      <form id="apply-form" class="card rounded-2xl p-8 fade-up" method="POST" action="/api/apply" novalidate style="background: #fff;">
-        <div class="space-y-5">
-          <div>
-            <label style="display:block;font-size:0.875rem;font-weight:500;color:#666;margin-bottom:8px;">Full Name *</label>
-            <input type="text" name="name" required placeholder="Your name"
-              style="width:100%;padding:12px 16px;background:#f9f9f9;border:1px solid #e0e0e0;border-radius:10px;color:#111;font-size:0.95rem;outline:none;transition:border-color 0.2s;"
-              onfocus="this.style.borderColor='#d4a800'" onblur="this.style.borderColor='#e0e0e0'"
-            />
-          </div>
-
-          <div>
-            <label style="display:block;font-size:0.875rem;font-weight:500;color:#666;margin-bottom:8px;">Phone Number (WhatsApp) *</label>
-            <input type="tel" name="phone" required placeholder="e.g. 012-3456789"
-              style="width:100%;padding:12px 16px;background:#f9f9f9;border:1px solid #e0e0e0;border-radius:10px;color:#111;font-size:0.95rem;outline:none;transition:border-color 0.2s;"
-              onfocus="this.style.borderColor='#d4a800'" onblur="this.style.borderColor='#e0e0e0'"
-            />
-          </div>
-
-          <div>
-            <label style="display:block;font-size:0.875rem;font-weight:500;color:#666;margin-bottom:8px;">Email Address *</label>
-            <input type="email" name="email" required placeholder="you@email.com"
-              style="width:100%;padding:12px 16px;background:#f9f9f9;border:1px solid #e0e0e0;border-radius:10px;color:#111;font-size:0.95rem;outline:none;transition:border-color 0.2s;"
-              onfocus="this.style.borderColor='#d4a800'" onblur="this.style.borderColor='#e0e0e0'"
-            />
-          </div>
-
-          <div>
-            <label style="display:block;font-size:0.875rem;font-weight:500;color:#666;margin-bottom:8px;">Current Occupation</label>
-            <input type="text" name="occupation" placeholder="e.g. Teacher, Engineer, Student..."
-              style="width:100%;padding:12px 16px;background:#f9f9f9;border:1px solid #e0e0e0;border-radius:10px;color:#111;font-size:0.95rem;outline:none;transition:border-color 0.2s;"
-              onfocus="this.style.borderColor='#d4a800'" onblur="this.style.borderColor='#e0e0e0'"
-            />
-          </div>
-
-          <div>
-            <label style="display:block;font-size:0.875rem;font-weight:500;color:#666;margin-bottom:8px;">Hours available per week</label>
-            <select name="hours_available"
-              style="width:100%;padding:12px 16px;background:#f9f9f9;border:1px solid #e0e0e0;border-radius:10px;color:#111;font-size:0.95rem;outline:none;transition:border-color 0.2s;cursor:pointer;"
-              onfocus="this.style.borderColor='#d4a800'" onblur="this.style.borderColor='#e0e0e0'"
-            >
-              <option value="">Select...</option>
-              <option value="5-10">5 to 10 hours</option>
-              <option value="10-20">10 to 20 hours</option>
-              <option value="20+">20+ hours (serious!)</option>
-            </select>
-          </div>
-
-          <button type="submit" id="submit-btn"
-            class="w-full py-4 rounded-xl font-semibold text-base transition-all duration-200 hover:opacity-80"
-            style="background: #111; color: #fff; font-family: 'Space Grotesk',sans-serif; cursor: pointer; border: none;">
-            Send. Let's talk.
-          </button>
-
-          <div id="form-success" style="display:none;text-align:center;padding:16px;background:#FFF8D0;border:1px solid #FFE135;border-radius:10px;color:#996600;font-size:0.9rem;">
-            Done! We'll reach out within 24 hours.
-          </div>
-          <div id="form-error" style="display:none;text-align:center;padding:16px;background:#fff0f0;border:1px solid #ffcccc;border-radius:10px;color:#cc3333;font-size:0.9rem;">
-            Something went wrong. Please try again.
-          </div>
-        </div>
-      </form>
+      <div class="fade-up">
+        <LeadForm variant="part_time" submitLabel="Send. Let's talk." />
+      </div>
     </div>
   </section>
 
   <!-- ===== FOOTER ===== -->
-  <footer class="py-10 px-6" style="border-top: 1px solid #eee; background: #fff;">
-    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-      <div class="font-bold text-lg" style="font-family: 'Space Grotesk', sans-serif; color: #111;">
-        not<span style="color: #d4a800;">bad</span>lah<span style="color: #d4a800;">.</span>com
-      </div>
-      <div class="flex items-center gap-5">
-        <a href="https://nextgenmillionaire.notbadlah.com" style="color: #aaa; font-size: 0.8rem; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#111'" onmouseout="this.style.color='#aaa'">
-          Next Gen Millionaire →
-        </a>
-        <span style="color: #ddd; font-size: 0.8rem;">An authorised AIA agency in Malaysia.</span>
-      </div>
-      <p style="color: #ccc; font-size: 0.75rem;">
-        &copy; 2026 notbadlah.com
-      </p>
-    </div>
-  </footer>
+  <Footer />
 </Layout>
 
 <!-- ===== SCRIPTS ===== -->
@@ -518,19 +426,7 @@ import Layout from '../layouts/Layout.astro';
 
   gsap.registerPlugin(ScrollTrigger);
 
-  // Nav scroll effect
-  const nav = document.getElementById('nav');
-  ScrollTrigger.create({
-    start: 'top -80',
-    onUpdate: (self) => {
-      if (nav) {
-        nav.style.background = self.progress > 0 ? 'rgba(255,255,255,0.95)' : 'transparent';
-        nav.style.backdropFilter = self.progress > 0 ? 'blur(12px)' : 'none';
-        nav.style.borderBottom = self.progress > 0 ? '1px solid #eee' : 'none';
-      }
-    }
-  });
-
+  // Nav scroll effect is handled inside Nav.astro.
   // Scroll-triggered fade-up for below-fold elements
   gsap.utils.toArray('.fade-up').forEach((el: any) => {
     gsap.fromTo(el,
@@ -741,39 +637,7 @@ import Layout from '../layouts/Layout.astro';
     });
   });
 
-  // Apply form
-  const applyForm = document.getElementById('apply-form') as HTMLFormElement;
-  applyForm?.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const btn     = document.getElementById('submit-btn') as HTMLButtonElement;
-    const success = document.getElementById('form-success');
-    const error   = document.getElementById('form-error');
-
-    btn.textContent = 'Sending...';
-    btn.style.opacity = '0.6';
-    btn.disabled = true;
-
-    const data = Object.fromEntries(new FormData(applyForm).entries());
-
-    try {
-      const res = await fetch('/api/apply', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-      });
-      if (res.ok) {
-        applyForm.style.display = 'none';
-        if (success) success.style.display = 'block';
-      } else {
-        throw new Error('error');
-      }
-    } catch {
-      btn.textContent = 'Send. Let\'s talk.';
-      btn.style.opacity = '1';
-      btn.disabled = false;
-      if (error) error.style.display = 'block';
-    }
-  });
+  // Apply form submission is handled inside LeadForm.astro.
 
   // Animations
   const style = document.createElement('style');

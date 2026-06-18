@@ -1,0 +1,414 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import Card from '../../components/Card.astro';
+import LeadForm from '../../components/LeadForm.astro';
+---
+
+<Layout
+  theme="full-time"
+  title="Next Gen Millionaire | Full-Time AIA Career in Malaysia"
+  description="AIA Malaysia's structured full-time programme. Monthly bonuses up to RM16,000 on top of your commission, paid from Month 1. 24-month support structure."
+>
+
+  <!-- ===== NAV ===== -->
+  <Nav active="full-time" cta={{ label: "Apply Now", href: "#apply" }} />
+
+  <!-- ===== HERO ===== -->
+  <section id="hero" style="background: #ffffff; min-height: 100vh; display: flex; align-items: center; border-bottom: 1px solid #f0f0f0;">
+    <div class="max-w-6xl mx-auto px-6 w-full" style="padding-top: 110px; padding-bottom: 80px;">
+      <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 items-center">
+
+        <!-- Left: 3/5 -->
+        <div id="hero-left" class="lg:col-span-3">
+          <div class="inline-flex items-center gap-2 mb-7" style="background: #F5F0E8; border-radius: 999px; padding: 5px 14px; width: fit-content;">
+            <span style="width:5px;height:5px;border-radius:50%;background:#D4AF37;display:inline-block;flex-shrink:0;"></span>
+            <span style="font-size:0.72rem;font-weight:700;color:#8B6914;letter-spacing:0.08em;text-transform:uppercase;">AIA Elite Academy · Full-Time Programme</span>
+          </div>
+
+          <h1 style="font-size: clamp(2.6rem, 5.5vw, 4.2rem); line-height: 1.05; letter-spacing: -0.03em; color: #0C1B33; margin-bottom: 22px;">
+            Make financial<br/>planning your<br/><span style="position:relative;display:inline-block;">full-time career.<div style="position:absolute;bottom:-4px;left:0;right:0;height:4px;background:#D4AF37;border-radius:2px;"></div></span>
+          </h1>
+
+          <p style="font-size: clamp(1rem, 1.8vw, 1.15rem); color: #555; line-height: 1.8; margin-bottom: 36px; max-width: 480px;">
+            Next Gen Millionaire is AIA Malaysia's structured full-time programme. Monthly bonuses on top of your commission — contractual, tracked, and paid from Month 1.
+          </p>
+
+          <div class="flex flex-wrap gap-3 mb-12">
+            <a href="#apply" class="inline-block px-8 py-4 rounded-full font-bold text-sm transition-all hover:scale-105 hover:shadow-lg" style="background: #0C1B33; color: #ffffff;">
+              Apply — it's free
+            </a>
+            <a href="#bonus" class="inline-block px-8 py-4 rounded-full font-semibold text-sm transition-all hover:bg-gray-100" style="border: 1.5px solid #d0d0d0; color: #333;">
+              See the bonus structure ↓
+            </a>
+          </div>
+
+          <!-- Stats strip -->
+          <div class="flex flex-wrap gap-8" style="padding-top: 28px; border-top: 1px solid #f0f0f0;">
+            <div>
+              <div style="font-size: 1.6rem; font-weight: 800; color: #0C1B33; font-family: 'Space Grotesk', sans-serif;" class="tabular">RM16,000</div>
+              <div style="font-size: 0.75rem; color: #999; margin-top: 3px;">max monthly bonus, Months 1–6</div>
+            </div>
+            <div style="width:1px;background:#e8e8e8;"></div>
+            <div>
+              <div style="font-size: 1.6rem; font-weight: 800; color: #0C1B33; font-family: 'Space Grotesk', sans-serif;" class="tabular">24 months</div>
+              <div style="font-size: 0.75rem; color: #999; margin-top: 3px;">structured support programme</div>
+            </div>
+            <div style="width:1px;background:#e8e8e8;"></div>
+            <div>
+              <div style="font-size: 1.6rem; font-weight: 800; color: #D4AF37; font-family: 'Space Grotesk', sans-serif;" class="tabular">+ Quarterly</div>
+              <div style="font-size: 0.75rem; color: #999; margin-top: 3px;">bonuses stack on top</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: 2/5 — income card -->
+        <div id="hero-right" class="lg:col-span-2">
+          <div style="background: #FAFAF8; border: 1.5px solid #E8E0CC; border-radius: 24px; padding: clamp(24px,4vw,40px); position: relative; overflow: hidden;">
+            <!-- Gold bar top -->
+            <div style="position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#D4AF37,#F0CE6A,#D4AF37);"></div>
+
+            <p style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #B8A060; margin-bottom: 10px;">Top tier · Months 1–6</p>
+            <div style="font-family: 'Space Grotesk', sans-serif; font-size: clamp(3rem, 6vw, 4.8rem); font-weight: 800; color: #0C1B33; line-height: 1; margin-bottom: 4px;" class="tabular">RM16,000</div>
+            <p style="font-size: 0.88rem; color: #888; margin-bottom: 28px; line-height: 1.6;">monthly bonus<br/><span style="color: #D4AF37; font-weight: 600;">on top of</span> your sales commission</p>
+
+            <div style="border-top: 1px solid #e8e0cc; padding-top: 20px; display: flex; flex-direction: column; gap: 12px;">
+              <div style="display:flex;align-items:center;justify-content:space-between;">
+                <span style="font-size: 0.8rem; color: #999;">AFYC required</span>
+                <span style="font-size: 0.88rem; font-weight: 700; color: #0C1B33;" class="tabular">RM 12,000 / month</span>
+              </div>
+              <div style="display:flex;align-items:center;justify-content:space-between;">
+                <span style="font-size: 0.8rem; color: #999;">Cases required</span>
+                <span style="font-size: 0.88rem; font-weight: 700; color: #0C1B33;">3 per month</span>
+              </div>
+              <div style="display:flex;align-items:center;justify-content:space-between;">
+                <span style="font-size: 0.8rem; color: #999;">Programme</span>
+                <span style="font-size: 0.82rem; font-weight: 700; color: #D4AF37;">Next Gen Millionaire</span>
+              </div>
+            </div>
+
+            <p style="margin-top: 20px; font-size: 0.7rem; color: #bbb; line-height: 1.65;">5 tiers available. Lowest tier starts from RM3,500 AFYC → RM4,500/month bonus. Paid via GIRO, 15th of following month.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WHO QUALIFIES ===== -->
+  <section id="qualify" class="py-24 px-6" style="background: #F8F8F6;">
+    <div class="max-w-5xl mx-auto">
+      <div class="fade-up text-center mb-14">
+        <p style="color:#D4AF37;font-size:0.75rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:10px;">Entry Requirements</p>
+        <h2 style="font-size: clamp(1.8rem, 4vw, 2.6rem); color: #0C1B33; line-height: 1.15;">Who is Next Gen Millionaire for?</h2>
+        <p style="font-size: 0.95rem; color: #777; margin-top: 10px; max-width: 440px; margin-left: auto; margin-right: auto;">Open to new applicants and to RintiZ members ready to go full-time.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+        <!-- New Application -->
+        <div class="fade-up" style="background:#ffffff;border:1.5px solid #e8e8e8;border-radius:20px;padding:36px;">
+          <div style="display:inline-block;background:#F0F0F0;border-radius:8px;padding:4px 12px;margin-bottom:24px;">
+            <span style="font-size:0.7rem;font-weight:700;color:#555;letter-spacing:0.06em;text-transform:uppercase;">New Application</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:18px;">
+            {[
+              { title: "Age 21 to 55", sub: "" },
+              { title: "Minimum Diploma", sub: "Or 3 years working experience in any field" },
+              { title: "RM3,000+ monthly income", sub: "Proof required — past 3 months or 1 year" },
+              { title: "Panel interview", sub: "Required before commencement" }
+            ].map(item => (
+              <div style="display:flex;align-items:flex-start;gap:12px;">
+                <div style="width:22px;height:22px;border-radius:50%;background:#0C1B33;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">
+                  <svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="#D4AF37" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div>
+                  <div style="font-weight:600;color:#111;font-size:0.92rem;">{item.title}</div>
+                  {item.sub && <div style="font-size:0.8rem;color:#888;margin-top:3px;">{item.sub}</div>}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Converting from RintiZ -->
+        <div class="fade-up" style="background:#ffffff;border:1.5px solid #D4AF37;border-radius:20px;padding:36px;position:relative;overflow:hidden;">
+          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#D4AF37,#F0CE6A);"></div>
+          <div style="display:inline-block;background:#FEF9E6;border-radius:8px;padding:4px 12px;margin-bottom:16px;">
+            <span style="font-size:0.7rem;font-weight:700;color:#8B6914;letter-spacing:0.06em;text-transform:uppercase;">Converting from RintiZ</span>
+          </div>
+          <p style="font-size: 0.85rem; color: #888; margin-bottom: 22px; line-height: 1.65;">Already doing RintiZ part-time? You can convert to Next Gen Millionaire once you hit these numbers within your first 6 months:</p>
+          <div style="display:flex;flex-direction:column;gap:18px;">
+            {[
+              { title: "AFYC RM9,000 + 9 cases", sub: "Within coded month (M0) + first 6 months" },
+              { title: "Persistency D0 90%, D1 85%", sub: "Policies you sold must stay active" },
+              { title: "Rolling past 3 months AFYC", sub: "Conversion window is a rolling 3-month period" }
+            ].map(item => (
+              <div style="display:flex;align-items:flex-start;gap:12px;">
+                <div style="width:22px;height:22px;border-radius:50%;background:#D4AF37;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">
+                  <svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="#0C1B33" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div>
+                  <div style="font-weight:700;color:#111;font-size:0.92rem;">{item.title}</div>
+                  <div style="font-size:0.8rem;color:#888;margin-top:3px;">{item.sub}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <a href="/part-time" style="display:inline-flex;align-items:center;gap:6px;margin-top:24px;font-size:0.82rem;color:#8B6914;font-weight:700;text-decoration:none;">Not in RintiZ yet? Start here →</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BONUS STRUCTURE ===== -->
+  <section id="bonus" class="py-24 px-6" style="background: #ffffff;">
+    <div class="max-w-5xl mx-auto">
+      <div class="fade-up text-center mb-14">
+        <p style="color:#D4AF37;font-size:0.75rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:10px;">Monthly Bonus Structure</p>
+        <h2 style="font-size: clamp(1.8rem, 4vw, 2.6rem); color: #0C1B33; line-height: 1.15;">The numbers. No fluff.</h2>
+        <p style="font-size: 0.95rem; color: #777; margin-top: 10px; max-width: 540px; margin-left: auto; margin-right: auto;">Hit your AFYC target and 3 cases in a month, and Next Gen Millionaire pays you a bonus — on top of the commission you already earned from those sales. Five tiers, you choose which to aim for.</p>
+      </div>
+
+      <!-- Tier cards — top 2 prominent -->
+      <div class="fade-up grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 mb-6">
+
+        <!-- Tier 1 — top, spans 2 cols on lg -->
+        <div style="background:#0C1B33;border-radius:16px;padding:28px 24px;display:flex;flex-direction:column;gap:6px;" class="sm:col-span-2 lg:col-span-2">
+          <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:4px;">Top Tier</div>
+          <div style="font-size:0.88rem;font-weight:600;color:rgba(255,255,255,0.7);">AFYC RM 12,000 · 3 cases</div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:2.2rem;color:#D4AF37;line-height:1;" class="tabular">RM 16,000</div>
+          <div style="font-size:0.75rem;color:rgba(255,255,255,0.45);">bonus / month (Months 1–6)</div>
+          <div style="margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.1);display:flex;gap:16px;">
+            <div><div style="font-size:0.72rem;color:rgba(255,255,255,0.4);">Months 7–12</div><div style="font-weight:700;color:rgba(255,255,255,0.75);font-size:0.9rem;" class="tabular">RM 12,000</div></div>
+            <div><div style="font-size:0.72rem;color:rgba(255,255,255,0.4);">Months 13–24</div><div style="font-weight:700;color:rgba(255,255,255,0.75);font-size:0.9rem;" class="tabular">RM 10,000</div></div>
+          </div>
+        </div>
+
+        <!-- Tiers 2–5 -->
+        {[
+          { afyc: "RM 9,000", bonus1: "RM 12,000", bonus2: "RM 9,000", bonus3: "RM 7,500" },
+          { afyc: "RM 7,000", bonus1: "RM 9,000",  bonus2: "RM 7,000", bonus3: "RM 5,500" },
+          { afyc: "RM 5,000", bonus1: "RM 6,500",  bonus2: "RM 5,000", bonus3: "RM 4,000" },
+          { afyc: "RM 3,500", bonus1: "RM 4,500",  bonus2: "RM 3,500", bonus3: "RM 2,500" },
+        ].map(t => (
+          <div style="background:#F8F8F6;border:1.5px solid #e8e8e8;border-radius:16px;padding:22px 18px;display:flex;flex-direction:column;gap:4px;">
+            <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#bbb;margin-bottom:4px;">3 cases</div>
+            <div style="font-size:0.82rem;font-weight:600;color:#666;">AFYC {t.afyc}</div>
+            <div style="font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:1.5rem;color:#0C1B33;line-height:1.1;" class="tabular">{t.bonus1}</div>
+            <div style="font-size:0.7rem;color:#aaa;">/month (M1–6)</div>
+            <div style="margin-top:10px;padding-top:10px;border-top:1px solid #ececec;display:flex;flex-direction:column;gap:4px;">
+              <div style="display:flex;justify-content:space-between;"><span style="font-size:0.68rem;color:#bbb;">M7–12</span><span style="font-size:0.75rem;font-weight:600;color:#555;" class="tabular">{t.bonus2}</span></div>
+              <div style="display:flex;justify-content:space-between;"><span style="font-size:0.68rem;color:#bbb;">M13–24</span><span style="font-size:0.75rem;font-weight:600;color:#555;" class="tabular">{t.bonus3}</span></div>
+            </div>
+          </div>
+        ))}
+
+      </div>
+
+      <!-- Quarterly bonus callout -->
+      <div class="fade-up" style="border:1.5px solid #E8E0CC;border-radius:16px;padding:28px 32px;background:#FFFDF5;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px;">
+        <div>
+          <p style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#B8A060;margin-bottom:8px;">Plus every quarter</p>
+          <h3 style="font-family:'Space Grotesk',sans-serif;font-size:1.25rem;font-weight:700;color:#0C1B33;margin-bottom:6px;">Quarterly bonuses stack on top.</h3>
+          <p style="font-size:0.85rem;color:#888;line-height:1.65;max-width:480px;">Hit 9 cases and RM36,000 quarterly AFYC in your first two quarters — that's an additional <strong style="color:#0C1B33;">RM48,000 per quarter</strong>, on top of all the monthly bonuses you already received.</p>
+        </div>
+        <a href="#apply" style="flex-shrink:0;padding:13px 26px;background:#0C1B33;color:#ffffff;border-radius:999px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:0.88rem;text-decoration:none;white-space:nowrap;">Apply now →</a>
+      </div>
+
+      <p class="fade-up text-center" style="margin-top:20px;font-size:0.75rem;color:#bbb;">AFYC = Annualized First Year Commission from Life, Takaful, and Personal Accident products. Commission earned from AFYC is separate from and in addition to these bonuses.</p>
+    </div>
+  </section>
+
+  <!-- ===== CAREER PATH ===== -->
+  <section id="path" class="py-24 px-6" style="background: #F8F8F6;">
+    <div class="max-w-5xl mx-auto">
+      <div class="fade-up text-center mb-14">
+        <p style="color:#D4AF37;font-size:0.75rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:10px;">Career Progression</p>
+        <h2 style="font-size: clamp(1.8rem, 4vw, 2.6rem); color: #0C1B33; line-height: 1.15;">Where Next Gen Millionaire fits</h2>
+      </div>
+
+      <!-- Stepper -->
+      <div class="fade-up" style="display:grid;grid-template-columns:repeat(4,1fr);position:relative;">
+        <!-- Connecting line -->
+        <div style="position:absolute;top:22px;left:calc(12.5% + 22px);right:calc(12.5% + 22px);height:2px;background:linear-gradient(90deg,#e0e0e0,#D4AF37 50%,#e0e0e0);z-index:0;"></div>
+
+        {[
+          { n:"1", label:"Part-Time",      name:"RintiZ",              sub:"Flexible. No experience needed. Learn the ropes and build your book.",    active:false, link:"/part-time" },
+          { n:"2", label:"Full-Time",      name:"Next Gen Millionaire", sub:"24 months. Monthly bonuses + quarterly bonuses + commission.",           active:true,  link:null },
+          { n:"3", label:"Leadership",     name:"Next Gen Leader",      sub:"Build your own team. Earn overriding commission on team production.",    active:false, link:null },
+          { n:"4", label:"Sr. Leadership", name:"NGL+",                 sub:"Scale your agency. Multiple income streams from team performance.",      active:false, link:null },
+        ].map(step => (
+          <div style="display:flex;flex-direction:column;align-items:center;padding:0 8px;position:relative;z-index:1;">
+            <div style={`width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:0.9rem;margin-bottom:16px;border:2px solid ${step.active ? '#D4AF37' : '#e0e0e0'};background:${step.active ? '#0C1B33' : '#ffffff'};color:${step.active ? '#D4AF37' : '#bbb'};box-shadow:${step.active ? '0 0 0 4px rgba(212,175,55,0.15)' : 'none'};`}>{step.n}</div>
+            <div style={`font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:5px;color:${step.active ? '#D4AF37' : '#bbb'};`}>{step.label}</div>
+            <div style={`font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:0.92rem;text-align:center;margin-bottom:8px;color:${step.active ? '#0C1B33' : '#888'};`}>{step.name}</div>
+            <p style="font-size:0.75rem;color:#aaa;text-align:center;line-height:1.6;">{step.sub}</p>
+            {step.link && <a href={step.link} style="margin-top:8px;font-size:0.72rem;color:#aaa;text-decoration:none;font-weight:600;">Part-time →</a>}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WHAT'S INCLUDED ===== -->
+  <section id="benefits" class="py-24 px-6" style="background: #ffffff;">
+    <div class="max-w-5xl mx-auto">
+      <div class="fade-up text-center mb-14">
+        <p style="color:#D4AF37;font-size:0.75rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:10px;">What's Included</p>
+        <h2 style="font-size: clamp(1.8rem, 4vw, 2.6rem); color: #0C1B33; line-height: 1.15;">Your support system for 24 months</h2>
+        <p style="font-size: 0.95rem; color: #777; margin-top: 10px; max-width: 440px; margin-left: auto; margin-right: auto;">You're not figuring this out alone. Next Gen Millionaire comes with a full structure.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {[
+          { icon:"✈️", title:"Aviator Onboarding", body:"4-day physical class, completed by Month 2. Everything about AIA's products, selling approach, and compliance — in one block." },
+          { icon:"📅", title:"Monthly Strength Building", body:"3-hour physical session every month from M1 to M12. Invitations sent by your regional Training Partners. No self-registration needed." },
+          { icon:"📚", title:"Sales Builder Study Group", body:"2.5-hour weekly session at your branch, every week for all 24 months. Case studies, peer accountability, Agency Executives present." },
+          { icon:"💻", title:"Power 45 — Weekly Virtual", body:"45 minutes on Zoom every Tuesday at 9am. Market updates, technique refreshers, motivation. No registration — link is emailed to you." },
+          { icon:"💚", title:"AIA Vitality Membership", body:"Free for your first year. Access to Vitality health rewards, gym discounts, and partner deals. One less thing to pay for while you ramp up." },
+          { icon:"🏆", title:"Elite Academy Rewards", body:"Double Millionaire Challenge, Rookie Advisor Bonus, Life Planner Convention, Elite Academy Conference, and the Next Gen Leader pathway." },
+        ].map(b => (
+          <Card class="fade-up" rounded="rounded-[18px]" style="padding:28px;">
+            <div style="font-size:1.8rem;margin-bottom:14px;">{b.icon}</div>
+            <h3 style="font-family:'Space Grotesk',sans-serif;font-size:0.98rem;font-weight:700;color:#0C1B33;margin-bottom:8px;">{b.title}</h3>
+            <p style="font-size:0.82rem;color:#777;line-height:1.7;">{b.body}</p>
+          </Card>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== RETENTION ===== -->
+  <section id="retention" class="py-24 px-6" style="background:#F8F8F6;">
+    <div class="max-w-4xl mx-auto">
+      <div class="fade-up text-center mb-14">
+        <p style="color:#D4AF37;font-size:0.75rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:10px;">Honest Expectations</p>
+        <h2 style="font-size: clamp(1.8rem, 4vw, 2.6rem); color: #0C1B33; line-height: 1.15;">What it takes to stay in</h2>
+        <p style="font-size: 0.95rem; color: #777; margin-top: 10px; max-width: 460px; margin-left: auto; margin-right: auto;">Next Gen Millionaire is a performance programme, not passive income. Here's what you need to maintain each quarter.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 fade-up">
+        {[
+          { num:"3", label:"Cases per quarter", sub:"Minimum 3 new cases every quarter. Drop below this and you exit the programme." },
+          { num:"D0 90%", label:"Persistency rate", sub:"Policies you sell need to stay in force. D0 90%, D1 85%, D2 75% (where available)." },
+          { num:"1×", label:"Safety net", sub:"One Quarterly Retention Validation across the full 24 months. Use it wisely." },
+        ].map(r => (
+          <div style="background:#ffffff;border:1.5px solid #e8e8e8;border-radius:18px;padding:30px;text-align:center;">
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:2.2rem;font-weight:800;color:#0C1B33;margin-bottom:6px;" class="tabular">{r.num}</div>
+            <div style="font-size:0.88rem;font-weight:700;color:#333;margin-bottom:8px;">{r.label}</div>
+            <p style="font-size:0.78rem;color:#999;line-height:1.7;">{r.sub}</p>
+          </div>
+        ))}
+      </div>
+      <p class="fade-up text-center" style="margin-top:20px;font-size:0.78rem;color:#bbb;line-height:1.7;">Miss targets and exhaust your safety net? You revert to Standard Life Planner — commissions still yours, just no bonus scheme. Re-entry to Next Gen Millionaire is not permitted once withdrawn.</p>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section id="faq" class="py-24 px-6" style="background:#ffffff;">
+    <div class="max-w-3xl mx-auto">
+      <div class="fade-up text-center mb-14">
+        <p style="color:#D4AF37;font-size:0.75rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:10px;">Questions</p>
+        <h2 style="font-size: clamp(1.8rem, 4vw, 2.6rem); color: #0C1B33; line-height: 1.15;">FAQ</h2>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:4px;">
+        {[
+          {
+            q: "Can I join Next Gen Millionaire without doing RintiZ first?",
+            a: "Yes. Direct applications are accepted if you're aged 21–55, hold at least a Diploma (or have 3 years working experience), earn RM3,000+/month, and pass the panel interview. RintiZ is one entry path — not the only one."
+          },
+          {
+            q: "When do I get paid?",
+            a: "Monthly bonuses are paid via GIRO on the 15th of the following month after AIA Elite Academy completes validation. Maximum 2 working day delay permitted. No advance payouts — even if you hit targets early."
+          },
+          {
+            q: "What exactly is AFYC?",
+            a: "AFYC stands for Annualized First Year Commission — the annual value of commissions generated by your first-year policy sales. If a policy pays RM1,000 in first-year commission, that RM1,000 counts towards your AFYC. The bonus tiers are thresholds against your monthly AFYC figure."
+          },
+          {
+            q: "What happens if I miss my monthly targets?",
+            a: "You forfeit that month's bonus — but you keep all commission earned from your sales. At the quarterly level, you have one safety net across the full 24 months: the Quarterly Retention Validation. Fail two consecutive quarters after using it, and you exit the programme."
+          },
+          {
+            q: "Is there a higher programme for experienced Financial Services professionals?",
+            a: "Yes — it's called Next Gen Millionaire+. It's designed for people already working in Financial Services (banks, other insurers, IFAs) who want to make AIA their full-time home. The package is based on your current income. See /full-time/plus for details."
+          },
+        ].map((item, i) => (
+          <div class="faq-item fade-up" style="background:#F8F8F6;border:1.5px solid #ececec;border-radius:14px;overflow:hidden;">
+            <button class="faq-btn" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:20px 24px;text-align:left;background:none;border:none;cursor:pointer;gap:16px;">
+              <span style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:0.95rem;color:#0C1B33;">{item.q}</span>
+              <svg class="faq-icon" width="18" height="18" viewBox="0 0 18 18" fill="none" style="flex-shrink:0;transition:transform 0.25s;"><path d="M4 6.5L9 11.5L14 6.5" stroke="#999" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="faq-answer" style="display:none;padding:0 24px 20px;font-size:0.88rem;color:#666;line-height:1.8;">{item.a}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== APPLY ===== -->
+  <section id="apply" class="py-24 px-6" style="background:#F8F8F6;border-top:1px solid #eeeeee;">
+    <div class="max-w-2xl mx-auto">
+      <div class="fade-up text-center mb-10">
+        <p style="color:#D4AF37;font-size:0.75rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:10px;">Applications Open</p>
+        <h2 style="font-size: clamp(1.8rem, 4vw, 2.6rem); color: #0C1B33; line-height: 1.15;">Ready to go full-time?</h2>
+        <p style="font-size: 0.95rem; color: #777; margin-top: 10px;">No commitment yet — just a conversation. Charles will reach out within 24 hours.</p>
+      </div>
+
+      <div class="fade-up">
+        <LeadForm
+          variant="full_time"
+          submitLabel="Submit Expression of Interest"
+          successMessage="Done! Charles will reach out within 24 hours — expect a WhatsApp or call."
+        />
+        <p style="text-align:center;font-size:0.73rem;color:#bbb;line-height:1.65;margin-top:14px;">No commitment. Charles will call or WhatsApp you within 24 hours to have a quick conversation.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <Footer />
+
+</Layout>
+
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Hero entrance
+  gsap.from('#hero-left > *', {
+    opacity: 0, y: 30, stagger: 0.1, duration: 0.8, ease: 'power3.out', delay: 0.15
+  });
+  gsap.from('#hero-right', {
+    opacity: 0, x: 30, duration: 0.9, ease: 'power3.out', delay: 0.4
+  });
+
+  // Scroll fade-ups
+  document.querySelectorAll('.fade-up').forEach((el) => {
+    gsap.fromTo(el,
+      { opacity: 0, y: 28 },
+      {
+        opacity: 1, y: 0, duration: 0.7, ease: 'power2.out',
+        scrollTrigger: { trigger: el, start: 'top 90%', toggleActions: 'play none none none' }
+      }
+    );
+  });
+
+  // FAQ
+  document.querySelectorAll('.faq-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item') as HTMLElement;
+      const answer = item.querySelector('.faq-answer') as HTMLElement;
+      const icon = btn.querySelector('.faq-icon') as SVGElement;
+      const isOpen = answer.style.display === 'block';
+      document.querySelectorAll('.faq-answer').forEach((a: Element) => { (a as HTMLElement).style.display = 'none'; });
+      document.querySelectorAll('.faq-icon').forEach((i: Element) => { (i as SVGElement).style.transform = 'rotate(0deg)'; });
+      if (!isOpen) { answer.style.display = 'block'; icon.style.transform = 'rotate(180deg)'; }
+    });
+  });
+
+  // Apply form submission is handled inside LeadForm.astro.
+</script>

@@ -15,12 +15,14 @@ interface Props {
   variant?: "part_time" | "full_time" | "client";
   action?: string;
   submitLabel?: string;
+  successMessage?: string;
 }
 
 const {
   variant = "part_time",
   action = "/api/apply",
   submitLabel = "Send. Let's talk.",
+  successMessage = "Done! We'll reach out within 24 hours.",
 } = Astro.props;
 
 const labelStyle = "display:block;font-size:0.875rem;font-weight:500;color:var(--muted);margin-bottom:8px;";
@@ -66,16 +68,26 @@ const labelStyle = "display:block;font-size:0.875rem;font-weight:500;color:var(-
     {variant === "full_time" && (
       <>
         <div>
-          <label style={labelStyle}>Current Occupation</label>
-          <input class="lead-input" type="text" name="occupation" placeholder="e.g. Banker, Sales, Self-employed..." />
+          <label style={labelStyle}>Current Job Title *</label>
+          <input class="lead-input" type="text" name="job_title" required placeholder="e.g. Senior Executive, Business Owner, Teacher" />
         </div>
         <div>
-          <label style={labelStyle}>Experience in financial services</label>
-          <select class="lead-select" name="experience">
-            <option value="">Select...</option>
-            <option value="none">No experience yet</option>
-            <option value="1-3">1 to 3 years</option>
-            <option value="3+">3+ years</option>
+          <label style={labelStyle}>Monthly Income *</label>
+          <select class="lead-select" name="monthly_income" required>
+            <option value="">Select range</option>
+            <option value="3000-5000">RM 3,000 to RM 5,000</option>
+            <option value="5000-8000">RM 5,000 to RM 8,000</option>
+            <option value="8000-12000">RM 8,000 to RM 12,000</option>
+            <option value="12000+">RM 12,000+</option>
+          </select>
+        </div>
+        <div>
+          <label style={labelStyle}>Your Path *</label>
+          <select class="lead-select" name="pathway" required>
+            <option value="">Select</option>
+            <option value="new">New — direct to Next Gen Millionaire</option>
+            <option value="rintiz">Converting from RintiZ</option>
+            <option value="unsure">Not sure yet</option>
           </select>
         </div>
       </>
@@ -116,7 +128,7 @@ const labelStyle = "display:block;font-size:0.875rem;font-weight:500;color:var(-
     </button>
 
     <div class="lead-success" style="display:none;text-align:center;padding:16px;background:var(--accent-tint);border:1px solid var(--accent);border-radius:10px;color:var(--accent-strong);font-size:0.9rem;">
-      Done! We'll reach out within 24 hours.
+      {successMessage}
     </div>
     <div class="lead-error" style="display:none;text-align:center;padding:16px;background:#fff0f0;border:1px solid #ffcccc;border-radius:10px;color:#cc3333;font-size:0.9rem;">
       Something went wrong. Please try again.
