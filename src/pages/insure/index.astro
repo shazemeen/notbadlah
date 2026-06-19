@@ -1,0 +1,224 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import Card from '../../components/Card.astro';
+import LeadForm from '../../components/LeadForm.astro';
+
+const helps = [
+  {
+    title: "Income protection",
+    body: "If you couldn't work tomorrow, how long would the bills wait? We help replace your income so your life keeps running.",
+    icon: `<path d="M12 3 4 6v5.5c0 4.7 3.2 7.8 8 9.5 4.8-1.7 8-4.8 8-9.5V6l-8-3Z" stroke="var(--accent-strong)" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 11.5h6M9 14h6" stroke="var(--accent-strong)" stroke-width="1.7" stroke-linecap="round"/>`,
+  },
+  {
+    title: "Medical & hospital",
+    body: "One hospital stay can wipe out years of savings. Get cover that pays the bill so you can focus on getting better.",
+    icon: `<rect x="4" y="4" width="16" height="16" rx="3" stroke="var(--accent-strong)" stroke-width="1.7"/><path d="M12 8.5v7M8.5 12h7" stroke="var(--accent-strong)" stroke-width="1.7" stroke-linecap="round"/>`,
+  },
+  {
+    title: "Life & family",
+    body: "If something happens to you, your family shouldn't inherit your debts. A simple plan keeps them secure.",
+    icon: `<circle cx="9" cy="8" r="3" stroke="var(--accent-strong)" stroke-width="1.7"/><path d="M3.5 19c0-3 2.5-5 5.5-5s5.5 2 5.5 5" stroke="var(--accent-strong)" stroke-width="1.7" stroke-linecap="round"/><path d="M16 6.5a2.6 2.6 0 0 1 0 5M20.5 19c0-2.4-1.6-4.3-3.9-4.8" stroke="var(--accent-strong)" stroke-width="1.7" stroke-linecap="round"/>`,
+  },
+  {
+    title: "Savings & retirement",
+    body: "EPF alone often isn't enough. Build long-term savings alongside your protection, so your future has a backup plan.",
+    icon: `<path d="M4 20h16" stroke="var(--accent-strong)" stroke-width="1.7" stroke-linecap="round"/><path d="M5 16l4-4 3 3 6-7" stroke="var(--accent-strong)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M18 8h2v2" stroke="var(--accent-strong)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>`,
+  },
+];
+
+const steps = [
+  { n: "01", title: "Enquiry", desc: "Send the short form below. Tell us roughly what you're thinking about — no detail needed yet." },
+  { n: "02", title: "Free consult", desc: "We have a relaxed conversation, in person or over a call. We listen, you ask anything." },
+  { n: "03", title: "Tailored plan", desc: "We come back with options that fit your budget and your life. You decide. No pressure to sign." },
+];
+
+const faqs = [
+  { q: "Is this trustworthy?", a: "Yes. AIA (AIA Berhad) is listed on Bursa Malaysia and has operated here for over 75 years. Your adviser is a licensed insurance agent registered with Bank Negara, not a call centre." },
+  { q: "Who will I be talking to?", a: "A real person — Charles, a licensed AIA agent based in Malaysia. The same person handles your enquiry, your consult, and your plan. No being passed around." },
+  { q: "Is there any cost or obligation?", a: "The enquiry and the consult are completely free, and there is no obligation to buy anything. If nothing fits, that's a perfectly fine outcome." },
+  { q: "I already have insurance. Can you still help?", a: "Yes. We can do a free review of what you already have to check for gaps or overlaps, so you're not over-paying or under-covered." },
+  { q: "How quickly will you reply?", a: "Within 24 hours. You choose your preferred contact time in the form, and we'll reach out on WhatsApp or by call." },
+];
+---
+
+<Layout
+  title="Get covered with a licensed AIA agent in Malaysia | not bad lah."
+  description="Protect your income, your family, and your future. Talk to a real, licensed AIA agent in Malaysia — no pressure, no jargon. Free, no-obligation consultation."
+  canonicalPath="/insure"
+>
+  <Nav active="insure" cta={{ label: "Talk to us", href: "#enquire" }} />
+
+  <!-- ===== HERO ===== -->
+  <section id="hero" class="px-6" style="background: var(--bg); padding-top: clamp(130px, 16vh, 190px); padding-bottom: clamp(48px, 7vh, 80px);">
+    <div class="max-w-3xl mx-auto text-center">
+      <div id="ins-eyebrow" class="inline-flex items-center gap-2 mb-7" style="background: rgba(0,0,0,0.06); border-radius: 999px; padding: 5px 14px; width: fit-content; margin-left:auto; margin-right:auto;">
+        <span style="width:5px;height:5px;border-radius:50%;background:var(--accent-strong);display:inline-block;"></span>
+        <span style="font-size:0.72rem;font-weight:600;color:var(--muted);letter-spacing:0.06em;text-transform:uppercase;">Licensed AIA agents · Malaysia</span>
+      </div>
+
+      <h1 id="ins-h1" style="font-size: clamp(2.3rem, 6.5vw, 4rem); line-height: 1.08; letter-spacing: -0.03em; color: var(--ink); margin-bottom: 20px;">
+        Protect your income,<br/>your family, your future<span style="color: var(--accent-strong);">.</span>
+      </h1>
+
+      <p id="ins-sub" style="font-size: clamp(1rem, 2vw, 1.18rem); color: var(--muted); line-height: 1.75; max-width: 520px; margin: 0 auto 32px;">
+        We're licensed AIA agents in Malaysia. Talk to a real person who explains things in plain language. No pressure, no jargon.
+      </p>
+
+      <div id="ins-cta" class="flex flex-wrap gap-3 justify-center">
+        <a href="#enquire" class="inline-block px-7 py-3.5 rounded-full font-semibold text-sm transition-all hover:scale-105" style="background: var(--ink); color: #fff;">
+          Talk to us — it's free
+        </a>
+        <a href="#how" class="inline-block px-7 py-3.5 rounded-full font-semibold text-sm transition-all" style="border: 1.5px solid rgba(0,0,0,0.2); color: var(--ink);">
+          How it works
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WHAT WE HELP YOU WITH ===== -->
+  <section id="help" class="px-6 py-20" style="background: var(--bg-soft);">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-12 fade-up">
+        <p style="color:var(--accent-strong);font-size:0.875rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;">What we help you with</p>
+        <h2 style="font-size: clamp(1.75rem, 4vw, 2.8rem); line-height: 1.15; color: var(--ink);">Real life, covered.</h2>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        {helps.map((h) => (
+          <Card class="fade-up p-8" rounded="rounded-2xl" style="background: var(--bg);">
+            <div style="width:48px;height:48px;border-radius:12px;background:var(--accent-tint);display:flex;align-items:center;justify-content:center;margin-bottom:18px;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" set:html={h.icon}></svg>
+            </div>
+            <h3 style="font-family:'Space Grotesk',sans-serif;font-size:1.2rem;font-weight:700;color:var(--ink);margin-bottom:8px;">{h.title}</h3>
+            <p style="font-size:0.92rem;color:var(--muted);line-height:1.7;">{h.body}</p>
+          </Card>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== HOW IT WORKS ===== -->
+  <section id="how" class="px-6 py-20" style="background: var(--bg);">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-12 fade-up">
+        <p style="color:var(--accent-strong);font-size:0.875rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;">How it works</p>
+        <h2 style="font-size: clamp(1.75rem, 4vw, 2.8rem); line-height: 1.15; color: var(--ink);">Three easy steps. No pressure.</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        {steps.map((s, i) => (
+          <Card class="fade-up p-7" rounded="rounded-xl" style={`background: var(--bg-soft); animation-delay: ${i * 0.1}s;`}>
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:0.75rem;font-weight:700;color:var(--accent-strong);letter-spacing:0.1em;margin-bottom:14px;">STEP {s.n}</div>
+            <h3 style="font-family:'Space Grotesk',sans-serif;font-size:1.2rem;font-weight:700;color:var(--ink);margin-bottom:8px;">{s.title}</h3>
+            <p style="font-size:0.9rem;color:var(--muted);line-height:1.7;">{s.desc}</p>
+          </Card>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ENQUIRE (LeadForm) ===== -->
+  <section id="enquire" class="px-6 py-20" style="background: var(--bg-soft);">
+    <div class="max-w-2xl mx-auto">
+      <div class="text-center mb-10 fade-up">
+        <p style="color:var(--accent-strong);font-size:0.875rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;">Get started</p>
+        <h2 style="font-size:clamp(1.75rem,4vw,2.8rem);line-height:1.15;color:var(--ink);">Tell us what you're thinking about.</h2>
+        <p style="color:var(--muted);margin-top:12px;font-size:0.95rem;">No detail needed yet. We'll reach out within 24 hours to set up a free, no-obligation chat.</p>
+      </div>
+
+      <div class="fade-up">
+        <LeadForm
+          variant="client"
+          submitLabel="Send my enquiry"
+          successMessage="Done! We'll reach out within 24 hours to set up your free consult."
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TRUST + FAQ ===== -->
+  <section id="faq" class="px-6 py-20" style="background: var(--bg);">
+    <div class="max-w-3xl mx-auto">
+      <!-- Trust strip -->
+      <div class="fade-up grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-8 text-center mb-16">
+        {[
+          { label: "AIA Malaysia", sub: "Our principal" },
+          { label: "Bursa-listed", sub: "AIA Berhad, public company" },
+          { label: "75+ years", sub: "Operating in Malaysia" },
+          { label: "Licensed", sub: "Registered with Bank Negara" },
+        ].map((t) => (
+          <div>
+            <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(1rem,2vw,1.15rem);color:var(--ink);">{t.label}</div>
+            <div style="font-size:0.76rem;color:var(--muted-2);margin-top:4px;line-height:1.5;">{t.sub}</div>
+          </div>
+        ))}
+      </div>
+
+      <div class="text-center mb-10 fade-up">
+        <p style="color:var(--accent-strong);font-size:0.875rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;">Real talk</p>
+        <h2 style="font-size:clamp(1.75rem,4vw,2.8rem);line-height:1.15;color:var(--ink);">Your questions. Honest answers.</h2>
+      </div>
+
+      <div class="flex flex-col gap-3">
+        {faqs.map((item, i) => (
+          <Card class="faq-item fade-up overflow-hidden" rounded="rounded-xl" style={`background: var(--bg-soft); animation-delay: ${i * 0.05}s;`}>
+            <button class="faq-toggle w-full flex justify-between items-center p-6 text-left"
+              style="background: none; border: none; color: var(--ink); cursor: pointer; font-family: 'Space Grotesk', sans-serif;">
+              <span style="font-size:1rem;font-weight:600;">{item.q}</span>
+              <span class="faq-icon ml-4 flex-shrink-0" style="color: var(--accent-strong); font-size: 1.2rem; transition: transform 0.3s;">+</span>
+            </button>
+            <div class="faq-answer" style="max-height:0;overflow:hidden;transition:max-height 0.4s ease;">
+              <p style="padding:0 24px 24px;color:var(--muted);font-size:0.92rem;line-height:1.8;">{item.a}</p>
+            </div>
+          </Card>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Hero entrance
+  gsap.timeline({ delay: 0.1 })
+    .fromTo('#ins-eyebrow', { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' })
+    .fromTo('#ins-h1',      { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.9, ease: 'power4.out' }, '-=0.35')
+    .fromTo('#ins-sub',     { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }, '-=0.5')
+    .fromTo('#ins-cta',     { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }, '-=0.45');
+
+  // Scroll-triggered fade-ups
+  gsap.utils.toArray<HTMLElement>('.fade-up').forEach((el) => {
+    gsap.fromTo(el,
+      { opacity: 0, y: 40 },
+      {
+        opacity: 1, y: 0, duration: 0.7, ease: 'power3.out',
+        scrollTrigger: { trigger: el, start: 'top 90%', toggleActions: 'play none none none' }
+      }
+    );
+  });
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-toggle').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const answer = item?.querySelector('.faq-answer') as HTMLElement;
+      const icon = btn.querySelector('.faq-icon') as HTMLElement;
+      const isOpen = !!answer?.style.maxHeight && answer.style.maxHeight !== '0px';
+
+      document.querySelectorAll('.faq-answer').forEach((a) => { (a as HTMLElement).style.maxHeight = '0'; });
+      document.querySelectorAll('.faq-icon').forEach((i) => { (i as HTMLElement).style.transform = 'rotate(0)'; (i as HTMLElement).textContent = '+'; });
+
+      if (!isOpen && answer) {
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+        if (icon) icon.style.transform = 'rotate(45deg)';
+      }
+    });
+  });
+</script>

@@ -2,13 +2,14 @@ name = "notbadlah"
 compatibility_date = "2024-01-01"
 pages_build_output_dir = "dist"
 
-# D1 Database binding
-# After creating the DB (see SETUP.md), paste the database_id here
+# Single D1 database for ALL lead types (client | part_time | full_time).
+# The /api/lead function writes to this one binding.
 [[d1_databases]]
 binding = "NOTBADLAH_DB"
 database_name = "notbadlah-db"
 database_id = "4d59907f-c579-494a-bfad-cb9a37c62f8b"
 
-# Environment variables (set sensitive ones in Cloudflare Pages dashboard, not here)
-# RESEND_API_KEY   — Resend.com API key
-# NOTIFY_EMAIL     — Email to send lead notifications to (default: shazemeen@gmail.com)
+# Environment variables (set the sensitive ones in the Cloudflare Pages
+# dashboard, NOT here):
+#   RESEND_API_KEY — Resend.com API key
+#   NOTIFY_EMAIL   — Lead notification recipient (default: shazemeen@gmail.com)

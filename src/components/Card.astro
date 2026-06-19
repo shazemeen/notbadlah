@@ -1,0 +1,23 @@
+---
+/**
+ * Unified card component. Renders a <div> by default, or an <a> when `href`
+ * is passed. Theming is inherited from the nearest [data-theme] via the
+ * `.card` class (CSS variables), so the same component is yellow on default
+ * pages and gold on full-time pages.
+ *
+ * Extra attributes (style, data-*, id, ...) are forwarded to the element.
+ */
+interface Props {
+  href?: string;
+  class?: string;
+  rounded?: string; // tailwind rounding utility, e.g. "rounded-2xl"
+  [key: string]: any;
+}
+
+const { href, class: className = "", rounded = "rounded-2xl", ...rest } = Astro.props;
+const Tag = href ? "a" : "div";
+---
+
+<Tag class:list={["card", rounded, className]} href={href} {...rest}>
+  <slot />
+</Tag>

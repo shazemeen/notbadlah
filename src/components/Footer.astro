@@ -1,0 +1,37 @@
+---
+/**
+ * Shared footer with cross-links between all four sections of the unified
+ * site. Theme-aware via CSS variables.
+ */
+const year = 2026;
+
+const sections = [
+  { label: "Get covered", href: "/insure" },
+  { label: "Part-time income", href: "/part-time" },
+  { label: "Full-time career", href: "/full-time" },
+];
+---
+
+<footer class="py-12 px-6" style="border-top: 1px solid var(--border); background: var(--bg);">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+    <a href="/" class="font-bold text-lg" style="font-family: 'Space Grotesk', sans-serif; color: var(--ink); text-decoration: none;">
+      not<span style="color: var(--accent-strong);">bad</span>lah<span style="color: var(--accent-strong);">.</span>com
+    </a>
+
+    <nav class="flex flex-wrap items-center justify-center gap-5">
+      {sections.map((s) => (
+        <a
+          href={s.href}
+          style="color: var(--muted-2); font-size: 0.8rem; text-decoration: none; transition: color 0.2s;"
+          onmouseover="this.style.color='var(--ink)'"
+          onmouseout="this.style.color='var(--muted-2)'"
+        >
+          {s.label}
+        </a>
+      ))}
+      <span style="color: #ddd; font-size: 0.8rem;">An authorised AIA agency in Malaysia.</span>
+    </nav>
+
+    <p style="color: #ccc; font-size: 0.75rem;">&copy; {year} notbadlah.com</p>
+  </div>
+</footer>
