@@ -24,7 +24,7 @@
    COLOUR Empowering teal bands, white page, kunyit gold for bonuses and wins, rice panels
    TYPE Hanken Grotesk throughout, heavy weights for the money
    LAYOUT laptop: teal band with finding, figures and goal; controls left, chart and your month right; staircase band; tables. Phone: title, chart, controls */
-:root{color-scheme:light dark;--bg:light-dark(#ffffff,#0b1617);--ink:light-dark(#0E1A1B,#E9F0EE);--soft:light-dark(#4D5B5C,#A9BAB7);--line:light-dark(#E2DDD3,#22393A);--panel:light-dark(#F5F2EC,#112223);--teal:#0D4448;--band:light-dark(#0D4448,#0a3134);--deep:light-dark(#08302F,#061f20);--c1:light-dark(#0D4448,#5FB3AA);--c3:#D99A2B;--c4:light-dark(#F0CB78,#F2D38E);--gold:#E8B04A;--hit:light-dark(#D7EDDC,#1d3b28);--hitink:light-dark(#1E5B36,#9fd7ae);--miss:light-dark(#9AA3A3,#5c6b6b)}
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#0b1617);--ink:light-dark(#0E1A1B,#E9F0EE);--soft:light-dark(#4D5B5C,#A9BAB7);--line:light-dark(#E2DDD3,#22393A);--panel:light-dark(#F5F2EC,#112223);--teal:#0D4448;--band:light-dark(#0D4448,#0a3134);--deep:light-dark(#08302F,#061f20);--c1:light-dark(#0D4448,#7CC7BE);--r2:light-dark(#22706E,#57A79F);--r3:light-dark(#3E8F8A,#3E8A83);--r4:light-dark(#66AEA7,#2C6E69);--r5:light-dark(#9CCFC8,#1F5551);--c3:#D99A2B;--c4:light-dark(#F0CB78,#F2D38E);--gold:#E8B04A;--hit:light-dark(#D7EDDC,#1d3b28);--hitink:light-dark(#1E5B36,#9fd7ae);--miss:light-dark(#9AA3A3,#5c6b6b)}
 :root[data-theme=light]{color-scheme:light}
 :root[data-theme=dark]{color-scheme:dark}
 *{box-sizing:border-box;min-width:0}
@@ -164,8 +164,8 @@ dl.words dd{margin:0;font-size:15px}
 
 <div class="chart">
 <h2>Your pay, month by month, for five years</h2>
-<p>Point at a bar for the detail.</p>
-<div class="legend"><span><i style="background:var(--c1)"></i>Commission + BSC</span><span><i style="background:var(--c3)"></i>NGM bonus</span><span><i style="background:var(--c4)"></i>Ascend bonus</span><span><i class="dash"></i><span id="lg-goal">Goal</span></span></div>
+<p>The teal layers are commission + BSC: new business at the bottom, then each year of renewals stacking on top. Point at a bar for the detail.</p>
+<div class="legend"><span><i style="background:var(--c1)"></i>New business</span><span><i style="background:var(--r2)"></i>Year 2 renewals</span><span><i style="background:var(--r3)"></i>Year 3</span><span><i style="background:var(--r4)"></i>Year 4</span><span><i style="background:var(--r5)"></i>Year 5</span><span><i style="background:var(--c3)"></i>NGM bonus</span><span><i style="background:var(--c4)"></i>Ascend bonus</span><span><i class="dash"></i><span id="lg-goal">Goal</span></span></div>
 <div class="fig" id="fig"><svg id="svg" role="img" aria-label="Monthly pay over five years"></svg><div class="tip" id="tip"></div></div>
 <p class="note" id="endnote"></p>
 </div>
@@ -265,7 +265,7 @@ const RIN={th:[5000,4000,3000,2000,1000],pay:[[3600,2800,2000,1200,400],[2600,20
 const ASC=[[750000,8,6,8],[600000,7,5,7],[450000,4,4,6],[300000,3,2,4],[150000,2,2,3],[80000,1,0,0]];
 function model(o){
   const H=60,N=H+1,earn=[],pay=[];
-  for(let t=0;t<=N;t++)earn.push({c:0,b:0,p:0}),pay.push({c:0,b:0,p:0,a:0});
+  for(let t=0;t<=N;t++)earn.push({c:0,b:0,p:0,y:[0,0,0,0,0]}),pay.push({c:0,b:0,p:0,a:0,y:[0,0,0,0,0]});
   const cy=t=>o.sy+Math.floor((o.sm+t)/12),A=[];
   for(let c=0;c<H;c++)A.push(o.pols*o.prem*Math.pow(1+o.grow,Math.floor(c/12)));
   const col={};
@@ -273,7 +273,7 @@ function model(o){
     const py=Math.floor((t-c)/12)+1,f=Math.pow(o.keep,py-1);
     let amt=A[c]*o.mon/12*f;if((t-c)%12===0)amt+=A[c]*(1-o.mon)*f;
     if(!amt)continue;
-    earn[t].c+=amt*rc(py);earn[t].b+=amt*rb(py);
+    earn[t].c+=amt*rc(py);earn[t].b+=amt*rb(py);earn[t].y[Math.min(py,5)-1]+=amt*(rc(py)+rb(py));
     const k=cy(t)+'|'+cy(c)+'|'+py;col[k]=(col[k]||0)+amt;
   }
   const P=o.prog==='ngm'?NGM:RIN,tierAt=[];let streak=0;
@@ -283,7 +283,7 @@ function model(o){
     if(o.prog==='rin'){streak=b>0?(c%3===0?1:streak+1):0;if(streak===2)b+=200;if(streak===3)b+=500;}
     earn[c].p+=b;tierAt.push(ti);
   }
-  for(let t=1;t<H;t++){pay[t].c=earn[t-1].c;pay[t].b=earn[t-1].b;pay[t].p=earn[t-1].p;}
+  for(let t=1;t<H;t++){pay[t].c=earn[t-1].c;pay[t].b=earn[t-1].b;pay[t].p=earn[t-1].p;pay[t].y=earn[t-1].y.slice();}
   const asc=[];
   for(let Y=o.sy;Y<=cy(H-1);Y++){
     let anp=0;for(let c=0;c<H;c++)if(cy(c)===Y)anp+=A[c];
@@ -294,7 +294,7 @@ function model(o){
     if(t<H)pay[t].a+=amt;
     asc.push({Y,anp,nlp,r,amt,t});
   }
-  const rows=pay.slice(0,H).map((p,t)=>({...p,cb:p.c+p.b,reg:p.c+p.b+p.p,tot:p.c+p.b+p.p+p.a}));
+  const rows=pay.slice(0,H).map((p,t)=>({...p,cb:p.c+p.b,y1:p.y[0],y2:p.y[1],y3:p.y[2],y4:p.y[3],y5:p.y[4],ren:p.y[1]+p.y[2]+p.y[3]+p.y[4],reg:p.c+p.b+p.p,tot:p.c+p.b+p.p+p.a}));
   return {rows,asc,A,tierAt,first:earn[0]};
 }
 // MODEL END
@@ -337,7 +337,8 @@ function render(){
   $('nextpay').innerHTML=`Next month you are paid <b>${RM(f.c+f.b)}</b> commission + BSC plus <b>${RM(b0)}</b> ${pname} bonus: <b>${RM(f.c+f.b+b0)}</b>.`+(o.mon>0?` Each month after, commission + BSC grows by about ${RM(cm)} as each new month's clients start paying.`:'');
   $('m-warn').innerHTML=o.pols<P.min?`<span class="warn">${pname} needs at least ${P.min} policies a month, so no monthly bonus is paid at ${o.pols}.</span>`:tier<0?`<span class="warn">${RM(afyc)} AFYC is below the lowest tier of ${RM(P.th[4])}.</span>`:'';
   {const L=P.len,prev=rows[L].reg,aft=rows[L+1].reg,back=rows.findIndex((r,i)=>i>L+1&&r.reg>=prev);
-   $('endnote').textContent=prev>aft?`When ${pname} ends, the last bonus is paid in ${label(o,L)}. Commission + BSC keeps rising (${RM(rows[L].cb)} to ${RM(rows[L+1].cb)}), but total pay steps down from ${RM(prev)} to ${RM(aft)} because the ${RM(rows[L].p)} bonus stops.${back>0?` It is back above ${RM(prev)} by ${label(o,back)}.`:''}`:`When ${pname} ends in ${label(o,L)}, commission + BSC already covers the bonus, so pay keeps rising.`;}
+   const alt=o.mon>0?model(Object.assign({},o,{mon:0})).rows:null,altStep=alt?alt[L].reg-alt[L+1].reg:0;
+   $('endnote').textContent=prev>aft?`When ${pname} ends, the last bonus is paid in ${label(o,L)}. Commission + BSC keeps rising (${RM(rows[L].cb)} to ${RM(rows[L+1].cb)}), but total pay steps down from ${RM(prev)} to ${RM(aft)} because the ${RM(rows[L].p)} bonus stops.${back>0?` It is back above ${RM(prev)} by ${label(o,back)}.`:''}${alt?(altStep>0?` Clients who pay yearly shrink this step: if they all did, it would be ${RM(altStep)}.`:` If clients paid yearly, there would be no step at all.`):''}`:`When ${pname} ends in ${label(o,L)}, commission + BSC already covers the bonus, so pay keeps rising.`;}
   // stairs
   const steps=[4,3,2,1,0].map(i=>{const ap=P.th[i]*4,r=model(Object.assign({},o,{prem:ap/o.pols})).rows,cb=r.slice(1,25).reduce((s,x)=>s+x.cb,0),bn=r.slice(1,25).reduce((s,x)=>s+x.p,0);return{i,ap,cb,bn,tot:cb+bn}}),maxT=Math.max(...steps.map(x=>x.tot));
   $('stairs').innerHTML=steps.map(({i,ap,cb,bn,tot})=>{const here=i===tier&&o.pols>=P.min,cls=here?'here':tier>=0&&i>tier?'done':'locked',hgt=150+Math.round(tot/maxT*170);
@@ -346,9 +347,9 @@ function render(){
   const lt=CR.reduce((s,c,i)=>s+c+(i<3?BR[i]:0),0);
   $('ladder').innerHTML=[1,2,3,4,5,6].map(y=>{const c=CR[y-1]+(y<=3?BR[y-1]:0);return`<div class="rung"><span>Year ${y}</span><span class="bar"><i style="width:${c*3.6}%"></i></span><em>${c}%</em></div>`}).join('')+`<div class="rung" style="border-top:2px solid var(--ink);padding-top:8px"><span><b>Total</b></span><span>Years 1 to 6, on one ${RM(o.prem)}-a-year client: <b>${RM(o.prem*lt/100)}</b></span><em>${lt}%</em></div>`;
   // years
-  const yr=[0,1,2,3,4].map(i=>{const a=i*12,b=a+12;return[`Year ${i+1} · ${label(o,a)}`,sum(a,b,'cb'),sum(a,b,'p'),sum(a,b,'a'),sum(a,b,'tot'),sum(a,b,'tot')/12]});
-  const tot=['All five years',...[1,2,3,4].map(j=>yr.reduce((s,r)=>s+r[j],0)),sum(0,60,'tot')/60];
-  $('years').innerHTML=`<tr><th>Pay year</th><th>Commission + BSC</th><th>${pname}</th><th>Ascend</th><th>Total</th><th>A month</th></tr>`+yr.map(r=>`<tr><td>${r[0]}</td>${r.slice(1).map(v=>`<td>${v?RM(v):'–'}</td>`).join('')}</tr>`).join('')+`<tr class="tot"><td>${tot[0]}</td>${tot.slice(1).map(v=>`<td>${RM(v)}</td>`).join('')}</tr>`;
+  const yr=[0,1,2,3,4].map(i=>{const a=i*12,b=a+12;return[`Year ${i+1} · ${label(o,a)}`,sum(a,b,'y1'),sum(a,b,'ren'),sum(a,b,'p'),sum(a,b,'a'),sum(a,b,'tot'),sum(a,b,'tot')/12]});
+  const tot=['All five years',...[1,2,3,4,5].map(j=>yr.reduce((s,r)=>s+r[j],0)),sum(0,60,'tot')/60];
+  $('years').innerHTML=`<tr><th>Pay year</th><th>New business</th><th>Renewals</th><th>${pname}</th><th>Ascend</th><th>Total</th><th>A month</th></tr>`+yr.map(r=>`<tr><td>${r[0]}</td>${r.slice(1).map(v=>`<td>${v?RM(v):'–'}</td>`).join('')}</tr>`).join('')+`<tr class="tot"><td>${tot[0]}</td>${tot.slice(1).map(v=>`<td>${RM(v)}</td>`).join('')}</tr>`;
   $('asc-note').textContent='Ascend: '+R.asc.map(a=>`${a.Y} sales of ${RM(a.anp)}${a.r?` reach the ${a.r[0]/1000}K tier${a.nlp?' (70% rule)':''}, paying ${RM(a.amt)} ${a.t<60?'in '+label(o,a.t):'after year five'}`:' are below the lowest tier'}`).join('; ')+'.';
   draw();
 }
@@ -360,7 +361,7 @@ function draw(){
   for(let v=0;v<=top;v+=step)g+=`<line x1="${m.l}" x2="${W-m.r}" y1="${y(v)}" y2="${y(v)}" stroke="var(--line)"/><text x="${m.l-6}" y="${y(v)+4}" text-anchor="end">${v?(narrow?v/1000+'K':'RM'+v/1000+'K'):'0'}</text>`;
   const L=o.prog==='ngm'?24:12,xe=m.l+bw*(L+1);
   g+=`<line x1="${xe}" x2="${xe}" y1="${m.t-14}" y2="${m.t+ih}" stroke="var(--soft)" stroke-dasharray="2 4"/><text x="${xe+5}" y="${m.t-4}">${o.prog==='ngm'?'NGM':'RintiZ'} ends</text>`;
-  rows.forEach((r,i)=>{let base=0;const x=m.l+i*bw+bw*.12,w=Math.max(1,bw*.76);[['cb','--c1'],['p','--c3'],['a','--c4']].forEach(([k,c])=>{const v=r[k];if(v>0){g+=`<rect class="b" x="${x}" width="${w}" y="${y(base+v)}" height="${Math.max(0,y(base)-y(base+v))}" fill="var(${c})"/>`;base+=v;}});});
+  rows.forEach((r,i)=>{let base=0;const x=m.l+i*bw+bw*.12,w=Math.max(1,bw*.76);[['y1','--c1'],['y2','--r2'],['y3','--r3'],['y4','--r4'],['y5','--r5'],['p','--c3'],['a','--c4']].forEach(([k,c])=>{const v=r[k];if(v>0){g+=`<rect class="b" x="${x}" width="${w}" y="${y(base+v)}" height="${Math.max(0,y(base)-y(base+v))}" fill="var(${c})"/>`;base+=v;}});});
   for(let i=0;i<60;i+=12)g+=`<text x="${m.l+i*bw}" y="${H-8}">${narrow?'Y'+(i/12+1):label(o,i)}</text>`;
   g+=`<line x1="${m.l}" x2="${W-m.r}" y1="${y(target)}" y2="${y(target)}" stroke="var(--c3)" stroke-width="2" stroke-dasharray="6 4"/>`;
   const pins=[],tk=rows.findIndex(r=>r.reg>=10000),st=stayFrom(rows,target);
@@ -375,7 +376,7 @@ function tipAt(ev){
   if(!last)return;const s=$('svg'),{m,bw}=s._m||{},rect=s.getBoundingClientRect(),x=ev.clientX-rect.left,i=Math.floor((x-m.l)/bw),tip=$('tip'),hov=$('hov');
   if(!m||i<0||i>59){tip.style.display='none';if(hov)hov.setAttribute('opacity',0);return}
   const {o,R}=last,r=R.rows[i],P=o.prog==='ngm'?NGM:RIN,pn=o.prog==='ngm'?'NGM bonus':'RintiZ bonus',t=i>0?R.tierAt[i-1]:-1;
-  tip.innerHTML=`<b>${label(o,i)} · month ${i+1}</b><div><span>Commission + BSC</span><span>${RM(r.cb)}</span></div>${r.p?`<div><span>${pn}${t>=0?' ('+RM(P.th[t])+' tier)':''}</span><span>${RM(r.p)}</span></div>`:''}${r.a?`<div><span>Ascend bonus</span><span>${RM(r.a)}</span></div>`:''}<div class="t"><span>Paid this month</span><span>${RM(r.tot)}</span></div>`;
+  tip.innerHTML=`<b>${label(o,i)} · month ${i+1}</b><div><span>New business</span><span>${RM(r.y1)}</span></div>${[2,3,4,5].filter(k=>r['y'+k]>0.5).map(k=>`<div><span>Year ${k} renewals</span><span>${RM(r['y'+k])}</span></div>`).join('')}${r.p?`<div><span>${pn}${t>=0?' ('+RM(P.th[t])+' tier)':''}</span><span>${RM(r.p)}</span></div>`:''}${r.a?`<div><span>Ascend bonus</span><span>${RM(r.a)}</span></div>`:''}<div class="t"><span>Paid this month</span><span>${RM(r.tot)}</span></div>`;
   tip.style.display='block';const tw=tip.offsetWidth,fx=x+14+tw>rect.width?x-14-tw:x+14;tip.style.left=Math.max(0,fx)+'px';tip.style.top='8px';
   if(hov){hov.setAttribute('x',m.l+i*bw);hov.setAttribute('opacity',.07)}
 }
