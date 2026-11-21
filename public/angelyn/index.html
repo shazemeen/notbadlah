@@ -167,7 +167,6 @@ dl.words dd{margin:0;font-size:15px}
 <p>The teal layers are commission + BSC: new business at the bottom, then each year of renewals stacking on top. Point at a bar for the detail.</p>
 <div class="legend"><span><i style="background:var(--c1)"></i>New business</span><span><i style="background:var(--r2)"></i>Year 2 renewals</span><span><i style="background:var(--r3)"></i>Year 3</span><span><i style="background:var(--r4)"></i>Year 4</span><span><i style="background:var(--r5)"></i>Year 5</span><span><i style="background:var(--c3)"></i>NGM bonus</span><span><i style="background:var(--c4)"></i>Ascend bonus</span><span><i class="dash"></i><span id="lg-goal">Goal</span></span></div>
 <div class="fig" id="fig"><svg id="svg" role="img" aria-label="Monthly pay over five years"></svg><div class="tip" id="tip"></div></div>
-<p class="note" id="endnote"></p>
 </div>
 
 <div class="month">
@@ -334,11 +333,8 @@ function render(){
   // month panel
   $('m-intro').textContent=`${o.pols} ${o.pols===1?'policy':'policies'} × ${RM(o.prem)} = ${RM(afyp)} AFYP this month. At 25%, that is ${RM(afyc)} AFYC`+(tier>=0&&o.pols>=P.min?`, which reaches the ${RM(P.th[tier])} ${pname} tier.`:'.');
   const f=R.first,b0=rows[1].p,cm=afyp*o.mon/12*.25;
-  $('nextpay').innerHTML=`Next month you are paid <b>${RM(f.c+f.b)}</b> commission + BSC plus <b>${RM(b0)}</b> ${pname} bonus: <b>${RM(f.c+f.b+b0)}</b>.`+(o.mon>0?` Monthly payers pay two months when they sign up, so you are paid on both straight away; their monthly payments then resume from month 3. After that, commission + BSC grows by about ${RM(cm)} a month as each new month's clients start paying.`:'');
+  $('nextpay').innerHTML=`Next month you are paid <b>${RM(f.c+f.b)}</b> commission + BSC plus <b>${RM(b0)}</b> ${pname} bonus: <b>${RM(f.c+f.b+b0)}</b>.`;
   $('m-warn').innerHTML=o.pols<P.min?`<span class="warn">${pname} needs at least ${P.min} policies a month, so no monthly bonus is paid at ${o.pols}.</span>`:tier<0?`<span class="warn">${RM(afyc)} AFYC is below the lowest tier of ${RM(P.th[4])}.</span>`:'';
-  {const L=P.len,prev=rows[L].reg,aft=rows[L+1].reg,back=rows.findIndex((r,i)=>i>L+1&&r.reg>=prev);
-   const alt=o.mon>0?model(Object.assign({},o,{mon:0})).rows:null,altStep=alt?alt[L].reg-alt[L+1].reg:0;
-   $('endnote').textContent=prev>aft?`When ${pname} ends, the last bonus is paid in ${label(o,L)}. Commission + BSC keeps rising (${RM(rows[L].cb)} to ${RM(rows[L+1].cb)}), but total pay steps down from ${RM(prev)} to ${RM(aft)} because the ${RM(rows[L].p)} bonus stops.${back>0?` It is back above ${RM(prev)} by ${label(o,back)}.`:''}${alt?(altStep>0?` Clients who pay yearly shrink this step: if they all did, it would be ${RM(altStep)}.`:` If clients paid yearly, there would be no step at all.`):''}`:`When ${pname} ends in ${label(o,L)}, commission + BSC already covers the bonus, so pay keeps rising.`;}
   // stairs
   const steps=[4,3,2,1,0].map(i=>{const ap=P.th[i]*4,r=model(Object.assign({},o,{prem:ap/o.pols})).rows,cb=r.slice(1,25).reduce((s,x)=>s+x.cb,0),bn=r.slice(1,25).reduce((s,x)=>s+x.p,0);return{i,ap,cb,bn,tot:cb+bn}}),maxT=Math.max(...steps.map(x=>x.tot));
   $('stairs').innerHTML=steps.map(({i,ap,cb,bn,tot})=>{const here=i===tier&&o.pols>=P.min,cls=here?'here':tier>=0&&i>tier?'done':'locked',hgt=150+Math.round(tot/maxT*170);
