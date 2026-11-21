@@ -247,7 +247,7 @@ dl.words dd{margin:0;font-size:15px}
 <h2>How this is worked out</h2>
 <ul class="facts">
 <li>Commission + BSC rates are from the Agency Compensation Handbook v7.4 (March 2023), investment-linked regular premium, 20 years or more. Year 1 is 17.5% + 7.5%, year 2 is 12.5% + 12.5%, year 3 is 10% + 9%; the BSC table stops at year 3, so years 4 to 6 are commission only. BSC is taken at a 100% score.</li>
-<li>Commission + BSC is paid on premiums collected, the month after they are collected. A monthly payer pays you a twelfth each month; a yearly payer pays you the full year up front.</li>
+<li>Commission + BSC is paid on premiums collected, the month after they are collected. A monthly payer pays two months when they sign up, then monthly again from month 3; a yearly payer pays the full year up front.</li>
 <li>Programme bonus is paid the month after. A steady plan never needs the quarterly catch-up.</li>
 <li>Ascend follows the handbook's Ascend rules, assumed to carry on each year: paid every February on the year before, using that year's total sales. New Life Planners need only 70% of each tier in their first two calendar years. Only premiums collected within each year are counted, to stay conservative.</li>
 <li>This is a projection of one steady plan, not a promise. Actual pay depends on policies being validated and kept in force.</li>
@@ -269,12 +269,12 @@ function model(o){
   const cy=t=>o.sy+Math.floor((o.sm+t)/12),A=[];
   for(let c=0;c<H;c++)A.push(o.pols*o.prem*Math.pow(1+o.grow,Math.floor(c/12)));
   const col={};
+  // Monthly payers pay instalments 1 and 2 at sign-up, nothing the next month, then one a month from month 3.
   for(let c=0;c<H;c++)for(let t=c;t<N;t++){
-    const py=Math.floor((t-c)/12)+1,f=Math.pow(o.keep,py-1);
-    let amt=A[c]*o.mon/12*f;if((t-c)%12===0)amt+=A[c]*(1-o.mon)*f;
-    if(!amt)continue;
-    earn[t].c+=amt*rc(py);earn[t].b+=amt*rb(py);earn[t].y[Math.min(py,5)-1]+=amt*(rc(py)+rb(py));
-    const k=cy(t)+'|'+cy(c)+'|'+py;col[k]=(col[k]||0)+amt;
+    const add=(amt,py)=>{if(!amt)return;earn[t].c+=amt*rc(py);earn[t].b+=amt*rb(py);earn[t].y[Math.min(py,5)-1]+=amt*(rc(py)+rb(py));const k=cy(t)+'|'+cy(c)+'|'+py;col[k]=(col[k]||0)+amt;};
+    const d=t-c;
+    if(o.mon>0)for(const k of (d===0?[1,2]:d===1?[]:[d+1])){const py=Math.floor((k-1)/12)+1;add(A[c]*o.mon/12*Math.pow(o.keep,py-1),py);}
+    if(o.mon<1&&d%12===0){const py=d/12+1;add(A[c]*(1-o.mon)*Math.pow(o.keep,py-1),py);}
   }
   const P=o.prog==='ngm'?NGM:RIN,tierAt=[];let streak=0;
   for(let c=0;c<H;c++){
@@ -334,7 +334,7 @@ function render(){
   // month panel
   $('m-intro').textContent=`${o.pols} ${o.pols===1?'policy':'policies'} × ${RM(o.prem)} = ${RM(afyp)} AFYP this month. At 25%, that is ${RM(afyc)} AFYC`+(tier>=0&&o.pols>=P.min?`, which reaches the ${RM(P.th[tier])} ${pname} tier.`:'.');
   const f=R.first,b0=rows[1].p,cm=afyp*o.mon/12*.25;
-  $('nextpay').innerHTML=`Next month you are paid <b>${RM(f.c+f.b)}</b> commission + BSC plus <b>${RM(b0)}</b> ${pname} bonus: <b>${RM(f.c+f.b+b0)}</b>.`+(o.mon>0?` Each month after, commission + BSC grows by about ${RM(cm)} as each new month's clients start paying.`:'');
+  $('nextpay').innerHTML=`Next month you are paid <b>${RM(f.c+f.b)}</b> commission + BSC plus <b>${RM(b0)}</b> ${pname} bonus: <b>${RM(f.c+f.b+b0)}</b>.`+(o.mon>0?` Monthly payers pay two months when they sign up, so you are paid on both straight away; their monthly payments then resume from month 3. After that, commission + BSC grows by about ${RM(cm)} a month as each new month's clients start paying.`:'');
   $('m-warn').innerHTML=o.pols<P.min?`<span class="warn">${pname} needs at least ${P.min} policies a month, so no monthly bonus is paid at ${o.pols}.</span>`:tier<0?`<span class="warn">${RM(afyc)} AFYC is below the lowest tier of ${RM(P.th[4])}.</span>`:'';
   {const L=P.len,prev=rows[L].reg,aft=rows[L+1].reg,back=rows.findIndex((r,i)=>i>L+1&&r.reg>=prev);
    const alt=o.mon>0?model(Object.assign({},o,{mon:0})).rows:null,altStep=alt?alt[L].reg-alt[L+1].reg:0;
