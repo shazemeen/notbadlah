@@ -1,11 +1,13 @@
 /**
  * Host-based routing for personal planner pages.
- * angelyn.notbadlah.com/ serves the static page at /angelyn/.
+ * angelyn.notbadlah.com/ serves the static page at /angelyn/,
+ * sally.notbadlah.com/ serves the static page at /sally/.
  * Every other host and path passes straight through.
  * Paired with public/_routes.json so this only runs on "/" and /api/*.
  */
 const HOSTS = {
   'angelyn.notbadlah.com': '/angelyn/',
+  'sally.notbadlah.com': '/sally/',
 };
 
 export async function onRequest(context) {
