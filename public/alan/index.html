@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Commission, NGM bonus and Ascend, month by month for five years.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://alan.notbadlah.com/">
+<meta property="og:title" content="Alan’s income planner">
+<meta property="og:description" content="Commission, NGM bonus and Ascend, month by month for five years.">
+<meta property="og:image" content="https://notbadlah.com/alan/og2.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Your income, built one month at a time">
+<meta name="twitter:card" content="summary_large_image">
+<title>Alan's income planner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* VOICE work, with a pulse: a money tool for a careful first-time planner, exact but encouraging
+   IDEA a staircase of bonus tiers and a pay statement that keeps stacking
+   PICTURE 60 monthly bars climbing to a target line with milestone pins, then a gold staircase of tiers
+   COLOUR Empowering teal bands, white page, kunyit gold for bonuses and wins, rice panels
+   TYPE Hanken Grotesk throughout, heavy weights for the money
+   LAYOUT laptop: teal band with finding, figures and goal; controls left, chart and your month right; staircase band; tables. Phone: title, chart, controls */
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#0b1617);--ink:light-dark(#0E1A1B,#E9F0EE);--soft:light-dark(#4D5B5C,#A9BAB7);--line:light-dark(#E2DDD3,#22393A);--panel:light-dark(#F5F2EC,#112223);--teal:#0D4448;--band:light-dark(#0D4448,#0a3134);--deep:light-dark(#08302F,#061f20);--c1:light-dark(#0D4448,#7CC7BE);--r2:light-dark(#22706E,#57A79F);--r3:light-dark(#3E8F8A,#3E8A83);--r4:light-dark(#66AEA7,#2C6E69);--r5:light-dark(#9CCFC8,#1F5551);--c3:#D99A2B;--c4:light-dark(#F0CB78,#F2D38E);--gold:#E8B04A;--hit:light-dark(#D7EDDC,#1d3b28);--hitink:light-dark(#1E5B36,#9fd7ae);--miss:light-dark(#9AA3A3,#5c6b6b)}
+:root[data-theme=light]{color-scheme:light}
+:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:16px/1.55 'Hanken Grotesk',Arial,sans-serif;overflow-x:clip}
+.band{padding-block:clamp(26px,3.6vw,56px);padding-left:max(5vw,16px);padding-right:max(5vw,16px)}
+.wrap{max-width:1240px;margin:0 auto}
+h2{font-size:clamp(22px,2.4vw,28px);line-height:1.15;letter-spacing:-.015em;font-weight:700;margin:0 0 8px}
+h3{font-size:18px;font-weight:700;margin:18px 0 8px}
+.lede{color:var(--soft);margin:0 0 18px;max-width:70ch}
+.top{background:var(--band);color:#F5F2EC}
+.who{display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center;font-size:15px;color:#CFE0DC}
+.who input{font:inherit;font-size:16px;font-weight:600;color:#fff;background:transparent;border:0;border-bottom:1px dashed #6f9a96;padding:2px 0;width:8.5em}
+.who input:focus{outline:2px solid var(--gold);outline-offset:3px}
+h1{font-size:clamp(30px,4.4vw,52px);line-height:1.05;letter-spacing:-.025em;font-weight:800;margin:10px 0 22px;text-wrap:balance;max-width:22ch}
+h1 em{font-style:normal;color:var(--gold)}
+.kpis{display:flex;flex-wrap:wrap;gap:1px;background:#2b6266;border:1px solid #2b6266;border-radius:12px;overflow:hidden}
+.kpi{background:var(--band);padding:14px 16px;flex:1 1 10em}
+.kpi b{display:block;font-size:clamp(22px,2.3vw,30px);font-weight:800;color:#fff;white-space:nowrap;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+.kpi span{font-size:14px;color:#CFE0DC}
+.kpi.gold{background:#0f5155}.kpi.gold b{color:var(--gold)}
+.goal{display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px;margin-top:16px;background:var(--gold);color:#0E1A1B;border-radius:12px;padding:14px 18px;font-size:17px}
+.goal p{margin:0;flex:1 1 22em}
+.goal b{white-space:nowrap}
+.goal button,.go{font:inherit;font-weight:700;font-size:15px;min-height:44px;padding:0 18px;border-radius:22px;border:0;background:#0E1A1B;color:#fff;cursor:pointer}
+.goal button:focus-visible,.go:focus-visible{outline:3px solid #fff;outline-offset:2px}
+.main{display:grid;grid-template-columns:minmax(0,330px) minmax(0,1fr);grid-template-areas:"ctl chart" "ctl month";gap:28px 32px;align-items:start}
+.ctl{grid-area:ctl;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px 18px 8px}
+.chart{grid-area:chart}.month{grid-area:month}
+.ctl h2{font-size:20px}
+.f{margin-bottom:14px}
+.f label,.f .lab{display:flex;justify-content:space-between;gap:10px;font-size:15px;font-weight:600}
+.f output{font-weight:800;white-space:nowrap;color:var(--c1)}
+.f small{display:block;color:var(--soft);font-size:13px;margin-top:2px;line-height:1.45}
+input[type=range]{width:100%;height:44px;margin:0;background:transparent;-webkit-appearance:none;appearance:none}
+input[type=range]::-webkit-slider-runnable-track{height:6px;border-radius:3px;background:var(--line)}
+input[type=range]::-moz-range-track{height:6px;border-radius:3px;background:var(--line)}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;margin-top:-9px;border-radius:50%;background:var(--teal);border:3px solid var(--gold)}
+input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:var(--teal);border:3px solid var(--gold)}
+input[type=range]:focus-visible{outline:2px solid var(--c3);outline-offset:2px}
+select,.num{font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;height:44px;padding:0 10px;width:100%}
+.seg{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-radius:8px;overflow:hidden;margin-top:6px}
+.seg button{font:inherit;font-size:15px;height:44px;border:0;background:var(--bg);color:var(--ink);cursor:pointer}
+.seg button[aria-pressed=true]{background:var(--teal);color:#fff;font-weight:700}
+.seg button:focus-visible{outline:2px solid var(--c3);outline-offset:-2px}
+.chart h2{font-size:22px;margin:0 0 4px}
+.chart p{margin:0 0 8px;color:var(--soft);font-size:15px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:14px;color:var(--soft);margin:8px 0 4px}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.legend i.dash{width:20px;height:0;border-radius:0;border-top:2px dashed var(--c3);vertical-align:4px}
+.fig{position:relative;height:clamp(320px,46vw,460px)}
+.fig svg{position:absolute;inset:0;width:100%;height:100%;touch-action:pan-y}
+svg text{font:13px 'Hanken Grotesk',Arial,sans-serif;fill:var(--soft);paint-order:stroke;stroke:var(--bg);stroke-width:4px}
+svg text.pin{fill:var(--ink);font-weight:700}
+.tip{position:absolute;pointer-events:none;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:8px 10px;font-size:14px;line-height:1.4;box-shadow:0 4px 14px rgb(0 0 0/.12);min-width:200px;display:none;z-index:2}
+.tip b{display:block;margin-bottom:2px}
+.tip div{display:flex;justify-content:space-between;gap:12px;white-space:nowrap}
+.tip .t{border-top:1px solid var(--line);margin-top:4px;padding-top:4px;font-weight:700}
+.month h2{font-size:22px}
+.sec{border-top:1px solid var(--line)}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:36px}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:15px;font-variant-numeric:tabular-nums}
+th{background:var(--teal);color:#F5F2EC;font-weight:600;text-align:right;padding:8px 10px;white-space:nowrap}
+td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
+th:first-child,td:first-child{text-align:left}
+tr.hit td{background:var(--hit);color:var(--hitink);font-weight:700}
+tr.miss td{color:var(--miss)}
+tr.tot td{background:var(--panel);font-weight:700}
+.sum{background:var(--teal);color:#F5F2EC;border-radius:10px;padding:14px 16px;margin-top:14px;font-size:16px}
+.sum b{color:var(--gold);white-space:nowrap}
+.note{font-size:14px;color:var(--soft);margin:8px 0 0}
+.warn{color:var(--c3);font-weight:700}
+.stairs-band{background:var(--deep);color:#F5F2EC}
+.stairs-band .lede{color:#CFE0DC}
+.stairs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;align-items:end;margin-top:8px}
+.step{position:relative;display:flex;flex-direction:column;justify-content:flex-start;gap:4px;text-align:left;font:inherit;color:#F5F2EC;background:#124d50;border:2px solid transparent;border-radius:12px 12px 4px 4px;padding:14px 14px 16px;cursor:pointer;transition:transform .2s}
+.step:hover{transform:translateY(-3px)}
+.step:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.step .bonus{font-size:clamp(22px,2.4vw,32px);font-weight:800;color:#fff;white-space:nowrap;letter-spacing:-.01em}
+.step .per{font-size:13px;color:#CFE0DC}
+.step .need{font-size:14px;margin-top:auto;padding-top:10px;border-top:1px solid #2b6266;line-height:1.45}
+.step .need b{white-space:nowrap}
+.step.done{background:#1c5c5a}
+.step.here{background:var(--gold);color:#0E1A1B;border-color:#fff}
+.step.here .bonus{color:#0E1A1B}.step.here .per{color:#3d3214}.step.here .need{border-color:#b8862a}
+.flag{position:absolute;top:-14px;left:12px;background:#fff;color:#0E1A1B;font-size:12px;font-weight:800;border-radius:10px;padding:2px 9px;white-space:nowrap}
+.locked .bonus{color:#9fc2bd}
+.track{display:flex;gap:3px;margin-top:22px;border-radius:8px;overflow:hidden}
+.track div{background:#124d50;padding:8px 10px;font-size:13px;line-height:1.35;color:#CFE0DC}
+.track div b{display:block;color:#fff;font-size:15px;white-space:nowrap}
+.track div.g{background:var(--gold);color:#3d3214}.track div.g b{color:#0E1A1B}
+.track div.z{background:#3a3a36}
+.ladder{display:grid;gap:8px;margin-top:4px}
+.rung{display:grid;grid-template-columns:5.5em minmax(0,1fr) 3.4em;gap:10px;align-items:center;font-size:15px}
+.rung .bar{height:22px;border-radius:4px;background:var(--line);overflow:hidden;display:flex}
+.rung .bar i{display:block;height:100%;background:var(--c1)}
+.rung em{font-style:normal;font-weight:800;text-align:right}
+dl.words{margin:0;display:grid;gap:10px}
+dl.words div{display:grid;grid-template-columns:7.5em minmax(0,1fr);gap:12px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+dl.words dt{font-weight:800;color:var(--c1)}
+dl.words dd{margin:0;font-size:15px}
+.ref h3{margin-top:0}
+.ref ul{padding-left:18px;margin:10px 0 0;font-size:15px}
+.ref li{margin-bottom:5px}
+.facts{font-size:15px;color:var(--soft);padding-left:18px;margin:0}
+.facts li{margin-bottom:6px}
+@media(max-width:860px){.main{grid-template-columns:minmax(0,1fr);grid-template-areas:"chart" "ctl" "month"}.two{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:700px){.stairs{grid-template-columns:minmax(0,1fr);align-items:stretch}.step{min-height:0!important;border-radius:12px}.step .need{margin-top:6px}.track{flex-wrap:wrap}.track div{flex:1 1 40%!important}}
+@media(max-width:600px){table{font-size:13px}th,td{padding:6px 5px}dl.words div{grid-template-columns:minmax(0,1fr);gap:2px}}
+@media(prefers-reduced-motion:no-preference){.fig rect.b{transition:height .25s,y .25s}}
+@media(prefers-reduced-motion:reduce){.step{transition:none}.step:hover{transform:none}}
+</style>
+</head>
+<body>
+<header class="top band">
+<div class="wrap">
+<div class="who"><span>Prepared for <input id="name" value="Alan" aria-label="Name" maxlength="24"></span><span>Next Gen Millionaire income planner</span></div>
+<h1 id="headline">Your pay, built one month at a time.</h1>
+<div class="kpis" id="kpis"></div>
+<div class="goal" id="goal"><p id="goal-t"></p><button type="button" id="goal-b">Show me that plan</button></div>
+</div>
+</header>
+
+<section class="band">
+<div class="wrap main">
+<form class="ctl" id="ctl" autocomplete="off">
+<h2>Your plan</h2>
+<div class="f"><label for="pols">Policies a month <output id="o-pols"></output></label><input type="range" id="pols" min="1" max="10" step="1" value="4"></div>
+<div class="f"><label for="prem">Average yearly premium per policy <output id="o-prem"></output></label><input type="range" id="prem" min="1200" max="20000" step="100" value="5000"><small id="s-prem"></small></div>
+<div class="f"><label for="mon">Clients who pay monthly <output id="o-mon"></output></label><input type="range" id="mon" min="0" max="100" step="5" value="100"><small>The rest pay once a year, so their commission comes up front.</small></div>
+<div class="f"><label for="start">Start month</label><select id="start"></select></div>
+<div class="f"><label for="keep">Persistency <output id="o-keep"></output></label><input type="range" id="keep" min="80" max="100" step="1" value="90"><small>NGM expects at least 90%.</small></div>
+<div class="f"><label for="grow">Grow sales each year by <output id="o-grow"></output></label><input type="range" id="grow" min="0" max="30" step="5" value="0"></div>
+<div class="f"><label for="target">Monthly pay goal (RM)</label><input class="num" type="number" id="target" min="1000" max="200000" step="1000" value="20000" inputmode="numeric"></div>
+</form>
+
+<div class="chart">
+<h2>Your pay, month by month, for five years</h2>
+<p>The teal layers are commission + BSC: new business at the bottom, then each year of renewals stacking on top. Point at a bar for the detail.</p>
+<div class="legend"><span><i style="background:var(--c1)"></i>New business</span><span><i style="background:var(--r2)"></i>Year 2 renewals</span><span><i style="background:var(--r3)"></i>Year 3</span><span><i style="background:var(--r4)"></i>Year 4</span><span><i style="background:var(--r5)"></i>Year 5</span><span><i style="background:var(--c3)"></i>NGM bonus</span><span><i style="background:var(--c4)"></i>Ascend bonus</span><span><i class="dash"></i><span id="lg-goal">Goal</span></span></div>
+<div class="fig" id="fig"><svg id="svg" role="img" aria-label="Monthly pay over five years"></svg><div class="tip" id="tip"></div></div>
+</div>
+
+<div class="month">
+<h2>Your month, worked out</h2>
+<p id="m-intro" style="margin:0"></p>
+<div class="sum" id="nextpay"></div>
+<p class="note" id="m-warn"></p>
+</div>
+</div>
+</section>
+
+<section class="band stairs-band">
+<div class="wrap">
+<h2>Climb the NGM tiers</h2>
+<p class="lede">Each step is a bigger month of business. The big number is what you could earn in your first 24 months at that step, commission and NGM bonus together. Tap a step to try it.</p>
+<div class="stairs" id="stairs"></div>
+</div>
+</section>
+
+<section class="band sec">
+<div class="wrap">
+<h2>Year by year</h2>
+<div class="scroll"><table id="years"></table></div>
+<p class="note" id="asc-note"></p>
+</div>
+</section>
+
+<section class="band sec">
+<div class="wrap two">
+<div>
+<h2>Why it keeps growing</h2>
+<p class="lede">A client who pays for 20 years pays you every year they stay. This is what you earn on their premium each policy year, commission and BSC together, on investment-linked plans of 20 years or more.</p>
+<div class="ladder" id="ladder"></div>
+<p class="note">So the clients you close this month are still paying you in year five, on top of everyone you close after them.</p>
+</div>
+<div>
+<h2>Words you'll hear</h2>
+<dl class="words">
+<div><dt>AFYP</dt><dd>Annualised first-year premium: what a client pays you in their first year. RM417 a month is RM5,000 AFYP.</dd></div>
+<div><dt>AFYC</dt><dd>Annualised first-year commission: 25% of AFYP. The programme tiers are measured on this. RM20,000 AFYP is RM5,000 AFYC.</dd></div>
+<div><dt>Commission + BSC</dt><dd>What you earn on every premium your clients pay. BSC is the Balanced Scorecard bonus, paid with your commission.</dd></div>
+<div><dt>NGM</dt><dd>Next Gen Millionaire: the 24-month full-time programme that pays a monthly bonus on top of commission.</dd></div>
+<div><dt>Case</dt><dd>One policy sold to a client.</dd></div>
+<div><dt>Persistency</dt><dd>How many of your clients are still paying a year later. 90% means 9 in every 10. At 90%, 81 in 100 are still paying in year 3.</dd></div>
+<div><dt>Renewal</dt><dd>A client's premium in year 2 and after. You keep earning on it.</dd></div>
+<div><dt>Ascend</dt><dd>A yearly bonus, paid every February, based on how much you sold the year before.</dd></div>
+</dl>
+</div>
+</div>
+</section>
+
+<section class="band sec ref">
+<div class="wrap">
+<h2>NGM reference tables</h2>
+<p class="lede">From the 2026 Elite Academy NGM R&amp;R form (8 January 2026), so you can check any number on this page.</p>
+<div class="two">
+<div>
+<h3>NGM monthly bonus · 3 cases a month</h3>
+<div class="scroll"><table><tr><th>Monthly AFYC</th><th>Months 1 to 6</th><th>Months 7 to 12</th><th>Months 13 to 24</th></tr>
+<tr><td>RM12,000</td><td>RM16,000</td><td>RM12,000</td><td>RM10,000</td></tr><tr><td>RM9,000</td><td>RM12,000</td><td>RM9,000</td><td>RM7,500</td></tr><tr><td>RM7,000</td><td>RM9,000</td><td>RM7,000</td><td>RM5,500</td></tr><tr><td>RM5,000</td><td>RM6,500</td><td>RM5,000</td><td>RM4,000</td></tr><tr><td>RM3,500</td><td>RM4,500</td><td>RM3,500</td><td>RM2,500</td></tr></table></div>
+</div>
+<div>
+<h3>NGM quarterly bonus · 9 cases a quarter</h3>
+<div class="scroll"><table><tr><th>Quarterly AFYC</th><th>Quarters 1 and 2</th><th>Quarters 3 and 4</th></tr>
+<tr><td>RM36,000</td><td>RM48,000</td><td>RM36,000</td></tr><tr><td>RM27,000</td><td>RM36,000</td><td>RM27,000</td></tr><tr><td>RM21,000</td><td>RM27,000</td><td>RM21,000</td></tr><tr><td>RM15,000</td><td>RM19,500</td><td>RM15,000</td></tr><tr><td>RM10,500</td><td>RM13,500</td><td>RM10,500</td></tr></table></div>
+</div>
+</div>
+<ul>
+<li>The quarterly bonus is a catch-up, not extra: miss a month and the quarter can still pay the difference, as long as you close at least 1 case every month.</li>
+<li>Stay in the programme by meeting each quarter's AFYC and case target, with persistency of 90% or more. One rescue is allowed in the 24 months.</li>
+</ul>
+</div>
+</section>
+
+<section class="band sec">
+<div class="wrap">
+<h2>How this is worked out</h2>
+<ul class="facts">
+<li>Commission + BSC rates are from the Agency Compensation Handbook v7.4 (March 2023), investment-linked regular premium, 20 years or more. Year 1 is 17.5% + 7.5%, year 2 is 12.5% + 12.5%, year 3 is 10% + 9%; the BSC table stops at year 3, so years 4 to 6 are commission only. BSC is taken at a 100% score.</li>
+<li>Commission + BSC is paid on premiums collected, the month after they are collected. A monthly payer pays two months when they sign up, then monthly again from month 3; a yearly payer pays the full year up front.</li>
+<li>Programme bonus is paid the month after. A steady plan never needs the quarterly catch-up.</li>
+<li>Ascend follows the handbook's Ascend rules, assumed to carry on each year: paid every February on the year before, using that year's total sales. New Life Planners need only 70% of each tier in their first two calendar years. Only premiums collected within each year are counted, to stay conservative.</li>
+<li>This is a projection of one steady plan, not a promise. Actual pay depends on policies being validated and kept in force.</li>
+</ul>
+</div>
+</section>
+
+<script>
+{
+// MODEL START
+const CR=[17.5,12.5,10,18,15,15],BR=[7.5,12.5,9];
+const rc=y=>CR[Math.min(y,6)-1]/100,rb=y=>(y<=3?BR[y-1]:0)/100;
+const NGM={th:[12000,9000,7000,5000,3500],pay:[[16000,12000,9000,6500,4500],[12000,9000,7000,5000,3500],[10000,7500,5500,4000,2500]],min:3,len:24};
+const RIN={th:[5000,4000,3000,2000,1000],pay:[[3600,2800,2000,1200,400],[2600,2000,1400,800,300]],min:2,len:12};
+const ASC=[[750000,8,6,8],[600000,7,5,7],[450000,4,4,6],[300000,3,2,4],[150000,2,2,3],[80000,1,0,0]];
+function model(o){
+  const H=60,N=H+1,earn=[],pay=[];
+  for(let t=0;t<=N;t++)earn.push({c:0,b:0,p:0,y:[0,0,0,0,0]}),pay.push({c:0,b:0,p:0,a:0,y:[0,0,0,0,0]});
+  const cy=t=>o.sy+Math.floor((o.sm+t)/12),A=[];
+  for(let c=0;c<H;c++)A.push(o.pols*o.prem*Math.pow(1+o.grow,Math.floor(c/12)));
+  const col={};
+  // Monthly payers pay instalments 1 and 2 at sign-up, nothing the next month, then one a month from month 3.
+  for(let c=0;c<H;c++)for(let t=c;t<N;t++){
+    const add=(amt,py)=>{if(!amt)return;earn[t].c+=amt*rc(py);earn[t].b+=amt*rb(py);earn[t].y[Math.min(py,5)-1]+=amt*(rc(py)+rb(py));const k=cy(t)+'|'+cy(c)+'|'+py;col[k]=(col[k]||0)+amt;};
+    const d=t-c;
+    if(o.mon>0)for(const k of (d===0?[1,2]:d===1?[]:[d+1])){const py=Math.floor((k-1)/12)+1;add(A[c]*o.mon/12*Math.pow(o.keep,py-1),py);}
+    if(o.mon<1&&d%12===0){const py=d/12+1;add(A[c]*(1-o.mon)*Math.pow(o.keep,py-1),py);}
+  }
+  const P=o.prog==='ngm'?NGM:RIN,tierAt=[];let streak=0;
+  for(let c=0;c<H;c++){
+    let b=0,ti=-1;const afyc=A[c]*.25;
+    if(c<P.len&&o.pols>=P.min){ti=P.th.findIndex(x=>afyc>=x);if(ti>=0)b=P.pay[o.prog==='ngm'?(c<6?0:c<12?1:2):(c<6?0:1)][ti];}
+    if(o.prog==='rin'){streak=b>0?(c%3===0?1:streak+1):0;if(streak===2)b+=200;if(streak===3)b+=500;}
+    earn[c].p+=b;tierAt.push(ti);
+  }
+  for(let t=1;t<H;t++){pay[t].c=earn[t-1].c;pay[t].b=earn[t-1].b;pay[t].p=earn[t-1].p;pay[t].y=earn[t-1].y.slice();}
+  const asc=[];
+  for(let Y=o.sy;Y<=cy(H-1);Y++){
+    let anp=0;for(let c=0;c<H;c++)if(cy(c)===Y)anp+=A[c];
+    const nlp=Y<=o.sy+1,r=ASC.find(x=>anp>=x[0]*(nlp?.7:1));
+    let amt=0;
+    if(r){amt=(col[Y+'|'+Y+'|1']||0)*r[1]/100+(o.keep>=.85?(col[Y+'|'+(Y-1)+'|2']||0)*r[2]/100:0)+(o.keep*o.keep>=.8?(col[Y+'|'+(Y-2)+'|3']||0)*r[3]/100:0);}
+    const t=(Y+1-o.sy)*12+1-o.sm;
+    if(t<H)pay[t].a+=amt;
+    asc.push({Y,anp,nlp,r,amt,t});
+  }
+  const rows=pay.slice(0,H).map((p,t)=>({...p,cb:p.c+p.b,y1:p.y[0],y2:p.y[1],y3:p.y[2],y4:p.y[3],y5:p.y[4],ren:p.y[1]+p.y[2]+p.y[3]+p.y[4],reg:p.c+p.b+p.p,tot:p.c+p.b+p.p+p.a}));
+  return {rows,asc,A,tierAt,first:earn[0]};
+}
+// MODEL END
+const $=id=>document.getElementById(id),RM=v=>'RM'+Math.round(v).toLocaleString('en-GB');
+const MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const starts=[[2026,11],[2027,0],[2027,1],[2027,2],[2027,3],[2027,4],[2027,5]];
+$('start').innerHTML=starts.map(([y,m],i)=>`<option value="${i}"${i===1?' selected':''}>${MON[m]} ${y}</option>`).join('');
+let prog='ngm',last=null;const shown={};
+const ids=['name','pols','prem','mon','start','keep','grow','target'],KEY='ngm-planner-2';
+try{const s=JSON.parse(localStorage.getItem(KEY)||'null');if(s){ids.forEach(k=>{if(s[k]!=null)$(k).value=s[k]})}}catch(e){}
+const reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+function opts(over){const [sy,sm]=starts[+$('start').value];return Object.assign({pols:+$('pols').value,prem:+$('prem').value,mon:$('mon').value/100,prog,sy,sm,keep:$('keep').value/100,grow:$('grow').value/100},over||{})}
+const label=(o,t)=>{const m=(o.sm+t)%12,y=o.sy+Math.floor((o.sm+t)/12);return MON[m]+' '+y};
+const stayFrom=(rows,T)=>{let i=59;if(rows[59].reg<T)return -1;while(i>0&&rows[i-1].reg>=T)i--;return i};
+function need(o,T){let lo=1,hi=600;if(stayFrom(model(Object.assign({},o,{prem:hi*100})).rows,T)<0)return null;while(lo<hi){const mid=(lo+hi)>>1;if(stayFrom(model(Object.assign({},o,{prem:mid*100})).rows,T)>=0)hi=mid;else lo=mid+1}return lo*100}
+const period=(c,p)=>p==='ngm'?(c<6?0:c<12?1:2):(c<6?0:1);
+function count(el,key,to){const from=shown[key]??to;shown[key]=to;if(reduce||from===to){el.textContent=RM(to);return}const t0=performance.now();const step=t=>{const k=Math.min(1,(t-t0)/600),e=1-(1-k)**3;el.textContent=RM(from+(to-from)*e);if(k<1)requestAnimationFrame(step)};requestAnimationFrame(step)}
+function setPrem(p){let n=+$('pols').value;while(Math.ceil(p/n/100)*100>20000&&n<10)n++;$('pols').value=n;$('prem').value=Math.min(20000,Math.max(1200,Math.ceil(p/n/100)*100));render()}
+function render(){
+  const o=opts(),R=model(o),target=Math.max(1000,+$('target').value||20000),name=($('name').value||'').trim();
+  last={o,R,target};
+  try{const s={prog};ids.forEach(k=>s[k]=$(k).value);localStorage.setItem(KEY,JSON.stringify(s))}catch(e){}
+  document.title=(name?name+'’s':'Your')+' income planner';
+  const afyp=o.pols*o.prem,afyc=afyp*.25,P=prog==='ngm'?NGM:RIN,pname=prog==='ngm'?'NGM':'RintiZ',rows=R.rows;
+  $('o-pols').textContent=o.pols;$('o-prem').textContent=RM(o.prem);$('s-prem').textContent=`About ${RM(o.prem/12)} a month per client`;
+  $('o-mon').textContent=Math.round(o.mon*100)+'%';$('o-keep').textContent=Math.round(o.keep*100)+'%';$('o-grow').textContent=Math.round(o.grow*100)+'%';
+  $('lg-goal').textContent=`Goal ${RM(Math.max(1000,+$('target').value||20000))} a month`;
+  const sum=(a,b,k)=>rows.slice(a,b).reduce((s,r)=>s+r[k],0),st=stayFrom(rows,target),tier=R.tierAt[0],b1=tier>=0&&o.pols>=P.min?P.pay[0][tier]:0;
+  $('headline').innerHTML=st>=0?`Close ${RM(afyp)} a month and your pay could stay above <em>${RM(target)}</em> a month from ${label(o,st)}.`:`Close ${RM(afyp)} a month and your pay builds to <em>${RM(rows[59].reg)}</em> a month by year five.`;
+  const K=[['k1',rows[1].reg,'Your first pay, '+label(o,1)],['k3',sum(0,60,'p'),pname+' bonus, whole programme'],['k4',sum(0,12,'tot'),'First 12 months'],['k5',sum(0,60,'tot'),'Five years in all']];
+  if(!$('kpis').children.length)$('kpis').innerHTML=K.map(k=>`<div class="kpi" id="${k[0]}"><b></b><span></span></div>`).join('');
+  K.forEach(k=>{const el=$(k[0]);el.className='kpi'+(k[3]?' gold':'');el.lastChild.textContent=k[2];if(k[4]){el.firstChild.textContent=k[4];shown[k[0]]=undefined}else count(el.firstChild,k[0],k[1])});
+  const nd=st>=0?null:need(o,target);
+  $('goal').style.display=st>=0&&false?'none':'flex';
+  $('goal-t').innerHTML=st>=0?`<b>Goal reached.</b> From ${label(o,st)} your pay stays above ${RM(target)} a month, and keeps climbing.`:nd?`To pass <b>${RM(target)} a month</b> within five years, close <b>${RM(nd*o.pols)} a month</b>: ${o.pols} ${o.pols===1?'policy':'policies'} of about <b>${RM(nd)}</b> a year each.`:`To pass ${RM(target)} a month within five years, add more policies a month.`;
+  $('goal-b').style.display=nd?'':'none';$('goal-b').onclick=()=>{if(nd){$('prem').value=nd;render()}};
+  // month panel
+  $('m-intro').textContent=`${o.pols} ${o.pols===1?'policy':'policies'} × ${RM(o.prem)} = ${RM(afyp)} AFYP this month. At 25%, that is ${RM(afyc)} AFYC`+(tier>=0&&o.pols>=P.min?`, which reaches the ${RM(P.th[tier])} ${pname} tier.`:'.');
+  const f=R.first,b0=rows[1].p,cm=afyp*o.mon/12*.25;
+  $('nextpay').innerHTML=`Next month you are paid <b>${RM(f.c+f.b)}</b> commission + BSC plus <b>${RM(b0)}</b> ${pname} bonus: <b>${RM(f.c+f.b+b0)}</b>.`;
+  $('m-warn').innerHTML=o.pols<P.min?`<span class="warn">${pname} needs at least ${P.min} policies a month, so no monthly bonus is paid at ${o.pols}.</span>`:tier<0?`<span class="warn">${RM(afyc)} AFYC is below the lowest tier of ${RM(P.th[4])}.</span>`:'';
+  // stairs
+  const steps=[4,3,2,1,0].map(i=>{const ap=P.th[i]*4,r=model(Object.assign({},o,{prem:ap/o.pols})).rows,cb=r.slice(1,25).reduce((s,x)=>s+x.cb,0),bn=r.slice(1,25).reduce((s,x)=>s+x.p,0);return{i,ap,cb,bn,tot:cb+bn}}),maxT=Math.max(...steps.map(x=>x.tot));
+  $('stairs').innerHTML=steps.map(({i,ap,cb,bn,tot})=>{const here=i===tier&&o.pols>=P.min,cls=here?'here':tier>=0&&i>tier?'done':'locked',hgt=150+Math.round(tot/maxT*170);
+    return `<button type="button" class="step ${cls}" data-p="${ap}" style="min-height:${hgt}px">${here?'<span class="flag">You’re here</span>':''}<span class="bonus">${RM(tot)}</span><span class="per">in your first 24 months</span><span class="need"><b>${RM(ap)}</b> premium a month<br>NGM ${RM(bn)} + commission ${RM(cb)}${cls==='locked'&&afyp<ap?`<br><b>+${RM(ap-afyp)}</b> a month to unlock`:''}</span></button>`}).join('');
+  // ladder
+  const lt=CR.reduce((s,c,i)=>s+c+(i<3?BR[i]:0),0);
+  $('ladder').innerHTML=[1,2,3,4,5,6].map(y=>{const c=CR[y-1]+(y<=3?BR[y-1]:0);return`<div class="rung"><span>Year ${y}</span><span class="bar"><i style="width:${c*3.6}%"></i></span><em>${c}%</em></div>`}).join('')+`<div class="rung" style="border-top:2px solid var(--ink);padding-top:8px"><span><b>Total</b></span><span>Years 1 to 6, on one ${RM(o.prem)}-a-year client: <b>${RM(o.prem*lt/100)}</b></span><em>${lt}%</em></div>`;
+  // years
+  const yr=[0,1,2,3,4].map(i=>{const a=i*12,b=a+12;return[`Year ${i+1} · ${label(o,a)}`,sum(a,b,'y1'),sum(a,b,'ren'),sum(a,b,'p'),sum(a,b,'a'),sum(a,b,'tot'),sum(a,b,'tot')/12]});
+  const tot=['All five years',...[1,2,3,4,5].map(j=>yr.reduce((s,r)=>s+r[j],0)),sum(0,60,'tot')/60];
+  $('years').innerHTML=`<tr><th>Pay year</th><th>New business</th><th>Renewals</th><th>${pname}</th><th>Ascend</th><th>Total</th><th>A month</th></tr>`+yr.map(r=>`<tr><td>${r[0]}</td>${r.slice(1).map(v=>`<td>${v?RM(v):'–'}</td>`).join('')}</tr>`).join('')+`<tr class="tot"><td>${tot[0]}</td>${tot.slice(1).map(v=>`<td>${RM(v)}</td>`).join('')}</tr>`;
+  $('asc-note').textContent='Ascend: '+R.asc.map(a=>`${a.Y} sales of ${RM(a.anp)}${a.r?` reach the ${a.r[0]/1000}K tier${a.nlp?' (70% rule)':''}, paying ${RM(a.amt)} ${a.t<60?'in '+label(o,a.t):'after year five'}`:' are below the lowest tier'}`).join('; ')+'.';
+  draw();
+}
+function draw(){
+  if(!last)return;const s=$('svg'),W=s.clientWidth,H=s.clientHeight;if(!W||!H)return;
+  const {o,R,target}=last,rows=R.rows,narrow=W<520,m={l:narrow?40:58,r:14,t:52,b:30},iw=W-m.l-m.r,ih=H-m.t-m.b;
+  const max=Math.max(target*1.15,...rows.map(r=>r.tot)),step=max>60000?20000:max>25000?10000:5000,top=Math.ceil(max/step)*step,y=v=>m.t+ih-v/top*ih,bw=iw/60;
+  let g='';
+  for(let v=0;v<=top;v+=step)g+=`<line x1="${m.l}" x2="${W-m.r}" y1="${y(v)}" y2="${y(v)}" stroke="var(--line)"/><text x="${m.l-6}" y="${y(v)+4}" text-anchor="end">${v?(narrow?v/1000+'K':'RM'+v/1000+'K'):'0'}</text>`;
+  const L=o.prog==='ngm'?24:12,xe=m.l+bw*(L+1);
+  g+=`<line x1="${xe}" x2="${xe}" y1="${m.t-14}" y2="${m.t+ih}" stroke="var(--soft)" stroke-dasharray="2 4"/><text x="${xe+5}" y="${m.t-4}">${o.prog==='ngm'?'NGM':'RintiZ'} ends</text>`;
+  rows.forEach((r,i)=>{let base=0;const x=m.l+i*bw+bw*.12,w=Math.max(1,bw*.76);[['y1','--c1'],['y2','--r2'],['y3','--r3'],['y4','--r4'],['y5','--r5'],['p','--c3'],['a','--c4']].forEach(([k,c])=>{const v=r[k];if(v>0){g+=`<rect class="b" x="${x}" width="${w}" y="${y(base+v)}" height="${Math.max(0,y(base)-y(base+v))}" fill="var(${c})"/>`;base+=v;}});});
+  for(let i=0;i<60;i+=12)g+=`<text x="${m.l+i*bw}" y="${H-8}">${narrow?'Y'+(i/12+1):label(o,i)}</text>`;
+  g+=`<line x1="${m.l}" x2="${W-m.r}" y1="${y(target)}" y2="${y(target)}" stroke="var(--c3)" stroke-width="2" stroke-dasharray="6 4"/>`;
+  const pins=[],tk=rows.findIndex(r=>r.reg>=10000),st=stayFrom(rows,target);
+  pins.push([1,st>=0&&st<=1?'First pay, goal reached':'First pay']);if(tk>1&&target>10000&&tk!==st&&(st<0||tk<st))pins.push([tk,'First RM10,000 month']);if(st>1)pins.push([st,'Goal reached']);
+  let prevEnd=-1e9;const ry=18;
+  pins.forEach(([i,t])=>{const cx=m.l+i*bw+bw/2,cy=y(rows[i].reg)-4,tw=t.length*7.4;let lx=Math.max(cx-6,prevEnd+14);if(lx+tw>W-m.r)lx=W-m.r-tw;prevEnd=lx+tw;
+    g+=`<path d="M${cx} ${cy-5}V${ry+6}${Math.abs(lx-cx)>2?`H${lx+3}`:''}" fill="none" stroke="var(--c3)" stroke-width="1.5" stroke-dasharray="2 3"/><circle cx="${cx}" cy="${cy}" r="5" fill="var(--gold)" stroke="var(--bg)" stroke-width="2"/><text class="pin" x="${lx}" y="${ry}">${t}</text>`});
+  g+=`<rect id="hov" x="0" y="${m.t}" width="${bw}" height="${ih}" fill="var(--ink)" opacity="0"/>`;
+  s.innerHTML=g;s._m={m,bw};
+}
+function tipAt(ev){
+  if(!last)return;const s=$('svg'),{m,bw}=s._m||{},rect=s.getBoundingClientRect(),x=ev.clientX-rect.left,i=Math.floor((x-m.l)/bw),tip=$('tip'),hov=$('hov');
+  if(!m||i<0||i>59){tip.style.display='none';if(hov)hov.setAttribute('opacity',0);return}
+  const {o,R}=last,r=R.rows[i],P=o.prog==='ngm'?NGM:RIN,pn=o.prog==='ngm'?'NGM bonus':'RintiZ bonus',t=i>0?R.tierAt[i-1]:-1;
+  tip.innerHTML=`<b>${label(o,i)} · month ${i+1}</b><div><span>New business</span><span>${RM(r.y1)}</span></div>${[2,3,4,5].filter(k=>r['y'+k]>0.5).map(k=>`<div><span>Year ${k} renewals</span><span>${RM(r['y'+k])}</span></div>`).join('')}${r.p?`<div><span>${pn}${t>=0?' ('+RM(P.th[t])+' tier)':''}</span><span>${RM(r.p)}</span></div>`:''}${r.a?`<div><span>Ascend bonus</span><span>${RM(r.a)}</span></div>`:''}<div class="t"><span>Paid this month</span><span>${RM(r.tot)}</span></div>`;
+  tip.style.display='block';const tw=tip.offsetWidth,fx=x+14+tw>rect.width?x-14-tw:x+14;tip.style.left=Math.max(0,fx)+'px';tip.style.top='8px';
+  if(hov){hov.setAttribute('x',m.l+i*bw);hov.setAttribute('opacity',.07)}
+}
+const fig=$('fig');fig.addEventListener('pointermove',tipAt);fig.addEventListener('pointerdown',tipAt);fig.addEventListener('pointerleave',()=>{$('tip').style.display='none';const h=$('hov');if(h)h.setAttribute('opacity',0)});
+ids.forEach(k=>$(k).addEventListener('input',render));
+$('stairs').addEventListener('click',e=>{const b=e.target.closest('.step');if(b)setPrem(+b.dataset.p)});
+$('ctl').addEventListener('submit',e=>e.preventDefault());
+const ro=new ResizeObserver(draw);ro.observe($('svg'));
+render();
+
+}
+</script>
+</body>
+</html>
